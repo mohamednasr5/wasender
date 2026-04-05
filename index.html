@@ -124,6 +124,8 @@
     }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
+    
+    /* ── PAGE ROUTING ── */
     .page { display: none; }
     .page.active { display: block; animation: fadeIn 0.5s ease-out forwards; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -248,25 +250,6 @@
     .guide-list li { margin-bottom: 10px; }
     .guide-list li strong { color: var(--text-main); font-weight: 700; }
 
-    /* ── REQUIREMENTS ── */
-    .req-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-    .req-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-align: center; transition: all 0.3s ease; }
-    .req-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: var(--shadow-sm); }
-    .req-icon { font-size: 2rem; margin-bottom: 12px; }
-    .req-card h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
-    .req-card p { font-size: 1rem; font-weight: 700; color: var(--text-main); }
-
-    /* ── VERSION INFO ── */
-    .version-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 32px;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 24px; position: relative; overflow: hidden; box-shadow: var(--shadow-sm);
-    }
-    .version-item h4 { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; }
-    .version-item p { font-size: 1.1rem; font-weight: 800; color: var(--text-main); }
-    .download-section { margin-top: 32px; text-align: center; }
-
     /* ── PRICING ── */
     .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; }
     .price-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 40px 32px; display: flex; flex-direction: column; position: relative; transition: all 0.3s ease; }
@@ -327,6 +310,22 @@
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 3px var(--primary-light); }
     .form-group textarea { resize: vertical; min-height: 140px; }
 
+    /* ── POLICIES & SITEMAP PAGES ── */
+    .policy-content { max-width: 800px; margin: 60px auto; padding: 40px; background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .policy-content h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; color: var(--text-main); }
+    .policy-content .last-update { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 40px; }
+    .policy-content h2 { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin: 36px 0 16px; }
+    .policy-content p, .policy-content li { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; }
+    .policy-content ul { margin: 10px 0 20px 24px; }
+    
+    .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .sitemap-col { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+    .sitemap-col h3 { font-weight: 800; color: var(--primary); margin-bottom: 16px; font-size: 1.05rem; }
+    .sitemap-col ul { list-style: none; }
+    .sitemap-col ul li { margin-bottom: 10px; }
+    .sitemap-col ul li a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: 0.2s; }
+    .sitemap-col ul li a:hover { color: var(--primary); }
+
     /* ── FOOTER ── */
     footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 60px 0 30px; margin-top: 60px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
@@ -374,9 +373,10 @@
     </a>
     <div class="nav-links">
       <a href="#" onclick="showPage('home')" data-i18n="nav_home">الرئيسية</a>
-      <a href="#anti-ban-guide" onclick="showPage('home')" data-i18n="nav_guide">حماية من الحظر</a>
-      <a href="#features" onclick="showPage('home')" data-i18n="nav_features">المميزات</a>
-      <a href="#pricing" onclick="showPage('home')" data-i18n="nav_pricing">الأسعار</a>
+      <a href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('anti-ban-guide').scrollIntoView(),100);" data-i18n="nav_guide">حماية من الحظر</a>
+      <a href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('features').scrollIntoView(),100);" data-i18n="nav_features">المميزات</a>
+      <a href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('pricing').scrollIntoView(),100);" data-i18n="nav_pricing">الأسعار</a>
+      <a href="#" onclick="showPage('contact')" data-i18n="nav_contact">اتصل بنا</a>
     </div>
     <div class="lang-selector">
       <button class="lang-btn" onclick="toggleLangMenu()" aria-label="Select Language">
@@ -480,36 +480,21 @@
       <p class="section-sub" data-i18n="feat_sub">أكثر من 15 أداة احترافية في برنامج واحد</p>
       
       <div class="features-grid">
-        <article class="feature-card reveal">
-          <div class="feature-icon">📨</div>
-          <h3 data-i18n="f1_title">إرسال جهات الاتصال</h3>
-          <p data-i18n="f1_desc">إرسال رسائل جماعية باستخدام قوالب جاهزة، مرفقات، استطلاعات رأي، وتغيير تلقائي للنص لتفادي الحظر.</p>
-        </article>
-        <article class="feature-card reveal delay-1">
-          <div class="feature-icon">👥</div>
-          <h3 data-i18n="f2_title">إرسال المجموعات</h3>
-          <p data-i18n="f2_desc">توسيع الإرسال الجماعي ليشمل مجموعات واتساب بكل سهولة وكفاءة.</p>
-        </article>
-        <article class="feature-card reveal delay-2">
-          <div class="feature-icon">🔍</div>
-          <h3 data-i18n="f3_title">استخراج أعضاء المجموعات</h3>
-          <p data-i18n="f3_desc">سحب أعضاء مجموعات واتساب بسهولة وكفاءة عالية لبناء قوائم تسويقية.</p>
-        </article>
-        <article class="feature-card reveal">
-          <div class="feature-icon">🤖</div>
-          <h3 data-i18n="f5_title">بوت الرد التلقائي</h3>
-          <p data-i18n="f5_desc">ردود تلقائية ذكية تعمل 24/7 للرد على استفسارات عملائك.</p>
-        </article>
-        <article class="feature-card reveal delay-1">
-          <div class="feature-icon">🗺️</div>
-          <h3 data-i18n="f7_title">مستخرج بيانات خرائط جوجل</h3>
-          <p data-i18n="f7_desc">استخراج عملاء محتملين حسب الموقع الجغرافي من خرائط جوجل.</p>
-        </article>
-        <article class="feature-card reveal delay-2">
-          <div class="feature-icon">✅</div>
-          <h3 data-i18n="f9_title">فلتر أرقام واتساب</h3>
-          <p data-i18n="f9_desc">فلترة الأرقام النشطة على واتساب لضمان وصول رسائلك.</p>
-        </article>
+        <article class="feature-card reveal"><div class="feature-icon">📨</div><h3 data-i18n="f1_title">إرسال جهات الاتصال</h3><p data-i18n="f1_desc">إرسال رسائل جماعية باستخدام قوالب جاهزة، مرفقات، وتغيير تلقائي للنص لتفادي الحظر.</p></article>
+        <article class="feature-card reveal delay-1"><div class="feature-icon">👥</div><h3 data-i18n="f2_title">إرسال المجموعات</h3><p data-i18n="f2_desc">توسيع الإرسال الجماعي ليشمل مجموعات واتساب بكل سهولة وكفاءة.</p></article>
+        <article class="feature-card reveal delay-2"><div class="feature-icon">🔍</div><h3 data-i18n="f3_title">استخراج أعضاء المجموعات</h3><p data-i18n="f3_desc">سحب أعضاء مجموعات واتساب بسهولة وكفاءة عالية لبناء قوائم تسويقية.</p></article>
+        <article class="feature-card reveal"><div class="feature-icon">🔗</div><h3 data-i18n="f4_title">جمع روابط المجموعات</h3><p data-i18n="f4_desc">استخراج روابط مجموعات واتساب من صفحات الويب بشكل تلقائي.</p></article>
+        <article class="feature-card reveal delay-1"><div class="feature-icon">🤖</div><h3 data-i18n="f5_title">بوت الرد التلقائي</h3><p data-i18n="f5_desc">ردود تلقائية ذكية تعمل 24/7 للرد على استفسارات عملائك.</p></article>
+        <article class="feature-card reveal delay-2"><div class="feature-icon">📋</div><h3 data-i18n="f6_title">ساحب قائمة جهات الاتصال</h3><p data-i18n="f6_desc">جمع الأسماء وأرقام الهواتف من جهات الاتصال بشكل منظم.</p></article>
+        <article class="feature-card reveal"><div class="feature-icon">🗺️</div><h3 data-i18n="f7_title">مستخرج بيانات خرائط جوجل</h3><p data-i18n="f7_desc">استخراج عملاء محتملين حسب الموقع الجغرافي من خرائط جوجل.</p></article>
+        <article class="feature-card reveal delay-1"><div class="feature-icon">➕</div><h3 data-i18n="f8_title">الانضمام التلقائي للمجموعات</h3><p data-i18n="f8_desc">الانضمام لمجموعات واتساب بشكل أوتوماتيكي وتوسيع شبكتك.</p></article>
+        <article class="feature-card reveal delay-2"><div class="feature-icon">✅</div><h3 data-i18n="f9_title">فلتر أرقام واتساب</h3><p data-i18n="f9_desc">فلترة الأرقام النشطة على واتساب لضمان وصول رسائلك.</p></article>
+        <article class="feature-card reveal"><div class="feature-icon">🎯</div><h3 data-i18n="f10_title">استخراج الأعضاء النشطين</h3><p data-i18n="f10_desc">استهداف الأعضاء النشطين في المجموعات وقائمة الشات بدقة.</p></article>
+        <article class="feature-card reveal delay-1"><div class="feature-icon">🏗️</div><h3 data-i18n="f11_title">منشئ مجموعات جماعي</h3><p data-i18n="f11_desc">إنشاء مجموعات متعددة وتنظيم جهات الاتصال بمولّد CSV.</p></article>
+        <article class="feature-card reveal delay-2"><div class="feature-icon">📧</div><h3 data-i18n="f12_title">مستخرج الإيميلات والهواتف</h3><p data-i18n="f12_desc">سحب بيانات التواصل من مواقع الويب بشكل تلقائي ومنظم.</p></article>
+        <article class="feature-card reveal"><div class="feature-icon">🔥</div><h3 data-i18n="f13_title">واتساب وورمر</h3><p data-i18n="f13_desc">تهيئة الحسابات الجديدة وتقليل خطر الحظر بشكل فعّال.</p></article>
+        <article class="feature-card reveal delay-1"><div class="feature-icon">📅</div><h3 data-i18n="f14_title">جدولة الحملات</h3><p data-i18n="f14_desc">تخطيط الحملات التسويقية بدقة وفي التوقيت المناسب تلقائيًا.</p></article>
+        <article class="feature-card reveal delay-2"><div class="feature-icon">🔎</div><h3 data-i18n="f15_title">إضافة أعضاء + البحث</h3><p data-i18n="f15_desc">توسيع المجموعات والعثور على مجموعات مناسبة بشكل استراتيجي.</p></article>
       </div>
     </div>
   </section>
@@ -523,17 +508,12 @@
       <div class="pricing-grid">
         <div class="price-card reveal delay-1">
           <div class="price-name" data-i18n="plan1_name">سنة واحدة</div>
-          <div class="price-amount">
-            <span class="price-main">2.5</span>
-            <span class="price-currency">$</span>
-          </div>
+          <div class="price-amount"><span class="price-main">2.5</span><span class="price-currency">$</span></div>
           <span class="price-period" data-i18n="plan1_period">/ سنة</span>
-          <span class="price-local" id="local-yearly">جارٍ تحميل السعر المحلي...</span>
+          <span class="price-local" id="local-yearly"></span>
           <ul class="price-features">
-            <li data-i18n="pf1">رخصة واحدة لجهاز واحد</li>
-            <li data-i18n="pf2">رسائل يومية غير محدودة</li>
-            <li data-i18n="pf3">جميع الميزات المميزة</li>
-            <li data-i18n="pf4">استيراد جهات اتصال غير محدودة</li>
+            <li data-i18n="pf1">رخصة واحدة لجهاز واحد</li><li data-i18n="pf2">رسائل يومية غير محدودة</li>
+            <li data-i18n="pf3">جميع الميزات المميزة</li><li data-i18n="pf4">استيراد جهات اتصال غير محدودة</li>
             <li data-i18n="pf5">التخصيص والأتمتة</li>
           </ul>
           <button class="btn-secondary" style="width:100%" onclick="goToCheckout('yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
@@ -541,17 +521,12 @@
         <div class="price-card popular reveal delay-2">
           <div class="popular-badge" data-i18n="best_value">الأفضل قيمة</div>
           <div class="price-name" data-i18n="plan2_name">مدى الحياة</div>
-          <div class="price-amount">
-            <span class="price-main">10</span>
-            <span class="price-currency">$</span>
-          </div>
+          <div class="price-amount"><span class="price-main">10</span><span class="price-currency">$</span></div>
           <span class="price-period" data-i18n="plan2_period">/ مرة واحدة</span>
-          <span class="price-local" id="local-lifetime">جارٍ تحميل السعر المحلي...</span>
+          <span class="price-local" id="local-lifetime"></span>
           <ul class="price-features">
-            <li data-i18n="pf1">رخصة واحدة لجهاز واحد</li>
-            <li data-i18n="pf2">رسائل يومية غير محدودة</li>
-            <li data-i18n="pf3">جميع الميزات المميزة</li>
-            <li data-i18n="pf4">استيراد جهات اتصال غير محدودة</li>
+            <li data-i18n="pf1">رخصة واحدة لجهاز واحد</li><li data-i18n="pf2">رسائل يومية غير محدودة</li>
+            <li data-i18n="pf3">جميع الميزات المميزة</li><li data-i18n="pf4">استيراد جهات اتصال غير محدودة</li>
             <li data-i18n="pf5">التخصيص والأتمتة</li>
           </ul>
           <button class="btn-primary" style="width:100%" onclick="goToCheckout('lifetime')" data-i18n="btn_buy_now">اشترِ الآن</button>
@@ -559,7 +534,6 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <div id="page-checkout" class="page">
@@ -569,128 +543,133 @@
       <h1 class="section-title" data-i18n="checkout_title">اختر طريقة الدفع</h1>
       <p style="color:var(--text-muted);font-size:1rem;" data-i18n="checkout_sub">بعد الدفع أرسل الإيصال عبر واتساب للتفعيل الفوري</p>
     </div>
-
     <div class="plan-selector mt-24">
       <div class="plan-option selected" id="opt-yearly" onclick="selectPlan('yearly')">
-        <h3 data-i18n="plan1_name">سنة واحدة</h3>
-        <div class="plan-price">$2.5 <span class="plan-local" id="co-local-yearly"></span></div>
+        <h3 data-i18n="plan1_name">سنة واحدة</h3><div class="plan-price">$2.5 <span class="plan-local" id="co-local-yearly"></span></div>
       </div>
       <div class="plan-option" id="opt-lifetime" onclick="selectPlan('lifetime')">
-        <h3 data-i18n="plan2_name">مدى الحياة</h3>
-        <div class="plan-price">$10 <span class="plan-local" id="co-local-lifetime"></span></div>
+        <h3 data-i18n="plan2_name">مدى الحياة</h3><div class="plan-price">$10 <span class="plan-local" id="co-local-lifetime"></span></div>
       </div>
     </div>
-
     <div class="payment-methods">
       <div class="payment-method">
         <div class="pm-header" onclick="togglePM(this)">
-          <div class="pm-icon">📱</div>
-          <div>
-            <div class="pm-title" data-i18n="pm1_title">فودافون كاش</div>
-            <div class="pm-sub" data-i18n="pm1_sub">تحويل فوري عبر فودافون كاش</div>
-          </div>
-          <span style="margin-right:auto;margin-left:0;color:var(--text-muted);" class="pm-arrow">▾</span>
+          <div class="pm-icon">📱</div><div><div class="pm-title" data-i18n="pm1_title">فودافون كاش</div><div class="pm-sub" data-i18n="pm1_sub">تحويل فوري عبر فودافون كاش</div></div><span style="margin-right:auto;margin-left:0;color:var(--text-muted);" class="pm-arrow">▾</span>
         </div>
-        <div class="pm-body">
-          <p style="font-size:0.95rem;color:var(--text-main);margin-bottom:10px;font-weight:600;" data-i18n="pm_wallet">رقم المحفظة</p>
-          <div class="copy-row">
-            <span>01279934735</span>
-            <button class="copy-btn" onclick="copyText('01279934735', this)" data-i18n="btn_copy">نسخ</button>
-          </div>
-          <div class="pm-note">💡 <span data-i18n="pm1_note">بعد التحويل، أرسل إيصال الدفع عبر الواتساب للتفعيل الفوري.</span></div>
-        </div>
+        <div class="pm-body"><p style="font-size:0.95rem;color:var(--text-main);margin-bottom:10px;font-weight:600;" data-i18n="pm_wallet">رقم المحفظة</p><div class="copy-row"><span>01279934735</span><button class="copy-btn" onclick="copyText('01279934735', this)" data-i18n="btn_copy">نسخ</button></div><div class="pm-note">💡 <span data-i18n="pm1_note">بعد التحويل، أرسل إيصال الدفع عبر الواتساب للتفعيل الفوري.</span></div></div>
       </div>
-
       <div class="payment-method">
         <div class="pm-header" onclick="togglePM(this)">
-          <div class="pm-icon">⚡</div>
-          <div>
-            <div class="pm-title" data-i18n="pm2_title">تطبيق برق السعودي</div>
-            <div class="pm-sub" data-i18n="pm2_sub">تحويل دولي من السعودية</div>
-          </div>
-          <span style="margin-right:auto;margin-left:0;color:var(--text-muted);" class="pm-arrow">▾</span>
+          <div class="pm-icon">⚡</div><div><div class="pm-title" data-i18n="pm2_title">تطبيق برق السعودي</div><div class="pm-sub" data-i18n="pm2_sub">تحويل دولي من السعودية</div></div><span style="margin-right:auto;margin-left:0;color:var(--text-muted);" class="pm-arrow">▾</span>
         </div>
-        <div class="pm-body">
-          <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.7;" data-i18n="pm2_steps">📋 خطوات التحويل عبر برق: اختر التحويل الدولي ← ثم مصر ← ثم ميزة ← ثم أدخل الرقم:</p>
-          <div class="copy-row">
-            <span>01279934735</span>
-            <button class="copy-btn" onclick="copyText('01279934735', this)" data-i18n="btn_copy">نسخ</button>
-          </div>
-          <div class="pm-note">💡 <span data-i18n="pm2_note">بعد التحويل، أرسل إيصال الدفع عبر الواتساب للتفعيل.</span></div>
-        </div>
+        <div class="pm-body"><p style="font-size:0.9rem; color:var(--text-muted); line-height:1.7;" data-i18n="pm2_steps">📋 خطوات التحويل عبر برق: اختر التحويل الدولي ← ثم مصر ← ثم ميزة ← ثم أدخل الرقم:</p><div class="copy-row"><span>01279934735</span><button class="copy-btn" onclick="copyText('01279934735', this)" data-i18n="btn_copy">نسخ</button></div><div class="pm-note">💡 <span data-i18n="pm2_note">بعد التحويل، أرسل إيصال الدفع عبر الواتساب للتفعيل.</span></div></div>
       </div>
-
       <div class="payment-method">
         <div class="pm-header" onclick="togglePM(this)">
-          <div class="pm-icon">💚</div>
-          <div>
-            <div class="pm-title">InstaPay</div>
-            <div class="pm-sub" data-i18n="pm3_sub">تحويل مباشر من داخل مصر</div>
-          </div>
-          <span style="margin-right:auto;margin-left:0;color:var(--text-muted);" class="pm-arrow">▾</span>
+          <div class="pm-icon">💚</div><div><div class="pm-title">InstaPay</div><div class="pm-sub" data-i18n="pm3_sub">تحويل مباشر من داخل مصر</div></div><span style="margin-right:auto;margin-left:0;color:var(--text-muted);" class="pm-arrow">▾</span>
         </div>
-        <div class="pm-body">
-          <a href="https://ipn.eg/S/engmohamednasr/instapay/8NShbl" class="instapay-link" target="_blank" rel="noopener nofollow">
-            🔗 <span data-i18n="pm3_link">فتح رابط الدفع InstaPay</span>
-          </a>
-          <div class="copy-row" style="margin-top:16px;">
-            <span>01279934735</span>
-            <button class="copy-btn" onclick="copyText('01279934735', this)" data-i18n="btn_copy">نسخ</button>
-          </div>
-          <div class="pm-note">💡 <span data-i18n="pm3_note">أرسل الإيصال عبر الواتساب بعد إتمام الدفع.</span></div>
-        </div>
+        <div class="pm-body"><a href="https://ipn.eg/S/engmohamednasr/instapay/8NShbl" class="instapay-link" target="_blank" rel="noopener nofollow">🔗 <span data-i18n="pm3_link">فتح رابط الدفع InstaPay</span></a><div class="copy-row" style="margin-top:16px;"><span>01279934735</span><button class="copy-btn" onclick="copyText('01279934735', this)" data-i18n="btn_copy">نسخ</button></div><div class="pm-note">💡 <span data-i18n="pm3_note">أرسل الإيصال عبر الواتساب بعد إتمام الدفع.</span></div></div>
       </div>
-
       <div class="payment-method">
         <div class="pm-header" onclick="togglePM(this)">
-          <div class="pm-icon">🏦</div>
-          <div>
-            <div class="pm-title" data-i18n="pm4_title">تحويل بنكي - بنك D360</div>
-            <div class="pm-sub" data-i18n="pm4_sub">تحويل مباشر عبر الأيبان السعودي</div>
-          </div>
-          <span style="margin-right:auto;margin-left:0;color:var(--text-muted);" class="pm-arrow">▾</span>
+          <div class="pm-icon">🏦</div><div><div class="pm-title" data-i18n="pm4_title">تحويل بنكي - بنك D360</div><div class="pm-sub" data-i18n="pm4_sub">تحويل مباشر عبر الأيبان السعودي</div></div><span style="margin-right:auto;margin-left:0;color:var(--text-muted);" class="pm-arrow">▾</span>
         </div>
-        <div class="pm-body">
-          <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:6px;" data-i18n="pm4_bank">اسم البنك: D360</p>
-          <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:12px;" data-i18n="pm4_name">اسم صاحب الحساب: أيمن نصر نصر</p>
-          <p style="font-size:0.9rem;color:var(--text-main);margin-bottom:6px;font-weight:600;" data-i18n="pm4_iban_label">رقم الأيبان (IBAN)</p>
-          <div class="copy-row">
-            <span style="font-size:0.85rem;">SA7636036036031909112576</span>
-            <button class="copy-btn" onclick="copyText('SA7636036036031909112576', this)" data-i18n="btn_copy">نسخ</button>
-          </div>
-          <div class="pm-note">⏱ <span data-i18n="pm4_note">قد يستغرق التحويل من 1 إلى 24 ساعة. أرسل إيصال التحويل للتفعيل.</span></div>
-        </div>
+        <div class="pm-body"><p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:6px;" data-i18n="pm4_bank">اسم البنك: D360</p><p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:12px;" data-i18n="pm4_name">اسم صاحب الحساب: أيمن نصر نصر</p><p style="font-size:0.9rem;color:var(--text-main);margin-bottom:6px;font-weight:600;" data-i18n="pm4_iban_label">رقم الأيبان (IBAN)</p><div class="copy-row"><span style="font-size:0.85rem;">SA7636036036031909112576</span><button class="copy-btn" onclick="copyText('SA7636036036031909112576', this)" data-i18n="btn_copy">نسخ</button></div><div class="pm-note">⏱ <span data-i18n="pm4_note">قد يستغرق التحويل من 1 إلى 24 ساعة. أرسل إيصال التحويل للتفعيل.</span></div></div>
       </div>
-
       <div class="payment-method">
         <div class="pm-header" onclick="togglePM(this)">
-          <div class="pm-icon">💳</div>
-          <div>
-            <div class="pm-title" data-i18n="pm5_title">فيزا / بايبال (PayPal)</div>
-            <div class="pm-sub" data-i18n="pm5_sub">دفع دولي آمن بالبطاقة البنكية</div>
-          </div>
-          <span style="margin-right:auto;margin-left:0;color:var(--text-muted);" class="pm-arrow">▾</span>
+          <div class="pm-icon">💳</div><div><div class="pm-title" data-i18n="pm5_title">فيزا / بايبال (PayPal)</div><div class="pm-sub" data-i18n="pm5_sub">دفع دولي آمن بالبطاقة البنكية</div></div><span style="margin-right:auto;margin-left:0;color:var(--text-muted);" class="pm-arrow">▾</span>
         </div>
-        <div class="pm-body">
-          <div class="paypal-btns">
-            <a href="https://www.paypal.com/ncp/payment/9G9BYA4A8ZMZN" class="paypal-btn" target="_blank" rel="noopener nofollow">
-              💳 <span data-i18n="pp_yearly">الاشتراك لمدة سنة — $2.5</span>
-            </a>
-            <a href="https://www.paypal.com/ncp/payment/VX3TZ9PWMBKB2" class="paypal-btn" target="_blank" rel="noopener nofollow">
-              💳 <span data-i18n="pp_lifetime">الاشتراك مدى الحياة — $10</span>
-            </a>
-          </div>
-        </div>
+        <div class="pm-body"><div class="paypal-btns"><a href="https://www.paypal.com/ncp/payment/9G9BYA4A8ZMZN" class="paypal-btn" target="_blank" rel="noopener nofollow">💳 <span data-i18n="pp_yearly">الاشتراك لمدة سنة — $2.5</span></a><a href="https://www.paypal.com/ncp/payment/VX3TZ9PWMBKB2" class="paypal-btn" target="_blank" rel="noopener nofollow">💳 <span data-i18n="pp_lifetime">الاشتراك مدى الحياة — $10</span></a></div></div>
       </div>
     </div>
-
-    <div style="text-align:center;margin-top:40px;">
-      <button class="btn-secondary" onclick="showPage('home')">← <span data-i18n="btn_back">العودة للرئيسية</span></button>
-    </div>
+    <div style="text-align:center;margin-top:40px;"><button class="btn-secondary" onclick="showPage('home')">← <span data-i18n="btn_back">العودة للرئيسية</span></button></div>
   </div>
 </div>
 
-<footer>
+<div id="page-contact" class="page">
+  <section class="section reveal">
+    <div class="container">
+      <span class="section-label" data-i18n="contact_label">التواصل</span>
+      <h1 class="section-title" data-i18n="contact_title">اتصل بنا</h1>
+      <p class="section-sub" data-i18n="contact_sub">نحن هنا للمساعدة. تواصل معنا عبر أي من القنوات التالية</p>
+      
+      <div class="contact-grid mt-24">
+        <div class="contact-card">
+          <div class="cc-icon">💬</div><h3 data-i18n="ct1_title">واتساب</h3><p data-i18n="ct1_desc">للدعم الفوري والتفعيل بعد الشراء</p><a href="https://wa.me/201279934735" target="_blank" rel="noopener">+201279934735</a>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon">📧</div><h3 data-i18n="ct2_title">البريد الإلكتروني</h3><p data-i18n="ct2_desc">للاستفسارات العامة والدعم التقني</p><a href="mailto:elfannanm@gmail.com">elfannanm@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon">⏰</div><h3 data-i18n="ct3_title">ساعات العمل</h3><p data-i18n="ct3_desc">الدعم متاح خلال ساعات العمل الرسمية</p><span style="color:var(--text-main); font-weight:600;" data-i18n="ct3_hours">9 ص – 10 م (بتوقيت مصر)</span>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2 style="font-size:1.6rem; font-weight:800; margin-bottom:24px; color:var(--text-main); text-align:center;" data-i18n="cf_title">أرسل رسالة</h2>
+        <div class="form-group"><label data-i18n="cf_name">الاسم الكامل</label><input type="text" placeholder="أدخل اسمك الكامل"></div>
+        <div class="form-group"><label data-i18n="cf_email">البريد الإلكتروني</label><input type="email" placeholder="example@email.com"></div>
+        <div class="form-group">
+          <label data-i18n="cf_subject">الموضوع</label>
+          <select>
+            <option data-i18n="cf_opt1">استفسار عام</option><option data-i18n="cf_opt2">دعم تقني</option>
+            <option data-i18n="cf_opt3">مشكلة في الدفع</option><option data-i18n="cf_opt4">طلب الترخيص</option>
+          </select>
+        </div>
+        <div class="form-group"><label data-i18n="cf_msg">رسالتك</label><textarea placeholder="اكتب رسالتك هنا..."></textarea></div>
+        <button class="btn-primary" style="width:100%" onclick="alert('✅ تم الاستلام بنجاح!');" data-i18n="cf_send">إرسال الرسالة</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-privacy" class="page">
+  <div class="policy-content reveal">
+    <h1 data-i18n="priv_title">سياسة الخصوصية</h1><p class="last-update" data-i18n="priv_date">آخر تحديث: 17 مارس 2026</p>
+    <p data-i18n="priv_intro">نحن في WA Sender نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.</p>
+    <h2 data-i18n="priv_h1">1. المعلومات التي نجمعها</h2><p data-i18n="priv_p1">عند شرائك أو تسجيلك، قد نجمع: الاسم، البريد الإلكتروني، رقم الهاتف، وعنوان IP.</p>
+    <h2 data-i18n="priv_h2">2. كيف نستخدم معلوماتك</h2><p data-i18n="priv_p2">نستخدم بياناتك لمعالجة الطلبات وإصدار التراخيص وتقديم الدعم الفني.</p>
+    <h2 data-i18n="priv_h3">3. حماية البيانات</h2><p data-i18n="priv_p3">نستخدم تشفير SSL لحماية بياناتك.</p>
+    <h2 data-i18n="priv_h4">4. ملفات تعريف الارتباط</h2><p data-i18n="priv_p4">نستخدم ملفات تعريف ارتباط أساسية فقط.</p>
+    <h2 data-i18n="priv_h5">5. حقوقك</h2><p data-i18n="priv_p5">يحق لك طلب الاطلاع على بياناتك أو تعديلها أو حذفها.</p>
+    <h2 data-i18n="priv_h6">6. تغييرات على السياسة</h2><p data-i18n="priv_p6">قد نحدّث هذه السياسة من وقت لآخر.</p>
+    <h2 data-i18n="priv_h7">7. التواصل</h2><p data-i18n="priv_p7">لأي استفسارات: elfannanm@gmail.com</p>
+    <div style="margin-top:40px;"><button class="btn-secondary" onclick="showPage('home')">← <span data-i18n="btn_back">العودة للرئيسية</span></button></div>
+  </div>
+</div>
+
+<div id="page-terms" class="page">
+  <div class="policy-content reveal">
+    <h1 data-i18n="terms_title">سياسة الاستخدام</h1><p class="last-update" data-i18n="terms_date">آخر تحديث: 17 مارس 2026</p>
+    <p data-i18n="terms_intro">باستخدامك لبرنامج WA Sender، فإنك توافق على الالتزام بهذه الشروط.</p>
+    <h2 data-i18n="terms_h1">1. الترخيص</h2><p data-i18n="terms_p1">ترخيص غير قابل للتحويل لجهاز واحد فقط.</p>
+    <h2 data-i18n="terms_h2">2. الاستخدام المقبول</h2><p data-i18n="terms_p2">يجب استخدام البرنامج فقط للتسويق المشروع. يُحظر:</p>
+    <ul><li data-i18n="terms_l1">إرسال رسائل غير مرغوب فيها (SPAM)</li><li data-i18n="terms_l2">انتهاك سياسات Meta أو واتساب</li><li data-i18n="terms_l3">مضايقة المستخدمين</li><li data-i18n="terms_l4">أي نشاط غير قانوني</li></ul>
+    <h2 data-i18n="terms_h3">3. سياسة الاسترداد</h2><p data-i18n="terms_p3">لا يتم رد المبالغ بعد تفعيل الترخيص.</p>
+    <h2 data-i18n="terms_h4">4. إخلاء المسؤولية</h2><p data-i18n="terms_p4">WA Sender ليس تابعًا لشركة Meta أو واتساب.</p>
+    <h2 data-i18n="terms_h5">5. تحديثات البرنامج</h2><p data-i18n="terms_p5">أصحاب تراخيص مدى الحياة يحصلون على التحديثات مجانًا.</p>
+    <h2 data-i18n="terms_h6">6. إنهاء الترخيص</h2><p data-i18n="terms_p6">نحتفظ بالحق في إنهاء الترخيص عند انتهاك الشروط.</p>
+    <div style="margin-top:40px;"><button class="btn-secondary" onclick="showPage('home')">← <span data-i18n="btn_back">العودة للرئيسية</span></button></div>
+  </div>
+</div>
+
+<div id="page-sitemap" class="page">
+  <section class="section reveal">
+    <div class="container">
+      <span class="section-label" data-i18n="sitemap_label">خريطة الموقع</span>
+      <h1 class="section-title" data-i18n="sitemap_title">خريطة الموقع</h1>
+      <div class="sitemap-grid mt-24">
+        <div class="sitemap-col"><h3 data-i18n="sm1_title">الصفحات الرئيسية</h3><ul><li><a href="#" onclick="showPage('home')" data-i18n="nav_home">الرئيسية</a></li><li><a href="#" onclick="showPage('contact')" data-i18n="nav_contact">اتصل بنا</a></li><li><a href="#" onclick="showPage('privacy')" data-i18n="nav_privacy">سياسة الخصوصية</a></li><li><a href="#" onclick="showPage('terms')" data-i18n="nav_terms">سياسة الاستخدام</a></li></ul></div>
+        <div class="sitemap-col"><h3 data-i18n="sm2_title">أقسام الرئيسية</h3><ul><li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('anti-ban-guide').scrollIntoView(),100)" data-i18n="nav_guide">حماية من الحظر</a></li><li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('features').scrollIntoView(),100)" data-i18n="nav_features">المميزات</a></li><li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('pricing').scrollIntoView(),100)" data-i18n="nav_pricing">الأسعار</a></li><li><a href="#" onclick="goToCheckout('lifetime')" data-i18n="checkout_title">الشراء</a></li></ul></div>
+        <div class="sitemap-col"><h3 data-i18n="sm3_title">اللغات المتاحة</h3><ul><li><a href="#" onclick="setLang('ar')">🇸🇦 العربية</a></li><li><a href="#" onclick="setLang('en')">🇺🇸 English</a></li><li><a href="#" onclick="setLang('fr')">🇫🇷 Français</a></li><li><a href="#" onclick="setLang('ru')">🇷🇺 Русский</a></li><li><a href="#" onclick="setLang('de')">🇩🇪 Deutsch</a></li></ul></div>
+      </div>
+      <div style="margin-top:40px;text-align:center;"><button class="btn-secondary" onclick="showPage('home')">← <span data-i18n="btn_back">العودة للرئيسية</span></button></div>
+    </div>
+  </section>
+</div>
+
+<footer role="contentinfo">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
@@ -699,6 +678,21 @@
           WA Sender
         </a>
         <p data-i18n="footer_desc">برنامج تسويق واتساب احترافي مع أكثر من 15 أداة قوية. الإصدار 5.0.7</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_pages">الصفحات</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('home')" data-i18n="nav_home">الرئيسية</a></li>
+          <li><a href="#" onclick="showPage('contact')" data-i18n="nav_contact">اتصل بنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_legal">قانوني</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('privacy')" data-i18n="nav_privacy">سياسة الخصوصية</a></li>
+          <li><a href="#" onclick="showPage('terms')" data-i18n="nav_terms">سياسة الاستخدام</a></li>
+          <li><a href="#" onclick="showPage('sitemap')" data-i18n="nav_sitemap">خريطة الموقع</a></li>
+        </ul>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer_contact">التواصل</h4>
@@ -733,16 +727,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ────────────────────────────────────────────────
-// TRANSLATIONS (Includes Guide)
+// TRANSLATIONS 
 // ────────────────────────────────────────────────
 const translations = {
   ar: {
     nav_home:"الرئيسية", nav_guide:"حماية من الحظر", nav_features:"المميزات", nav_pricing:"الأسعار", nav_contact:"اتصل بنا",
+    nav_privacy:"سياسة الخصوصية", nav_terms:"سياسة الاستخدام", nav_sitemap:"خريطة الموقع",
     badge_new:"الإصدار الجديد 5.0.7",
     hero_title:"WA Sender\nبرنامج التسويق عبر واتساب",
     hero_sub:"برنامج تسويق واتساب كامل مع 15+ أداة قوية للرسائل الجماعية، والأتمتة، وتوليد العملاء المحتملين",
-    btn_download:"تحميل مجاني", btn_buy:"اشترِ الآن", btn_buy_now:"اشترِ الآن",
-    btn_back:"العودة للرئيسية", btn_copy:"نسخ",
+    btn_download:"تحميل مجاني", btn_buy:"اشترِ الآن", btn_buy_now:"اشترِ الآن", btn_back:"العودة للرئيسية", btn_copy:"نسخ",
     warn_title:"هام: سياسة Meta / WhatsApp لمكافحة السبام",
     warn_p1:"تفرض شركة Meta قيودًا صارمة على أنشطة الرسائل الجماعية والرسائل المزعجة.",
     warn_p2:"الحسابات التي تنتهك شروط استخدام واتساب قد تتعرّض للحظر.",
@@ -753,16 +747,23 @@ const translations = {
     g2_title:"2. التوقيت الذكي", g2_li1:"الفواصل الزمنية: سيب فرق من 20 لـ 30 ثانية بين كل رسالة والتانية.", g2_li2:"الحد الأقصى: ابعت من 200 لـ 300 رسالة بالكتير في الساعة.", g2_li3:"فترات راحة: لازم توقف الحملة كل شوية وتاخد بريك.",
     g3_title:"3. إدارة جهات الاتصال", g3_li1:"التسجيل المسبق: احفظ الأرقام عندك قبل الإرسال بـ 24 ساعة على الأقل.", g3_li2:"المزامنة: استخدم Google Contacts عشان تضمن إن الأرقام متسمعة وصح.",
     g4_title:"4. استراتيجية المحتوى", g4_li1:"الرسائل الشخصية: ابعد عن الـ Copy-Paste وحاول تخلي رسالتك مخصصة.", g4_li2:"خيار الإلغاء: وفر للعميل فرصة يرفض استقبال الرسايل (Opt-out).", g4_li3:"المحتوى المفيد: ابعد عن الكلام اللي شكله 'سبام'.",
-    feat_label:"المميزات", feat_title:"المميزات الرئيسية WA Sender v5.0.7",
-    feat_sub:"أكثر من 15 أداة احترافية في برنامج واحد",
+    feat_label:"المميزات", feat_title:"المميزات الرئيسية WA Sender v5.0.7", feat_sub:"أكثر من 15 أداة احترافية في برنامج واحد",
     f1_title:"إرسال جهات الاتصال", f1_desc:"إرسال رسائل جماعية باستخدام قوالب جاهزة لتفادي الحظر.",
     f2_title:"إرسال المجموعات", f2_desc:"توسيع الإرسال الجماعي ليشمل مجموعات واتساب بسهولة.",
     f3_title:"استخراج أعضاء المجموعات", f3_desc:"سحب أعضاء مجموعات واتساب لبناء قوائم تسويقية.",
+    f4_title:"جمع روابط المجموعات", f4_desc:"استخراج روابط مجموعات واتساب من صفحات الويب بشكل تلقائي.",
     f5_title:"بوت الرد التلقائي", f5_desc:"ردود تلقائية ذكية تعمل 24/7 للرد على عملائك.",
+    f6_title:"ساحب قائمة جهات الاتصال", f6_desc:"جمع الأسماء وأرقام الهواتف من جهات الاتصال بشكل منظم.",
     f7_title:"مستخرج بيانات خرائط جوجل", f7_desc:"استخراج عملاء محتملين من خرائط جوجل.",
+    f8_title:"الانضمام التلقائي للمجموعات", f8_desc:"الانضمام لمجموعات واتساب بشكل أوتوماتيكي وتوسيع شبكتك.",
     f9_title:"فلتر أرقام واتساب", f9_desc:"فلترة الأرقام النشطة على واتساب.",
-    price_label:"الأسعار", price_title:"اختر خطتك",
-    price_sub:"جميع الباقات تتضمن ميزات مراسلة غير محدودة",
+    f10_title:"استخراج الأعضاء النشطين", f10_desc:"استهداف الأعضاء النشطين في المجموعات بدقة.",
+    f11_title:"منشئ مجموعات جماعي", f11_desc:"إنشاء مجموعات متعددة وتنظيم جهات الاتصال بمولّد CSV.",
+    f12_title:"مستخرج الإيميلات والهواتف", f12_desc:"سحب بيانات التواصل من مواقع الويب بشكل تلقائي.",
+    f13_title:"واتساب وورمر", f13_desc:"تهيئة الحسابات الجديدة وتقليل خطر الحظر بشكل فعّال.",
+    f14_title:"جدولة الحملات", f14_desc:"تخطيط الحملات التسويقية بدقة وفي التوقيت المناسب.",
+    f15_title:"إضافة أعضاء + البحث", f15_desc:"توسيع المجموعات والعثور على مجموعات مناسبة بشكل استراتيجي.",
+    price_label:"الأسعار", price_title:"اختر خطتك", price_sub:"جميع الباقات تتضمن ميزات مراسلة غير محدودة",
     plan1_name:"سنة واحدة", plan1_period:"/ سنة", plan2_name:"مدى الحياة", plan2_period:"/ مرة واحدة",
     pf1:"رخصة لجهاز واحد", pf2:"رسائل غير محدودة", pf3:"جميع الميزات المميزة", pf4:"استيراد جهات اتصال", pf5:"التخصيص والأتمتة",
     checkout_label:"إتمام الشراء", checkout_title:"اختر طريقة الدفع", checkout_sub:"أرسل الإيصال عبر واتساب للتفعيل الفوري",
@@ -772,16 +773,22 @@ const translations = {
     pm4_title:"تحويل بنكي - D360", pm4_sub:"عبر الأيبان السعودي", pm4_bank:"البنك: D360", pm4_name:"الاسم: أيمن نصر نصر", pm4_iban_label:"رقم الأيبان", pm4_note:"يستغرق 1-24 ساعة. أرسل الإيصال.",
     pm5_title:"فيزا / بايبال (PayPal)", pm5_sub:"دفع آمن بالبطاقة البنكية",
     pp_yearly:"اشتراك سنة — $2.5", pp_lifetime:"اشتراك مدى الحياة — $10",
-    footer_desc:"برنامج تسويق واتساب احترافي. الإصدار 5.0.7", footer_contact:"التواصل", footer_rights:"جميع الحقوق محفوظة.",
+    contact_label:"التواصل", contact_title:"اتصل بنا", contact_sub:"نحن هنا للمساعدة. تواصل معنا عبر القنوات التالية",
+    ct1_title:"واتساب", ct1_desc:"للدعم الفوري والتفعيل", ct2_title:"البريد الإلكتروني", ct2_desc:"للاستفسارات والدعم التقني", ct3_title:"ساعات العمل", ct3_desc:"متاح خلال ساعات العمل", ct3_hours:"9 ص – 10 م",
+    cf_title:"أرسل رسالة", cf_name:"الاسم الكامل", cf_email:"البريد", cf_subject:"الموضوع", cf_opt1:"استفسار عام", cf_opt2:"دعم تقني", cf_opt3:"مشكلة في الدفع", cf_opt4:"طلب ترخيص", cf_msg:"رسالتك", cf_send:"إرسال الرسالة",
+    priv_title:"سياسة الخصوصية", priv_date:"آخر تحديث: 17 مارس 2026", priv_intro:"نلتزم بحماية بياناتك الشخصية.", priv_h1:"1. المعلومات التي نجمعها", priv_p1:"نجمع الاسم والبريد والهاتف.", priv_h2:"2. كيف نستخدم معلوماتك", priv_p2:"للدعم الفني والتراخيص.", priv_h3:"3. حماية البيانات", priv_p3:"نستخدم تشفير SSL.", priv_h4:"4. ملفات تعريف الارتباط", priv_p4:"نستخدم ملفات أساسية فقط.", priv_h5:"5. حقوقك", priv_p5:"لك الحق في تعديل بياناتك.", priv_h6:"6. التغييرات", priv_p6:"قد نحدث هذه السياسة.", priv_h7:"7. التواصل", priv_p7:"تواصل عبر الإيميل.",
+    terms_title:"سياسة الاستخدام", terms_date:"آخر تحديث: 17 مارس 2026", terms_intro:"بموافقتك على الشروط.", terms_h1:"1. الترخيص", terms_p1:"لجهاز واحد فقط.", terms_h2:"2. الاستخدام المقبول", terms_p2:"للتسويق المشروع فقط.", terms_l1:"يمنع إرسال SPAM", terms_l2:"يمنع انتهاك سياسات ميتا", terms_l3:"يمنع مضايقة المستخدمين", terms_l4:"يمنع أي نشاط غير قانوني", terms_h3:"3. الاسترداد", terms_p3:"لا استرداد بعد التفعيل.", terms_h4:"4. إخلاء المسؤولية", terms_p4:"غير تابعين لميتا.", terms_h5:"5. التحديثات", terms_p5:"مجانية لأصحاب مدى الحياة.", terms_h6:"6. الإنهاء", terms_p6:"يحق لنا إنهاء الترخيص.",
+    sitemap_label:"خريطة الموقع", sitemap_title:"خريطة الموقع", sm1_title:"الصفحات", sm2_title:"الأقسام", sm3_title:"اللغات",
+    footer_desc:"برنامج تسويق واتساب احترافي. الإصدار 5.0.7", footer_pages:"الصفحات", footer_legal:"قانوني", footer_contact:"التواصل", footer_rights:"جميع الحقوق محفوظة.",
     lang_label:"العربية"
   },
   en: {
     nav_home:"Home", nav_guide:"Anti-Ban Guide", nav_features:"Features", nav_pricing:"Pricing", nav_contact:"Contact",
+    nav_privacy:"Privacy Policy", nav_terms:"Terms of Use", nav_sitemap:"Sitemap",
     badge_new:"New Version 5.0.7",
     hero_title:"WA Sender\nWhatsApp Marketing Software",
     hero_sub:"Complete WhatsApp marketing suite with 15+ powerful tools for bulk messaging, automation, and lead generation.",
-    btn_download:"Free Download", btn_buy:"Buy Now", btn_buy_now:"Buy Now",
-    btn_back:"Back to Home", btn_copy:"Copy",
+    btn_download:"Free Download", btn_buy:"Buy Now", btn_buy_now:"Buy Now", btn_back:"Back to Home", btn_copy:"Copy",
     warn_title:"Important: Meta Anti-Spam Policy",
     warn_p1:"Meta enforces strict policies against bulk messaging.",
     warn_p2:"Accounts violating Terms of Service may face bans.",
@@ -792,16 +799,23 @@ const translations = {
     g2_title:"2. Smart Timing", g2_li1:"Intervals: 20-30s gap between messages.", g2_li2:"Limit: Max 200-300 messages/hour.", g2_li3:"Rest: Pause periodically.",
     g3_title:"3. Contacts", g3_li1:"Pre-saving: Save numbers 24h before sending.", g3_li2:"Sync: Use Google Contacts for syncing.",
     g4_title:"4. Content Strategy", g4_li1:"Personalization: Avoid copy-paste. Tailor messages.", g4_li2:"Opt-out: Give an option to unsubscribe.", g4_li3:"Content: Avoid spammy words.",
-    feat_label:"Features", feat_title:"WA Sender v5.0.7 Key Features",
-    feat_sub:"15+ tools in one software",
+    feat_label:"Features", feat_title:"WA Sender v5.0.7 Key Features", feat_sub:"15+ tools in one software",
     f1_title:"Contact Sending", f1_desc:"Send bulk messages with templates to avoid bans.",
     f2_title:"Group Sending", f2_desc:"Expand messaging to groups.",
     f3_title:"Member Extractor", f3_desc:"Extract group members easily.",
+    f4_title:"Group Link Collector", f4_desc:"Extract WhatsApp group links automatically.",
     f5_title:"Auto Reply Bot", f5_desc:"Smart automated replies 24/7.",
+    f6_title:"Contact Scraper", f6_desc:"Collect names and numbers systematically.",
     f7_title:"Maps Extractor", f7_desc:"Extract leads from Google Maps.",
+    f8_title:"Auto Group Joining", f8_desc:"Join groups automatically.",
     f9_title:"Number Filter", f9_desc:"Filter active WhatsApp numbers.",
-    price_label:"Pricing", price_title:"Choose Your Plan",
-    price_sub:"All plans include unlimited messaging",
+    f10_title:"Active Members Extractor", f10_desc:"Target active members in groups.",
+    f11_title:"Bulk Group Creator", f11_desc:"Create multiple groups using CSV.",
+    f12_title:"Email & Phone Extractor", f12_desc:"Extract contact data from websites.",
+    f13_title:"WhatsApp Warmer", f13_desc:"Warm up new accounts to prevent bans.",
+    f14_title:"Campaign Scheduler", f14_desc:"Schedule marketing campaigns precisely.",
+    f15_title:"Add Members + Search", f15_desc:"Expand groups and find communities.",
+    price_label:"Pricing", price_title:"Choose Your Plan", price_sub:"All plans include unlimited messaging",
     plan1_name:"Annual", plan1_period:"/ year", plan2_name:"Lifetime", plan2_period:"/ one-time",
     pf1:"1 Device License", pf2:"Unlimited messages", pf3:"All premium features", pf4:"Import contacts", pf5:"Customization & automation",
     checkout_label:"Checkout", checkout_title:"Choose Payment Method", checkout_sub:"Send receipt via WhatsApp for activation",
@@ -811,40 +825,34 @@ const translations = {
     pm4_title:"Bank Transfer - D360", pm4_sub:"Via Saudi IBAN", pm4_bank:"Bank: D360", pm4_name:"Name: Ayman Nasr", pm4_iban_label:"IBAN", pm4_note:"Takes 1-24h. Send receipt.",
     pm5_title:"Visa / PayPal", pm5_sub:"Secure card payment",
     pp_yearly:"Annual Sub — $2.5", pp_lifetime:"Lifetime Sub — $10",
-    footer_desc:"Pro WhatsApp marketing software. v5.0.7", footer_contact:"Contact", footer_rights:"All rights reserved.",
+    contact_label:"Contact", contact_title:"Contact Us", contact_sub:"We are here to help.",
+    ct1_title:"WhatsApp", ct1_desc:"For instant support", ct2_title:"Email", ct2_desc:"For technical support", ct3_title:"Working Hours", ct3_desc:"Support available during business hours", ct3_hours:"9 AM – 10 PM",
+    cf_title:"Send a Message", cf_name:"Full Name", cf_email:"Email", cf_subject:"Subject", cf_opt1:"General", cf_opt2:"Technical", cf_opt3:"Payment", cf_opt4:"License", cf_msg:"Message", cf_send:"Send",
+    priv_title:"Privacy Policy", priv_date:"Updated: March 17, 2026", priv_intro:"We respect your privacy.", priv_h1:"1. Info Collected", priv_p1:"Name, email, phone.", priv_h2:"2. Data Use", priv_p2:"For support.", priv_h3:"3. Protection", priv_p3:"SSL encryption.", priv_h4:"4. Cookies", priv_p4:"Essential cookies only.", priv_h5:"5. Rights", priv_p5:"You can modify data.", priv_h6:"6. Changes", priv_p6:"We may update this.", priv_h7:"7. Contact", priv_p7:"Contact via email.",
+    terms_title:"Terms of Use", terms_date:"Updated: March 17, 2026", terms_intro:"By using this software.", terms_h1:"1. License", terms_p1:"1 device only.", terms_h2:"2. Acceptable Use", terms_p2:"Legitimate marketing.", terms_l1:"No SPAM", terms_l2:"No Meta policy violations", terms_l3:"No harassment", terms_l4:"No illegal activity", terms_h3:"3. Refunds", terms_p3:"No refunds after activation.", terms_h4:"4. Disclaimer", terms_p4:"Not affiliated with Meta.", terms_h5:"5. Updates", terms_p5:"Free for lifetime.", terms_h6:"6. Termination", terms_p6:"We reserve the right to terminate.",
+    sitemap_label:"Sitemap", sitemap_title:"Sitemap", sm1_title:"Pages", sm2_title:"Sections", sm3_title:"Languages",
+    footer_desc:"Pro WhatsApp marketing software. v5.0.7", footer_pages:"Pages", footer_legal:"Legal", footer_contact:"Contact", footer_rights:"All rights reserved.",
     lang_label:"English"
   },
-  // Concise mapping for other languages
-  fr: { nav_home:"Accueil", nav_guide:"Guide", nav_features:"Fonctions", guide_title:"Guide Anti-Ban", guide_sub:"Suivez ces étapes.", g1_title:"1. Chauffer", g1_li1:"Attendez 20j.", g1_li2:"Interagissez.", g2_title:"2. Timing", g2_li1:"20s d'attente.", g2_li2:"Max 300/h.", g2_li3:"Pauses.", g3_title:"3. Contacts", g3_li1:"Sauvez 24h avant.", g3_li2:"Synchro Google.", g4_title:"4. Contenu", g4_li1:"Personnalisez.", g4_li2:"Opt-out.", g4_li3:"Pas de spam.", btn_buy_now:"Acheter", lang_label:"Français" },
-  ru: { nav_home:"Главная", nav_guide:"Анти-бан", nav_features:"Функции", guide_title:"Анти-бан", guide_sub:"Следуйте шагам.", g1_title:"1. Прогрев", g1_li1:"Ждите 20д.", g1_li2:"Общайтесь.", g2_title:"2. Тайминг", g2_li1:"20с пауза.", g2_li2:"Макс 300/ч.", g2_li3:"Паузы.", g3_title:"3. Контакты", g3_li1:"Сохраните за 24ч.", g3_li2:"Google Sync.", g4_title:"4. Контент", g4_li1:"Уникальный текст.", g4_li2:"Отписка.", g4_li3:"Без спама.", btn_buy_now:"Купить", lang_label:"Русский" },
-  it: { nav_home:"Home", nav_guide:"Guida", nav_features:"Funzioni", guide_title:"Guida Anti-Ban", guide_sub:"Segui i passi.", g1_title:"1. Riscaldamento", g1_li1:"Attendi 20gg.", g1_li2:"Usa normale.", g2_title:"2. Timing", g2_li1:"20s pausa.", g2_li2:"Max 300/h.", g2_li3:"Pausa.", g3_title:"3. Contatti", g3_li1:"Salva prima.", g3_li2:"Google Sync.", g4_title:"4. Contenuto", g4_li1:"Personalizza.", g4_li2:"Opt-out.", g4_li3:"No spam.", btn_buy_now:"Acquista", lang_label:"Italiano" },
-  hi: { nav_home:"होम", nav_guide:"एंटी-बैन", nav_features:"सुविधाएँ", guide_title:"एंटी-बैन गाइड", guide_sub:"इनका पालन करें।", g1_title:"1. वार्मिंग", g1_li1:"20 दिन रुकें।", g1_li2:"सामान्य उपयोग।", g2_title:"2. टाइमिंग", g2_li1:"20s गैप।", g2_li2:"मैक्स 300/घंटा।", g2_li3:"ब्रेक।", g3_title:"3. संपर्क", g3_li1:"24h पहले सेव।", g3_li2:"सिंक।", g4_title:"4. सामग्री", g4_li1:"वैयक्तिकृत।", g4_li2:"अनसब्सक्राइब।", g4_li3:"नो स्पैम।", btn_buy_now:"खरीदें", lang_label:"हिंदी" },
-  tl: { nav_home:"Home", nav_guide:"Guide", nav_features:"Features", guide_title:"Anti-Ban Guide", guide_sub:"Sundin ito.", g1_title:"1. Warming", g1_li1:"Maghintay 20 araw.", g1_li2:"Normal na gamit.", g2_title:"2. Timing", g2_li1:"20s gap.", g2_li2:"Max 300/hr.", g2_li3:"Pahinga.", g3_title:"3. Contacts", g3_li1:"I-save 24h bago.", g3_li2:"Google Sync.", g4_title:"4. Content", g4_li1:"Personalize.", g4_li2:"Opt-out.", g4_li3:"No spam.", btn_buy_now:"Bilhin", lang_label:"Filipino" },
-  ja: { nav_home:"ホーム", nav_guide:"BAN対策", nav_features:"機能", guide_title:"BAN対策", guide_sub:"手順に従う。", g1_title:"1. ウォームアップ", g1_li1:"20日待つ。", g1_li2:"自然に使用。", g2_title:"2. タイミング", g2_li1:"20秒空ける。", g2_li2:"最大300/時。", g2_li3:"休憩。", g3_title:"3. 連絡先", g3_li1:"24時間前に保存。", g3_li2:"同期。", g4_title:"4. コンテンツ", g4_li1:"個別化。", g4_li2:"オプトアウト。", g4_li3:"スパム回避。", btn_buy_now:"購入", lang_label:"日本語" },
-  de: { nav_home:"Start", nav_guide:"Anti-Ban", nav_features:"Features", guide_title:"Anti-Ban", guide_sub:"Schritte folgen.", g1_title:"1. Aufwärmen", g1_li1:"20 Tage warten.", g1_li2:"Normal nutzen.", g2_title:"2. Timing", g2_li1:"20s Pause.", g2_li2:"Max 300/h.", g2_li3:"Pausen.", g3_title:"3. Kontakte", g3_li1:"24h vorher speichern.", g3_li2:"Google Sync.", g4_title:"4. Inhalt", g4_li1:"Personalisieren.", g4_li2:"Opt-out.", g4_li3:"Kein Spam.", btn_buy_now:"Kaufen", lang_label:"Deutsch" }
+  fr: { nav_home:"Accueil", nav_guide:"Guide", nav_features:"Fonctions", nav_pricing:"Tarifs", nav_contact:"Contact", btn_buy_now:"Acheter", guide_title:"Guide Anti-Ban", guide_sub:"Suivez ces étapes.", g1_title:"1. Chauffer", g1_li1:"Attendez 20j.", g1_li2:"Interagissez.", g2_title:"2. Timing", g2_li1:"20s d'attente.", g2_li2:"Max 300/h.", g2_li3:"Pauses.", g3_title:"3. Contacts", g3_li1:"Sauvez 24h avant.", g3_li2:"Synchro Google.", g4_title:"4. Contenu", g4_li1:"Personnalisez.", g4_li2:"Opt-out.", g4_li3:"Pas de spam.", feat_title:"15+ Outils", f1_title:"Envoi Contacts", f2_title:"Envoi Groupes", f3_title:"Extraction", f4_title:"Liens", f5_title:"Bot", f6_title:"Scraper", f7_title:"Maps", f8_title:"Groupes", f9_title:"Filtre", f10_title:"Actifs", f11_title:"Créateur", f12_title:"Emails", f13_title:"Warmer", f14_title:"Planning", f15_title:"Recherche", lang_label:"Français" },
+  ru: { nav_home:"Главная", nav_guide:"Анти-бан", nav_features:"Функции", nav_pricing:"Цены", nav_contact:"Контакты", btn_buy_now:"Купить", guide_title:"Анти-бан", guide_sub:"Следуйте шагам.", g1_title:"1. Прогрев", g1_li1:"Ждите 20д.", g1_li2:"Общайтесь.", g2_title:"2. Тайминг", g2_li1:"20с пауза.", g2_li2:"Макс 300/ч.", g2_li3:"Паузы.", g3_title:"3. Контакты", g3_li1:"Сохраните за 24ч.", g3_li2:"Google Sync.", g4_title:"4. Контент", g4_li1:"Уникальный текст.", g4_li2:"Отписка.", g4_li3:"Без спама.", feat_title:"15+ Функций", f1_title:"Рассылка", f2_title:"Группы", f3_title:"Парсинг", f4_title:"Ссылки", f5_title:"Бот", f6_title:"Контакты", f7_title:"Карты", f8_title:"Вступление", f9_title:"Фильтр", f10_title:"Активные", f11_title:"Создание", f12_title:"Email", f13_title:"Warmer", f14_title:"Планировщик", f15_title:"Поиск", lang_label:"Русский" },
+  it: { nav_home:"Home", nav_guide:"Guida", nav_features:"Funzioni", nav_pricing:"Prezzi", nav_contact:"Contatti", btn_buy_now:"Acquista", guide_title:"Guida Anti-Ban", guide_sub:"Segui i passi.", g1_title:"1. Riscaldamento", g1_li1:"Attendi 20gg.", g1_li2:"Usa normale.", g2_title:"2. Timing", g2_li1:"20s pausa.", g2_li2:"Max 300/h.", g2_li3:"Pausa.", g3_title:"3. Contatti", g3_li1:"Salva prima.", g3_li2:"Google Sync.", g4_title:"4. Contenuto", g4_li1:"Personalizza.", g4_li2:"Opt-out.", g4_li3:"No spam.", feat_title:"15+ Funzioni", f1_title:"Invio", f2_title:"Gruppi", f3_title:"Estrazione", f4_title:"Link", f5_title:"Bot", f6_title:"Contatti", f7_title:"Mappe", f8_title:"Adesione", f9_title:"Filtro", f10_title:"Attivi", f11_title:"Creatore", f12_title:"Email", f13_title:"Warmer", f14_title:"Pianificazione", f15_title:"Ricerca", lang_label:"Italiano" },
+  hi: { nav_home:"होम", nav_guide:"एंटी-बैन", nav_features:"सुविधाएँ", nav_pricing:"मूल्य", nav_contact:"संपर्क", btn_buy_now:"खरीदें", guide_title:"एंटी-बैन गाइड", guide_sub:"इनका पालन करें।", g1_title:"1. वार्मिंग", g1_li1:"20 दिन रुकें।", g1_li2:"सामान्य उपयोग।", g2_title:"2. टाइमिंग", g2_li1:"20s गैप।", g2_li2:"मैक्स 300/घंटा।", g2_li3:"ब्रेक।", g3_title:"3. संपर्क", g3_li1:"24h पहले सेव।", g3_li2:"सिंक।", g4_title:"4. सामग्री", g4_li1:"वैयक्तिकृत।", g4_li2:"अनसब्सक्राइब।", g4_li3:"नो स्पैम।", feat_title:"15+ सुविधाएँ", f1_title:"सेंडिंग", f2_title:"ग्रुप सेंडिंग", f3_title:"एक्सट्रैक्टर", f4_title:"लिंक", f5_title:"बॉट", f6_title:"संपर्क", f7_title:"मैप्स", f8_title:"जॉइनिंग", f9_title:"फ़िल्टर", f10_title:"सक्रिय", f11_title:"क्रिएटर", f12_title:"ईमेल", f13_title:"वार्मर", f14_title:"शेड्यूलर", f15_title:"खोज", lang_label:"हिंदी" },
+  tl: { nav_home:"Home", nav_guide:"Guide", nav_features:"Features", nav_pricing:"Presyo", nav_contact:"Contact", btn_buy_now:"Bilhin", guide_title:"Anti-Ban Guide", guide_sub:"Sundin ito.", g1_title:"1. Warming", g1_li1:"Maghintay 20 araw.", g1_li2:"Normal na gamit.", g2_title:"2. Timing", g2_li1:"20s gap.", g2_li2:"Max 300/hr.", g2_li3:"Pahinga.", g3_title:"3. Contacts", g3_li1:"I-save 24h bago.", g3_li2:"Google Sync.", g4_title:"4. Content", g4_li1:"Personalize.", g4_li2:"Opt-out.", g4_li3:"No spam.", feat_title:"15+ Features", f1_title:"Sending", f2_title:"Groups", f3_title:"Extractor", f4_title:"Links", f5_title:"Bot", f6_title:"Contacts", f7_title:"Maps", f8_title:"Joining", f9_title:"Filter", f10_title:"Active", f11_title:"Creator", f12_title:"Emails", f13_title:"Warmer", f14_title:"Scheduler", f15_title:"Search", lang_label:"Filipino" },
+  ja: { nav_home:"ホーム", nav_guide:"BAN対策", nav_features:"機能", nav_pricing:"料金", nav_contact:"お問い合わせ", btn_buy_now:"購入", guide_title:"BAN対策", guide_sub:"手順に従う。", g1_title:"1. ウォームアップ", g1_li1:"20日待つ。", g1_li2:"自然に使用。", g2_title:"2. タイミング", g2_li1:"20秒空ける。", g2_li2:"最大300/時。", g2_li3:"休憩。", g3_title:"3. 連絡先", g3_li1:"24時間前に保存。", g3_li2:"同期。", g4_title:"4. コンテンツ", g4_li1:"個別化。", g4_li2:"オプトアウト。", g4_li3:"スパム回避。", feat_title:"15+ 機能", f1_title:"送信", f2_title:"グループ送信", f3_title:"抽出", f4_title:"リンク", f5_title:"ボット", f6_title:"連絡先", f7_title:"マップ", f8_title:"参加", f9_title:"フィルター", f10_title:"アクティブ", f11_title:"作成", f12_title:"メール", f13_title:"ウォーマー", f14_title:"スケジュール", f15_title:"検索", lang_label:"日本語" },
+  de: { nav_home:"Start", nav_guide:"Anti-Ban", nav_features:"Features", nav_pricing:"Preise", nav_contact:"Kontakt", btn_buy_now:"Kaufen", guide_title:"Anti-Ban", guide_sub:"Schritte folgen.", g1_title:"1. Aufwärmen", g1_li1:"20 Tage warten.", g1_li2:"Normal nutzen.", g2_title:"2. Timing", g2_li1:"20s Pause.", g2_li2:"Max 300/h.", g2_li3:"Pausen.", g3_title:"3. Kontakte", g3_li1:"24h vorher speichern.", g3_li2:"Google Sync.", g4_title:"4. Inhalt", g4_li1:"Personalisieren.", g4_li2:"Opt-out.", g4_li3:"Kein Spam.", feat_title:"15+ Features", f1_title:"Senden", f2_title:"Gruppen", f3_title:"Extraktor", f4_title:"Links", f5_title:"Bot", f6_title:"Kontakte", f7_title:"Maps", f8_title:"Beitreten", f9_title:"Filter", f10_title:"Aktive", f11_title:"Ersteller", f12_title:"Emails", f13_title:"Warmer", f14_title:"Planer", f15_title:"Suche", lang_label:"Deutsch" }
 };
 
 // ────────────────────────────────────────────────
-// CURRENCY CONVERSION
+// CURRENCY CONVERSION 
 // ────────────────────────────────────────────────
-const currencyRates = {
-  SAR: { rate: 3.75, symbol: 'ر.س' }, AED: { rate: 3.67, symbol: 'د.إ' },
-  EGP: { rate: 49.5, symbol: 'ج.م' }, EUR: { rate: 0.93, symbol: '€' },
-  GBP: { rate: 0.79, symbol: '£' }, INR: { rate: 83.5, symbol: '₹' },
-  PHP: { rate: 57, symbol: '₱' }, JPY: { rate: 149, symbol: '¥' },
-  RUB: { rate: 92, symbol: '₽' }, USD: { rate: 1, symbol: '$' }
-};
-
-const countryCurrency = {
-  SA: 'SAR', AE: 'AED', EG: 'EGP', DE: 'EUR', FR: 'EUR', IT: 'EUR',
-  GB: 'GBP', IN: 'INR', PH: 'PHP', JP: 'JPY', RU: 'RUB', US: 'USD'
-};
+const currencyRates = { EGP: { rate: 49.5, symbol: 'ج.م' }, USD: { rate: 1, symbol: '$' } };
+const countryCurrency = { EG: 'EGP', US: 'USD' };
 
 function convertPrice(usdAmount, currency) {
   const c = currencyRates[currency] || currencyRates['USD'];
   const localAmount = usdAmount * c.rate;
-  let formatted = localAmount >= 1000 ? Math.round(localAmount).toLocaleString() : localAmount.toFixed(2);
-  return `${c.symbol} ${formatted}`;
+  return `${c.symbol} ${localAmount.toFixed(2)}`;
 }
 
 async function detectCurrencyAndUpdate() {
@@ -858,15 +866,10 @@ async function detectCurrencyAndUpdate() {
   const yearly = convertPrice(2.5, currency);
   const lifetime = convertPrice(10, currency);
   
-  const els = [
-    {id: 'local-yearly', val: yearly}, {id: 'local-lifetime', val: lifetime},
-    {id: 'co-local-yearly', val: `(≈ ${yearly})`}, {id: 'co-local-lifetime', val: `(≈ ${lifetime})`}
-  ];
-  
-  els.forEach(el => {
-    const node = document.getElementById(el.id);
-    if(node) node.textContent = currency !== 'USD' ? `≈ ${el.val}` : '';
-  });
+  if(document.getElementById('local-yearly')) document.getElementById('local-yearly').textContent = `≈ ${yearly}`;
+  if(document.getElementById('local-lifetime')) document.getElementById('local-lifetime').textContent = `≈ ${lifetime}`;
+  if(document.getElementById('co-local-yearly')) document.getElementById('co-local-yearly').textContent = `(≈ ${yearly})`;
+  if(document.getElementById('co-local-lifetime')) document.getElementById('co-local-lifetime').textContent = `(≈ ${lifetime})`;
 }
 
 // ────────────────────────────────────────────────
