@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# مسار خريطة الموقع
+Sitemap: https://wasendernew.com/sitemap.xml
