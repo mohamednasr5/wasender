@@ -1545,7 +1545,7 @@ function handleContactForm(e) {
     ar: '*استفسار جديد من الموقع*',
     en: '*New Inquiry from Website*',
     fr: '*Nouvelle Demande du Site Web*',
-    ru: *Новый Запрос с Сайта*,
+    ru: '*Новый Запрос с Сайта*',
     it: '*Nuova Richiesta dal Sito Web*'
   };
   
