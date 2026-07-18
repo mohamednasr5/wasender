@@ -1,68 +1,33 @@
-# WA Sender - wasendernew.com
+# WA Sender - Robots.txt
+# https://wasendernew.com
+
 User-agent: *
 Allow: /
 
-# ── محركات البحث التقليدية ──
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Yandex
-Allow: /
-
-# ── روبوتات الذكاء الاصطناعي والبحث بالـ AI ──
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: BingPreview
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-User-agent: Diffbot
-Allow: /
-
-User-agent: FacebookBot
-Allow: /
-
-User-agent: meta-externalagent
-Allow: /
-
-# مسار خريطة الموقع
+# Sitemap
 Sitemap: https://wasendernew.com/sitemap.xml
+
+# Crawl-delay (optional, respect our server)
+Crawl-delay: 1
+
+# Disallow sensitive paths (if any in future)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Allow important assets
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+Allow: /video/
+
+# Allow all pages
+Allow: /index.html
+Allow: /features.html
+Allow: /pricing.html
+Allow: /tutorial.html
+Allow: /contact.html
+Allow: /privacy.html
+Allow: /terms.html
+Allow: /purchase-policy.html
+Allow: /refund-policy.html

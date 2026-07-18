@@ -225,6 +225,9 @@ const i18n = {
     view_all_features: 'عرض جميع المميزات ←',
     view_all_plans: 'عرض جميع الباقات ←',
     
+    // Tutorial CTA
+    cta_desc_tutorial: 'حمّل البرنامج مجانًا وابدأ رحلتك في التسويق عبر واتساب',
+    
     // Footer
     footer_desc: 'برنامج احترافي للتسويق عبر واتساب مع أدوات متقدمة للرسائل الجماعية والأتمتة.',
     footer_quick: 'روابط سريعة',
@@ -447,6 +450,9 @@ const i18n = {
     // View All Buttons
     view_all_features: 'View All Features →',
     view_all_plans: 'View All Plans →',
+    
+    // Tutorial CTA
+    cta_desc_tutorial: 'Download the program for free and start your WhatsApp marketing journey',
     footer_desc: 'Professional WhatsApp marketing software with advanced tools for bulk messaging and automation.',
     footer_quick: 'Quick Links',
     footer_legal: 'Legal',
@@ -660,6 +666,9 @@ const i18n = {
     // View All Buttons
     view_all_features: 'Voir Toutes les Fonctionnalités →',
     view_all_plans: 'Voir Tous les Plans →',
+    
+    // Tutorial CTA
+    cta_desc_tutorial: 'Téléchargez le programme gratuitement et commencez votre parcours de marketing WhatsApp',
     footer_desc: 'Logiciel professionnel de marketing WhatsApp avec des outils avancés pour les messages en masse et l\'automatisation.',
     footer_quick: 'Liens Rapides',
     footer_legal: 'Légal',
@@ -873,6 +882,9 @@ const i18n = {
     // View All Buttons
     view_all_features: 'Смотреть Все Функции →',
     view_all_plans: 'Смотреть Все Планы →',
+    
+    // Tutorial CTA
+    cta_desc_tutorial: 'Скачайте программу бесплатно и начните свой путь в маркетинге WhatsApp',
     footer_desc: 'Профессиональная программа для маркетинга в WhatsApp с расширенными инструментами для массовой рассылки и автоматизации.',
     footer_quick: 'Быстрые Ссылки',
     footer_legal: 'Юридическое',
@@ -1086,6 +1098,9 @@ const i18n = {
     // View All Buttons
     view_all_features: 'Vedi Tutte le Funzionalità →',
     view_all_plans: 'Vedi Tutti i Piani →',
+    
+    // Tutorial CTA
+    cta_desc_tutorial: 'Scarica il programma gratuitamente e inizia il tuo percorso di marketing WhatsApp',
     footer_desc: 'Software professionale di marketing WhatsApp con strumenti avanzati per messaggi in massa e automazione.',
     footer_quick: 'Link Rapidi',
     footer_legale: 'Legale',
