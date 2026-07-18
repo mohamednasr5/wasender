@@ -37,9 +37,22 @@
       <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
 
       <div class="nav-links">
-        <a href="/">الرئيسية</a>
-        <a href="/pricing.html">الأسعار</a>
-        <a href="/contact.html">اتصل بنا</a>
+        <a href="/" data-i18n="nav_home">الرئيسية</a>
+        <a href="/pricing.html" data-i18n="nav_pricing">الأسعار</a>
+        <a href="/contact.html" data-i18n="nav_contact">اتصل بنا</a>
+        
+        <div class="lang-selector">
+          <button class="lang-btn" onclick="toggleLangMenu()" aria-label="Select Language">
+            🌐 <span id="currentLangLabel">العربية</span> ▾
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button onclick="setLang('ar')" class="active">🇸🇦 العربية</button>
+            <button onclick="setLang('en')">🇺🇸 English</button>
+            <button onclick="setLang('fr')">🇫🇷 Français</button>
+            <button onclick="setLang('ru')">🇷🇺 Русский</button>
+            <button onclick="setLang('it')">🇮🇹 Italiano</button>
+          </div>
+        </div>
       </div>
     </nav>
   </div>

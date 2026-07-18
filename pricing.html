@@ -6,7 +6,7 @@
   
   <title>أسعار واشتراكات WA Sender - خطط مرنة لكل الاحتياجات | WA Sender</title>
   <meta name="description" content="اختر خطة اشتراك WA Sender المناسبة لك: سنة، سنتين، 3 أعوام، أو مدى الحياة. أسعار تبدأ من 5 دولار فقط. طرق دفع متعددة.">
-  <meta name="keywords" content="سعر واتساب سيندر, أسعار WA Sender, شراء واتساب سيندر, اشتراك WA Sender, WA Sender pricing">
+  <meta name="keywords" content="سعر واتساب سيندر, أسعار WA Sender, شراء واتساب سيندر, اشتراك WA Sender, WA Sender pricing, WhatsApp Sender price">
   
   <link rel="canonical" href="https://wasendernew.com/pricing.html">
 
@@ -16,6 +16,11 @@
   <meta property="og:title" content="أسعار واشتراكات WA Sender - اختر خطتك">
   <meta property="og:description" content="خطط مرنة تبدأ من 5 دولار. جميع الباقات تتضمن ميزات غير محدودة.">
   <meta property="og:image" content="https://wasendernew.com/assets/og-image.png">
+  <meta property="og:locale" content="ar_AR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="it_IT">
 
   <!-- Favicon & Icons -->
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
@@ -32,17 +37,51 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/css/style.css">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PriceSpecification",
+    "name": "WA Sender Pricing Plans",
+    "description": "Flexible subscription plans for WA Sender marketing software",
+    "currency": "USD",
+    "priceSpecifications": [
+      {"@type": "UnitPriceSpecification", "price": "5", "priceCurrency": "USD", "name": "Annual Plan"},
+      {"@type": "UnitPriceSpecification", "price": "15", "priceCurrency": "USD", "name": "Two Year Plan"},
+      {"@type": "UnitPriceSpecification", "price": "20", "priceCurrency": "USD", "name": "Three Year Plan"},
+      {"@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "USD", "name": "Lifetime Plan"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
-  <!-- WhatsApp Float Button -->
-  <a href="https://wa.me/201279934735" class="wa-float" title="تواصل واتساب" target="_blank" rel="noopener">💬</a>
-  <button class="sound-toggle" onclick="toggleSound(this)" aria-label="Toggle Sound">🔊</button>
+  <!-- PWA Install Banner -->
+  <div class="pwa-install-banner" id="pwaBanner">
+    <div class="pwa-banner-content">
+      <img src="/assets/icon-192.png" alt="WA Sender" class="pwa-banner-icon">
+      <div class="pwa-banner-text">
+        <div class="pwa-banner-title" data-i18n="pwa_install">ثبّت التطبيق</div>
+        <div class="pwa-banner-subtitle" data-i18n="pwa_subtitle">احصل على تجربة أفضل بدون متصفح</div>
+      </div>
+    </div>
+    <div class="pwa-banner-actions">
+      <button class="pwa-banner-btn" onclick="installPWA()" data-i18n="pwa_install">تثبيت</button>
+      <button class="pwa-banner-dismiss" onclick="hidePWAInstallBanner()" aria-label="Close">✕</button>
+    </div>
+  </div>
 
-  <!-- Download FAB -->
-  <a href="https://wasendernew.com/wasender.exe" class="download-fab" title="تحميل البرنامج" target="_blank" rel="nofollow noopener">
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/201279934735" class="wa-float" title="تواصل واتساب" target="_blank" rel="noopener" aria-label="Contact via WhatsApp">💬</a>
+
+  <!-- Sound Toggle (Desktop only) -->
+  <button class="sound-toggle" onclick="toggleSound(this)" title="تشغيل / إيقاف المؤثرات الصوتية" aria-label="Toggle Sound Effects">🔊</button>
+
+  <!-- Download FAB (Floating Action Button) - Center Circular for Mobile -->
+  <a href="https://wasendernew.com/wasender.exe" class="download-fab" title="تحميل البرنامج" target="_blank" rel="nofollow noopener" aria-label="Download WA Sender">
     ⬇️
-    <span class="fab-label">تحميل مجاني</span>
+    <span class="fab-label" data-i18n="btn_download">تحميل مجاني</span>
   </a>
 
   <!-- Navigation -->
@@ -69,6 +108,9 @@
           <div class="lang-dropdown" id="langDropdown">
             <button onclick="setLang('ar')" class="active">🇸🇦 العربية</button>
             <button onclick="setLang('en')">🇺🇸 English</button>
+            <button onclick="setLang('fr')">🇫🇷 Français</button>
+            <button onclick="setLang('ru')">🇷🇺 Русский</button>
+            <button onclick="setLang('it')">🇮🇹 Italiano</button>
           </div>
         </div>
       </div>
@@ -97,7 +139,7 @@
           
           <!-- Yearly Plan -->
           <div class="price-card popular reveal">
-            <div class="popular-badge">⭐ الأكثر مبيعاً</div>
+            <div class="popular-badge" data-i18n="popular_badge">⭐ الأكثر مبيعاً</div>
             <div class="price-name" data-i18n="plan1_name">سنة واحدة</div>
             <div class="price-amount">
               <span class="price-main">5</span>
@@ -111,8 +153,8 @@
               <li data-i18n="pf3">جميع الميزات المميزة</li>
               <li data-i18n="pf4">استيراد جهات اتصال غير محدودة</li>
               <li data-i18n="pf5">التخصيص والأتمتة</li>
-              <li>تحديثات مجانية خلال فترة الاشتراك</li>
-              <li>دعم فني مباشر عبر واتساب</li>
+              <li data-i18n="pf6">تحديثات مجانية خلال فترة الاشتراك</li>
+              <li data-i18n="pf7">دعم فني مباشر عبر واتساب</li>
             </ul>
             <button class="btn-primary" style="width:100%;" onclick="goToCheckout('yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
           </div>
@@ -132,8 +174,8 @@
               <li data-i18n="pf3">جميع الميزات المميزة</li>
               <li data-i18n="pf4">استيراد جهات اتصال غير محدودة</li>
               <li data-i18n="pf5">التخصيص والأتمتة</li>
-              <li>تحديثات مجانية خلال فترة الاشتراك</li>
-              <li>دعم فني مباشر عبر واتساب</li>
+              <li data-i18n="pf6">تحديثات مجانية خلال فترة الاشتراك</li>
+              <li data-i18n="pf7">دعم فني مباشر عبر واتساب</li>
             </ul>
             <button class="btn-secondary" style="width:100%;" onclick="goToCheckout('2yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
           </div>
@@ -146,15 +188,15 @@
               <span class="price-currency">$</span>
             </div>
             <span class="price-period">/ 3 أعوام</span>
-            <span class="price-local" id="local-3yr">~900 ج.م / 3 سنوات</span>
+            <span class="price-local" id="local-3yr"></span>
             <ul class="price-features">
               <li data-i18n="pf1">رخصة واحدة لجهاز واحد</li>
               <li data-i18n="pf2">رسائل يومية غير محدودة</li>
               <li data-i18n="pf3">جميع الميزات المميزة</li>
               <li data-i18n="pf4">استيراد جهات اتصال غير محدودة</li>
               <li data-i18n="pf5">التخصيص والأتمتة</li>
-              <li>تحديثات مجانية خلال فترة الاشتراك</li>
-              <li>دعم فني مباشر عبر واتساب</li>
+              <li data-i18n="pf6">تحديثات مجانية خلال فترة الاشتراك</li>
+              <li data-i18n="pf7">دعم فني مباشر عبر واتساب</li>
             </ul>
             <button class="btn-secondary" style="width:100%;" onclick="goToCheckout('3yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
           </div>
@@ -173,9 +215,9 @@
               <li data-i18n="pf2">رسائل يومية غير محدودة</li>
               <li data-i18n="pf3">جميع الميزات المميزة</li>
               <li data-i18n="pf4">استيراد جهات اتصال غير محدودة</li>
-              <li>✨ تحديثات مدى الحياة</li>
-              <li>✨ أولوية في الدعم الفني</li>
-              <li>دعم فني مباشر عبر واتساب</li>
+              <li data-i18n="pf8">✨ تحديثات مدى الحياة</li>
+              <li data-i18n="pf9">✨ أولوية في الدعم الفني</li>
+              <li data-i18n="pf7">دعم فني مباشر عبر واتساب</li>
             </ul>
             <button class="btn-primary" style="width:100%;background:linear-gradient(135deg,#1e293b,#334155);" onclick="goToCheckout('lifetime')" data-i18n="btn_buy_now">اشترِ الآن</button>
           </div>
@@ -189,8 +231,8 @@
           
           <!-- 2 Devices / Year -->
           <div class="price-card reveal">
-            <div class="price-devices-tag">🖥️ جهازان</div>
-            <div class="price-name">جهازان / سنة</div>
+            <div class="price-devices-tag" data-i18n="devices_2">🖥️ جهازان</div>
+            <div class="price-name" data-i18n="devices_year">جهازان / سنة</div>
             <div class="price-amount">
               <span class="price-main">8</span>
               <span class="price-currency">$</span>
@@ -198,18 +240,18 @@
             <span class="price-period">/ سنة</span>
             <span class="price-local" id="local-2dev-yearly"></span>
             <ul class="price-features">
-              <li>رخصتان لجهازين مختلفين</li>
-              <li>رسائل يومية غير محدودة</li>
-              <li>جميع الميزات المميزة</li>
-              <li>دعم فني مباشر</li>
+              <li data-i18n="pf10">رخصتان لجهازين مختلفين</li>
+              <li data-i18n="pf2">رسائل يومية غير محدودة</li>
+              <li data-i18n="pf3">جميع الميزات المميزة</li>
+              <li data-i18n="pf7">دعم فني مباشر</li>
             </ul>
             <button class="btn-secondary" style="width:100%;" onclick="goToCheckout('2dev-yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
           </div>
 
           <!-- 3 Devices / Year -->
           <div class="price-card reveal delay-1">
-            <div class="price-devices-tag">🖥️🖥️ 3 أجهزة</div>
-            <div class="price-name">3 أجهزة / سنة</div>
+            <div class="price-devices-tag" data-i18n="devices_3">🖥️🖥️ 3 أجهزة</div>
+            <div class="price-name" data-i18n="devices_3year">3 أجهزة / سنة</div>
             <div class="price-amount">
               <span class="price-main">12</span>
               <span class="price-currency">$</span>
@@ -217,18 +259,18 @@
             <span class="price-period">/ سنة</span>
             <span class="price-local" id="local-3dev-yearly"></span>
             <ul class="price-features">
-              <li>3 رخص لـ 3 أجهزة مختلفة</li>
-              <li>رسائل يومية غير محدودة</li>
-              <li>جميع الميزات المميزة</li>
-              <li>دعم فني ذهبي</li>
+              <li data-i18n="pf11">3 رخص لـ 3 أجهزة مختلفة</li>
+              <li data-i18n="pf2">رسائل يومية غير محدودة</li>
+              <li data-i18n="pf3">جميع الميزات المميزة</li>
+              <li data-i18n="pf12">دعم فني ذهبي</li>
             </ul>
             <button class="btn-secondary" style="width:100%;" onclick="goToCheckout('3dev-yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
           </div>
 
           <!-- 2 Devices / 2 Years -->
           <div class="price-card reveal">
-            <div class="price-devices-tag">🖥️ جهازان</div>
-            <div class="price-name">جهازان / سنتين</div>
+            <div class="price-devices-tag" data-i18n="devices_2">🖥️ جهازان</div>
+            <div class="price-name" data-i18n="devices_2year">جهازان / سنتين</div>
             <div class="price-amount">
               <span class="price-main">25</span>
               <span class="price-currency">$</span>
@@ -236,10 +278,10 @@
             <span class="price-period">/ سنتين</span>
             <span class="price-local" id="local-2dev-2yr"></span>
             <ul class="price-features">
-              <li>رخصتان لجهازين مختلفين</li>
-              <li>رسائل يومية غير محدودة</li>
-              <li>جميع الميزات المميزة</li>
-              <li>توفير 1$ عن الشراء المنفصل</li>
+              <li data-i18n="pf10">رخصتان لجهازين مختلفين</li>
+              <li data-i18n="pf2">رسائل يومية غير محدودة</li>
+              <li data-i18n="pf3">جميع الميزات المميزة</li>
+              <li data-i18n="pf13">توفير 1$ عن الشراء المنفصل</li>
             </ul>
             <button class="btn-secondary" style="width:100%;" onclick="goToCheckout('2dev-2yr')" data-i18n="btn_buy_now">اشترِ الآن</button>
           </div>
@@ -253,8 +295,8 @@
     <section class="section reveal" style="background:var(--bg-alt);border-radius:var(--radius) var(--radius) 0 0;">
       <div class="container">
         <div class="checkout-container" style="padding-top:30px;">
-          <h2 class="section-title text-center" style="margin-bottom:10px;">طرق الدفع المتاحة</h2>
-          <p class="text-center" style="color:var(--text-muted);margin-bottom:40px;">اختر طريقة الدفع المناسبة لك وأتمم عملية الشراء بسهولة</p>
+          <h2 class="section-title text-center" style="margin-bottom:10px;" data-i18n="payment_title">طرق الدفع المتاحة</h2>
+          <p class="text-center" style="color:var(--text-muted);margin-bottom:40px;" data-i18n="payment_subtitle">اختر طريقة الدفع المناسبة لك وأتمم عملية الشراء بسهولة</p>
 
           <div class="payment-methods">
             
@@ -263,16 +305,16 @@
               <div class="pm-header" onclick="togglePayment('vodafone')">
                 <span class="pm-icon">📱</span>
                 <div>
-                  <div class="pm-title">فودافون كاش (مصر)</div>
-                  <div class="pm-sub">تحويل فوري للمحفظة</div>
+                  <div class="pm-title" data-i18n="pm_vodafone_title">فودافون كاش (مصر)</div>
+                  <div class="pm-sub" data-i18n="pm_vodafone_sub">تحويل فوري للمحفظة</div>
                 </div>
               </div>
               <div class="pm-body" id="pm-vodafone">
                 <div class="copy-row">
                   <span>01012345678</span>
-                  <button class="copy-btn" onclick="copyToClipboard('01012345678',this)">نسخ</button>
+                  <button class="copy-btn" onclick="copyToClipboard('01012345678',this)" data-i18n="copy_btn">نسخ</button>
                 </div>
-                <p class="pm-note">أرسل إيصال التحويل عبر واتساب للتفعيل الفوري.</p>
+                <p class="pm-note" data-i18n="pm_vodafone_note">أرسل إيصال التحويل عبر واتساب للتفعيل الفوري.</p>
               </div>
             </div>
 
@@ -281,17 +323,17 @@
               <div class="pm-header" onclick="togglePayment('barq')">
                 <span class="pm-icon">🇸🇦</span>
                 <div>
-                  <div class="pm-title">تطبيق برق (السعودية)</div>
-                  <div class="pm-sub">تحويل دولي للسعودية</div>
+                  <div class="pm-title" data-i18n="pm_barq_title">تطبيق برق (السعودية)</div>
+                  <div class="pm-sub" data-i18n="pm_barq_sub">تحويل دولي للسعودية</div>
                 </div>
               </div>
               <div class="pm-body" id="pm-barq">
-                <p style="font-size:0.92rem;color:var(--text-muted);margin-bottom:14px;"><strong>خطوات التحويل:</strong> التحويل الدولي ← مصر ← أدخل الرقم أدناه</p>
+                <p style="font-size:0.92rem;color:var(--text-muted);margin-bottom:14px;" data-i18n="pm_barq_steps"><strong>خطوات التحويل:</strong> التحويل الدولي ← مصر ← أدخل الرقم أدناه</p>
                 <div class="copy-row">
                   <span>0501234567</span>
-                  <button class="copy-btn" onclick="copyToClipboard('0501234567',this)">نسخ</button>
+                  <button class="copy-btn" onclick="copyToClipboard('0501234567',this)" data-i18n="copy_btn">نسخ</button>
                 </div>
-                <p class="pm-note">أرسل الإيصال بعد التحويل للتفعيل.</p>
+                <p class="pm-note" data-i18n="pm_barq_note">أرسل الإيصال بعد التحويل للتفعيل.</p>
               </div>
             </div>
 
@@ -300,54 +342,66 @@
               <div class="pm-header" onclick="togglePayment('instapay')">
                 <span class="pm-icon">🏦</span>
                 <div>
-                  <div class="pm-title">InstaPay (مصر)</div>
-                  <div class="pm-sub">تحويل مباشر من مصر</div>
+                  <div class="pm-title" data-i18n="pm_instapay_title">InstaPay (مصر)</div>
+                  <div class="pm-sub" data-i18n="pm_instapay_sub">تحويل مباشر من مصر</div>
                 </div>
               </div>
               <div class="pm-body" id="pm-instapay">
-                <a href="#" class="instapay-link">فتح رابط InstaPay →</a>
-                <p class="pm-note">أرسل إيصال الدفع بعد إتمام العملية.</p>
+                <a href="#" class="instapay-link" data-i18n="pm_instapay_link">فتح رابط InstaPay →</a>
+                <p class="pm-note" data-i18n="pm_instapay_note">أرسل إيصال الدفع بعد إتمام العملية.</p>
               </div>
             </div>
 
-            <!-- Bank Transfer -->
+            <!-- Bank Transfer - D360 Bank with CORRECT Details -->
             <div class="payment-method">
               <div class="pm-header" onclick="togglePayment('bank')">
                 <span class="pm-icon">🏛️</span>
                 <div>
-                  <div class="pm-title">تحويل بنكي - D360 (السعودية)</div>
-                  <div class="pm-sub">عبر الأيبان السعودي</div>
+                  <div class="pm-title" data-i18n="pm_bank_title">تحويل بنكي - D360 (السعودية)</div>
+                  <div class="pm-sub" data-i18n="pm_bank_sub">عبر الأيبان السعودي</div>
                 </div>
               </div>
               <div class="pm-body" id="pm-bank">
-                <p style="font-size:0.92rem;font-weight:700;margin-bottom:10px;">البنك: D360 FINTECH</p>
-                <p style="font-size:0.92rem;font-weight:700;margin-bottom:10px;">اسم المستفيد: أيمن نصر نصر</p>
+                <p style="font-size:0.92rem;font-weight:700;margin-bottom:10px;"><span data-i18n="pm_bank_name">البنك:</span> D360 بنك</p>
+                <p style="font-size:0.92rem;font-weight:700;margin-bottom:10px;"><span data-i18n="pm_bank_holder">اسم المستفيد:</span> ايمن نصر نصر عبد الوهاب حماد</p>
                 <div class="copy-row">
-                  <label style="font-size:0.85rem;color:var(--text-muted);">رقم الأيبان (IBAN):</label>
+                  <label style="font-size:0.85rem;color:var(--text-muted);" data-i18n="pm_bank_iban">رقم الأيبان (IBAN):</label>
                 </div>
                 <div class="copy-row">
-                  <span dir="ltr" style="font-size:0.82rem;">SAXX0000000000000000000</span>
-                  <button class="copy-btn" onclick="copyToClipboard('SAXX0000000000000000000',this)">نسخ</button>
+                  <span dir="ltr" style="font-size:0.82rem;">SA7636036036031909112576</span>
+                  <button class="copy-btn" onclick="copyToClipboard('SA7636036036031909112576',this)" data-i18n="copy_btn">نسخ</button>
                 </div>
-                <p class="pm-note">يستغرق التحويل 1-24 ساعة عمل. أرسل الإيصال للتفعيل.</p>
+                <div class="copy-row swift-row">
+                  <label style="font-size:0.85rem;color:var(--text-muted);" data-i18n="pm_bank_swift">رمز السويفت (SWIFT):</label>
+                </div>
+                <div class="copy-row">
+                  <span dir="ltr" style="font-size:0.82rem;">DBAKSARIXXX</span>
+                  <button class="copy-btn" onclick="copyToClipboard('DBAKSARIXXX',this)" data-i18n="copy_btn">نسخ</button>
+                </div>
+                <p class="pm-note" data-i18n="pm_bank_note">يستغرق التحويل 1-24 ساعة عمل. أرسل الإيصال للتفعيل.</p>
               </div>
             </div>
 
-            <!-- PayPal / Visa -->
+            <!-- PayPal / Visa with ALL Plans -->
             <div class="payment-method">
               <div class="pm-header" onclick="togglePayment('paypal')">
                 <span class="pm-icon">💳</span>
                 <div>
-                  <div class="pm-title">فيزا / PayPal</div>
-                  <div class="pm-sub">دفع آمن بالبطاقة البنكية</div>
+                  <div class="pm-title" data-i18n="pm_paypal_title">فيزا / PayPal</div>
+                  <div class="pm-sub" data-i18n="pm_paypal_sub">دفع آمن بالبطاقة البنكية</div>
                 </div>
               </div>
               <div class="pm-body" id="pm-paypal">
                 <div class="paypal-btns">
-                  <a href="#" class="paypal-btn" target="_blank" rel="noopener">💳 PayPal - $5 (سنة)</a>
-                  <a href="#" class="paypal-btn" target="_blank" rel="noopener">💳 PayPal - $50 (مدى الحياة)</a>
+                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_yearly">💳 PayPal - $5 (سنة)</a>
+                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_2yearly">💳 PayPal - $15 (سنتين)</a>
+                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_3yearly">💳 PayPal - $20 (3 سنوات)</a>
+                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_lifetime">💳 PayPal - $50 (مدى الحياة)</a>
+                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_2dev_yearly">💳 PayPal - $8 (جهازان/سنة)</a>
+                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_3dev_yearly">💳 PayPal - $12 (3 أجهزة/سنة)</a>
+                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_2dev_2yr">💳 PayPal - $25 (جهازان/سنتين)</a>
                 </div>
-                <p class="pm-note">بعد الدفع، أرسل اسم البريد الإلكتروني المستخدم عبر واتساب.</p>
+                <p class="pm-note" data-i18n="pm_paypal_note">بعد الدفع، أرسل اسم البريد الإلكتروني المستخدم عبر واتساب.</p>
               </div>
             </div>
 
@@ -359,46 +413,46 @@
     <!-- FAQ Section -->
     <section class="section reveal">
       <div class="container">
-        <h2 class="section-title text-center" style="margin-bottom:40px;">الأسئلة الشائعة عن الأسعار والدفع</h2>
+        <h2 class="section-title text-center" style="margin-bottom:40px;" data-i18n="faq_title">الأسئلة الشائعة عن الأسعار والدفع</h2>
         
         <div class="faq-list">
           <div class="faq-item">
             <div class="faq-q">
-              هل يمكنني ترقية خطتي لاحقاً؟
+              <span data-i18n="faq_q1">هل يمكنني ترقية خطتي لاحقاً؟</span>
               <span class="faq-arrow">▼</span>
             </div>
             <div class="faq-a">
-              <p>نعم! يمكنك ترقية خطتك في أي وقت. ستحسب لك الفرق بين خطتك الحالية والخطة الجديدة مع خصم على المدة المتبقية.</p>
+              <p data-i18n="faq_a1">نعم! يمكنك ترقية خطتك في أي وقت. ستحسب لك الفرق بين خطتك الحالية والخطة الجديدة مع خصم على المدة المتبقية.</p>
             </div>
           </div>
 
           <div class="faq-item">
             <div class="faq-q">
-              ما هي طرق الدفع المتاحة؟
+              <span data-i18n="faq_q2">ما هي طرق الدفع المتاحة؟</span>
               <span class="faq-arrow">▼</span>
             </div>
             <div class="faq-a">
-              <p>نقبل عدة طرق دفع: فودافون كاش (مصر)، تطبيق برق السعودي، InstaPay، تحويل بنكي (IBAN السعودية)، وبطاقات فيزا و PayPal للدفع الدولي.</p>
+              <p data-i18n="faq_a2">نقبل عدة طرق دفع: فودافون كاش (مصر)، تطبيق برق السعودي، InstaPay، تحويل بنكي D360 (السعودية)، وبطاقات فيزا و PayPal للدفع الدولي.</p>
             </div>
           </div>
 
           <div class="faq-item">
             <div class="faq-q">
-              كم يستغرق تفعيل الرخصة بعد الدفع؟
+              <span data-i18n="faq_q3">كم يستغرق تفعيل الرخصة بعد الدفع؟</span>
               <span class="faq-arrow">▼</span>
             </div>
             <div class="faq-a">
-              <p>عادةً يتم التفعيل خلال دقائق قليلة بعد استلام إيصال الدفع عبر واتساب. في حالات التحويل البنكي قد يستغرق 1-24 ساعة عمل.</p>
+              <p data-i18n="faq_a3">عادةً يتم التفعيل خلال دقائق قليلة بعد استلام إيصال الدفع عبر واتساب. في حالات التحويل البنكي قد يستغرق 1-24 ساعة عمل.</p>
             </div>
           </div>
 
           <div class="faq-item">
             <div class="faq-q">
-              هل يمكن نقل الرخصة لجهاز آخر؟
+              <span data-i18n="faq_q4">هل يمكن نقل الرخصة لجهاز آخر؟</span>
               <span class="faq-arrow">▼</span>
             </div>
             <div class="faq-a">
-              <p>الرخصة مربوطة بجهاز واحد. إذا غيرت جهازك، تواصل معنا عبر واتساب وسنساعدك في نقل الرخصة للجهاز الجديد مجاناً.</p>
+              <p data-i18n="faq_a4">الرخصة مربوطة بجهاز واحد. إذا غيرت جهازك، تواصل معنا عبر واتساب وسنساعدك في نقل الرخصة للجهاز الجديد مجاناً.</p>
             </div>
           </div>
         </div>
@@ -416,40 +470,40 @@
             <svg viewBox='0 0 24 24' fill='#25D366' style="width:28px;height:28px;"><path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/></svg>
             WA Sender
           </a>
-          <p>برنامج احترافي للتسويق عبر واتساب مع أدوات متقدمة للرسائل الجماعية والأتمتة.</p>
+          <p data-i18n="footer_desc">برنامج احترافي للتسويق عبر واتساب مع أدوات متقدمة للرسائل الجماعية والأتمتة.</p>
         </div>
         
         <div class="footer-col">
-          <h4>روابط سريعة</h4>
+          <h4 data-i18n="footer_quick">روابط سريعة</h4>
           <ul>
-            <li><a href="/">الرئيسية</a></li>
-            <li><a href="/tutorial.html">شرح البرنامج</a></li>
-            <li><a href="/features.html">المميزات</a></li>
-            <li><a href="/pricing.html">الأسعار</a></li>
+            <li><a href="/" data-i18n="nav_home">الرئيسية</a></li>
+            <li><a href="/tutorial.html" data-i18n="nav_how">شرح البرنامج</a></li>
+            <li><a href="/features.html" data-i18n="nav_features">المميزات</a></li>
+            <li><a href="/pricing.html" data-i18n="nav_pricing">الأسعار</a></li>
           </ul>
         </div>
         
         <div class="footer-col">
-          <h4>قانوني</h4>
+          <h4 data-i18n="footer_legal">قانوني</h4>
           <ul>
-            <li><a href="/privacy.html">سياسة الخصوصية</a></li>
-            <li><a href="/purchase-policy.html">سياسة الشراء</a></li>
-            <li><a href="/refund-policy.html">سياسة الاسترجاع</a></li>
-            <li><a href="/terms.html">الشروط والأحكام</a></li>
+            <li><a href="/privacy.html" data-i18n="privacy_title">سياسة الخصوصية</a></li>
+            <li><a href="/purchase-policy.html" data-i18n="purchase_title">سياسة الشراء</a></li>
+            <li><a href="/refund-policy.html" data-i18n="refund_title">سياسة الاسترجاع</a></li>
+            <li><a href="/terms.html" data-i18n="terms_title">الشروط والأحكام</a></li>
           </ul>
         </div>
         
         <div class="footer-col">
-          <h4>الدعم</h4>
+          <h4 data-i18n="footer_support">الدعم</h4>
           <ul>
-            <li><a href="/contact.html">اتصل بنا</a></li>
+            <li><a href="/contact.html" data-i18n="nav_contact">اتصل بنا</a></li>
             <li><a href="https://wa.me/201279934735" target="_blank">واتساب</a></li>
           </ul>
         </div>
       </div>
       
       <div class="footer-bottom">
-        <span>© 2024 WA Sender. جميع الحقوق محفوظة.</span>
+        <span>© 2024 WA Sender. <span data-i18n="footer_rights">جميع الحقوق محفوظة</span>.</span>
         <span>Made with ❤️</span>
       </div>
     </div>
@@ -459,23 +513,23 @@
   <nav class="bottom-nav" id="bottomNav" role="navigation" aria-label="Mobile Navigation">
     <a href="/" class="bn-item" data-bn="home">
       <span class="bn-icon">🏠</span>
-      <span class="bn-label">الرئيسية</span>
+      <span class="bn-label" data-i18n="bn_home">الرئيسية</span>
     </a>
     <a href="/tutorial.html" class="bn-item" data-bn="video">
       <span class="bn-icon">🎬</span>
-      <span class="bn-label">الفيديوهات</span>
+      <span class="bn-label" data-i18n="bn_videos">الفيديوهات</span>
     </a>
     <a href="/pricing.html" class="bn-item active" data-bn="pricing">
       <span class="bn-icon">💳</span>
-      <span class="bn-label">الأسعار</span>
+      <span class="bn-label" data-i18n="bn_pricing">الأسعار</span>
     </a>
     <a href="https://wasendernew.com/wasender.exe" class="bn-item" data-bn="download" target="_blank" rel="nofollow noopener">
       <span class="bn-icon">⬇️</span>
-      <span class="bn-label">تحميل</span>
+      <span class="bn-label" data-i18n="bn_download">تحميل</span>
     </a>
     <a href="/contact.html" class="bn-item" data-bn="contact">
       <span class="bn-icon">💬</span>
-      <span class="bn-label">تواصل</span>
+      <span class="bn-label" data-i18n="bn_contact">تواصل</span>
     </a>
   </nav>
 
