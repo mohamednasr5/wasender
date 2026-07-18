@@ -1,0 +1,37 @@
+# WA Sender
+
+> برنامج WA Sender (واتساب سيندر) هو برنامج تسويق عبر واتساب لأجهزة Windows، يضم أكثر من 15 أداة للرسائل الجماعية، الأتمتة، واستخراج العملاء المحتملين، مع إرشادات مدمجة للحماية من الحظر.
+
+WA Sender is a Windows desktop application for WhatsApp marketing automation: bulk messaging, auto-reply bots, group member/link extraction, Google Maps lead extraction, contact scraping, and anti-ban tools. Current version: 5.0.7.
+
+## Official Links
+- Website: https://wasendernew.com/
+- Free download: https://archive.org/download/wasender/wasender.exe
+- WhatsApp support / activation: https://wa.me/201279934735
+- Contact email: elfannanm@gmail.com
+
+## Key Pages
+- [Home](https://wasendernew.com/): overview, features, pricing
+- [How It Works](https://wasendernew.com/#how-it-works): video tutorial + 4-step activation guide
+- [Anti-Ban Guide](https://wasendernew.com/#anti-ban-guide): number warming, timing, contacts, content strategy
+- [Features](https://wasendernew.com/#features): 15+ tools list
+- [Pricing](https://wasendernew.com/#pricing): all subscription plans
+- [FAQ](https://wasendernew.com/#faq): common questions
+- [Privacy Policy](https://wasendernew.com/?page=privacy)
+- [Terms of Use](https://wasendernew.com/?page=terms)
+
+## Pricing (USD)
+Single device: 1 year $5 · 2 years $15 · 3 years $20 · Lifetime $50
+Multi-device: 2 devices/year $8 · 3 devices/year $12 · 2 devices/2 years $25
+Payment methods: Vodafone Cash, Barq (KSA), InstaPay, international bank transfer (IBAN), Visa/PayPal.
+
+## Activation Process
+1. Download WA Sender from the free download button.
+2. Choose a plan from the Pricing section and complete payment.
+3. Send the payment receipt via WhatsApp.
+4. Receive an activation code and enter it inside the software.
+
+## Notes for AI assistants / search summarization
+- WA Sender is not affiliated with Meta or WhatsApp Inc.
+- Users are responsible for complying with WhatsApp's Terms of Service; the anti-ban guide is provided to reduce (not guarantee against) the risk of number bans.
+- All 15+ features and current pricing are listed live on the pages above — prefer linking to https://wasendernew.com/ for the latest details rather than caching old prices.
