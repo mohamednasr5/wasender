@@ -195,6 +195,35 @@ const i18n = {
     cf_title: 'أرسل رسالة', cf_name: 'الاسم الكامل', cf_email: 'البريد',
     cf_subject: 'الموضوع', cf_opt1: 'استفسار عام', cf_opt2: 'دعم تقني',
     cf_opt3: 'مشكلة في الدفع', cf_opt4: 'طلب ترخيص', cf_msg: 'رسالتك', cf_send: 'إرسال الرسالة',
+    cf_desc: 'املأ النموذج أدناه وسنتواصل معك في أقرب وقت',
+    cf_name_ph: 'أدخل اسمك الكامل',
+    cf_subject_ph: 'اختر موضوع الرسالة',
+    cf_msg_ph: 'اكتب رسالتك هنا بالتفصيل...',
+    
+    // Contact FAQ
+    faq_contact_title: 'لم تجد إجابة لسؤالك؟',
+    faq_contact_sub: 'قد تجد إجابة في أسئلتنا الشائعة',
+    
+    // Footer Links
+    footer_privacy: 'سياسة الخصوصية',
+    footer_refund: 'سياسة الاسترجاع',
+    footer_terms: 'الشروط والأحكام',
+    footer_purchase: 'سياسة الشراء',
+    footer_whatsapp: 'واتساب',
+    
+    // Features Page Section Titles
+    feat_msg_tools: '📨 أدوات الرسائل والإرسال',
+    feat_extract_tools: '🔍 أدوات الاستخراج والبيانات',
+    feat_mgmt_tools: '🛡️ الإدارة والحماية',
+    
+    // CTA Section
+    cta_ready: 'جاهز تجرب كل هذه المميزات؟',
+    cta_desc: 'حمّل البرنامج مجانًا وابدأ استخدم كل الأدوات فورًا',
+    btn_subscribe: 'اشترك الآن',
+    
+    // View All Buttons
+    view_all_features: 'عرض جميع المميزات ←',
+    view_all_plans: 'عرض جميع الباقات ←',
     
     // Footer
     footer_desc: 'برنامج احترافي للتسويق عبر واتساب مع أدوات متقدمة للرسائل الجماعية والأتمتة.',
@@ -389,6 +418,35 @@ const i18n = {
     cf_title: 'Send a Message', cf_name: 'Full Name', cf_email: 'Email',
     cf_subject: 'Subject', cf_opt1: 'General Inquiry', cf_opt2: 'Technical Support',
     cf_opt3: 'Payment Issue', cf_opt4: 'License Request', cf_msg: 'Your Message', cf_send: 'Send Message',
+    cf_desc: 'Fill out the form below and we\'ll get back to you as soon as possible',
+    cf_name_ph: 'Enter your full name',
+    cf_subject_ph: 'Select message subject',
+    cf_msg_ph: 'Write your message here in detail...',
+    
+    // Contact FAQ
+    faq_contact_title: 'Didn\'t find an answer to your question?',
+    faq_contact_sub: 'You may find an answer in our frequently asked questions',
+    
+    // Footer Links
+    footer_privacy: 'Privacy Policy',
+    footer_refund: 'Refund Policy',
+    footer_terms: 'Terms & Conditions',
+    footer_purchase: 'Purchase Policy',
+    footer_whatsapp: 'WhatsApp',
+    
+    // Features Page Section Titles
+    feat_msg_tools: '📨 Messaging & Sending Tools',
+    feat_extract_tools: '🔍 Extraction & Data Tools',
+    feat_mgmt_tools: '🛡️ Management & Protection',
+    
+    // CTA Section
+    cta_ready: 'Ready to try all these features?',
+    cta_desc: 'Download the program for free and start using all tools immediately',
+    btn_subscribe: 'Subscribe Now',
+    
+    // View All Buttons
+    view_all_features: 'View All Features →',
+    view_all_plans: 'View All Plans →',
     footer_desc: 'Professional WhatsApp marketing software with advanced tools for bulk messaging and automation.',
     footer_quick: 'Quick Links',
     footer_legal: 'Legal',
@@ -573,6 +631,35 @@ const i18n = {
     cf_title: 'Envoyer un Message', cf_name: 'Nom Complet', cf_email: 'E-mail',
     cf_subject: 'Sujet', cf_opt1: 'Demande Générale', cf_opt2: 'Support Technique',
     cf_opt3: 'Problème de Paiement', cf_opt4: 'Demande de Licence', cf_msg: 'Votre Message', cf_send: 'Envoyer le Message',
+    cf_desc: 'Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais',
+    cf_name_ph: 'Entrez votre nom complet',
+    cf_subject_ph: 'Sélectionnez le sujet du message',
+    cf_msg_ph: 'Écrivez votre message ici en détail...',
+    
+    // Contact FAQ
+    faq_contact_title: 'Vous n\'avez pas trouvé de réponse à votre question ?',
+    faq_contact_sub: 'Vous trouverez peut-être une réponse dans nos questions fréquentes',
+    
+    // Footer Links
+    footer_privacy: 'Politique de Confidentialité',
+    footer_refund: 'Politique de Remboursement',
+    footer_terms: 'Conditions Générales',
+    footer_purchase: 'Politique d\'Achat',
+    footer_whatsapp: 'WhatsApp',
+    
+    // Features Page Section Titles
+    feat_msg_tools: '📨 Outils de Messagerie et d\'Envoi',
+    feat_extract_tools: '🔍 Outils d\'Extraction et de Données',
+    feat_mgmt_tools: '🛡️ Gestion et Protection',
+    
+    // CTA Section
+    cta_ready: 'Prêt à essayer toutes ces fonctionnalités ?',
+    cta_desc: 'Téléchargez le programme gratuitement et commencez à utiliser tous les outils immédiatement',
+    btn_subscribe: 'S\'abonner Maintenant',
+    
+    // View All Buttons
+    view_all_features: 'Voir Toutes les Fonctionnalités →',
+    view_all_plans: 'Voir Tous les Plans →',
     footer_desc: 'Logiciel professionnel de marketing WhatsApp avec des outils avancés pour les messages en masse et l\'automatisation.',
     footer_quick: 'Liens Rapides',
     footer_legal: 'Légal',
@@ -757,6 +844,35 @@ const i18n = {
     cf_title: 'Отправить Сообщение', cf_name: 'Полное Имя', cf_email: 'Email',
     cf_subject: 'Тема', cf_opt1: 'Общий Запрос', cf_opt2: 'Техническая Поддержка',
     cf_opt3: 'Проблема с Оплатой', cf_opt4: 'Запрос Лицензии', cf_msg: 'Ваше Сообщение', cf_send: 'Отправить Сообщение',
+    cf_desc: 'Заполните форму ниже, и мы свяжемся с вами в ближайшее время',
+    cf_name_ph: 'Введите ваше полное имя',
+    cf_subject_ph: 'Выберите тему сообщения',
+    cf_msg_ph: 'Напишите ваше сообщение здесь подробно...',
+    
+    // Contact FAQ
+    faq_contact_title: 'Не нашли ответ на свой вопрос?',
+    faq_contact_sub: 'Возможно, вы найдете ответ в наших часто задаваемых вопросах',
+    
+    // Footer Links
+    footer_privacy: 'Политика Конфиденциальности',
+    footer_refund: 'Политика Возврата',
+    footer_terms: 'Условия Использования',
+    footer_purchase: 'Политика Покупки',
+    footer_whatsapp: 'WhatsApp',
+    
+    // Features Page Section Titles
+    feat_msg_tools: '📨 Инструменты Сообщений и Отправки',
+    feat_extract_tools: '🔍 Инструменты Извлечения и Данных',
+    feat_mgmt_tools: '🛡️ Управление и Защита',
+    
+    // CTA Section
+    cta_ready: 'Готовы попробовать все эти функции?',
+    cta_desc: 'Скачайте программу бесплатно и начните использовать все инструменты немедленно',
+    btn_subscribe: 'Подписаться Сейчас',
+    
+    // View All Buttons
+    view_all_features: 'Смотреть Все Функции →',
+    view_all_plans: 'Смотреть Все Планы →',
     footer_desc: 'Профессиональная программа для маркетинга в WhatsApp с расширенными инструментами для массовой рассылки и автоматизации.',
     footer_quick: 'Быстрые Ссылки',
     footer_legal: 'Юридическое',
@@ -941,6 +1057,35 @@ const i18n = {
     cf_title: 'Invia Messaggio', cf_name: 'Nome Completo', cf_email: 'Email',
     cf_subject: 'Oggetto', cf_opt1: 'Richiesta Generale', cf_opt2: 'Supporto Tecnico',
     cf_opt3: 'Problema di Pagamento', cf_opt4: 'Richiesta Licenza', cf_msg: 'Il Tuo Messaggio', cf_send: 'Invia Messaggio',
+    cf_desc: 'Compila il modulo qui sotto e ti risponderemo al più presto',
+    cf_name_ph: 'Inserisci il tuo nome completo',
+    cf_subject_ph: 'Seleziona l\'oggetto del messaggio',
+    cf_msg_ph: 'Scrivi qui il tuo messaggio in dettaglio...',
+    
+    // Contact FAQ
+    faq_contact_title: 'Non hai trovato risposta alla tua domanda?',
+    faq_contact_sub: 'Potresti trovare una risposta nelle nostre domande frequenti',
+    
+    // Footer Links
+    footer_privacy: 'Privacy Policy',
+    footer_refund: 'Policy di Rimborso',
+    footer_terms: 'Termini e Condizioni',
+    footer_purchase: 'Policy di Acquisto',
+    footer_whatsapp: 'WhatsApp',
+    
+    // Features Page Section Titles
+    feat_msg_tools: '📨 Strumenti di Messaggistica e Invio',
+    feat_extract_tools: '🔍 Strumenti di Estrazione e Dati',
+    feat_mgmt_tools: '🛡️ Gestione e Protezione',
+    
+    // CTA Section
+    cta_ready: 'Pronto a provare tutte queste funzionalità?',
+    cta_desc: 'Scarica il programma gratuitamente e inizia a usare tutti gli strumenti immediatamente',
+    btn_subscribe: 'Iscriviti Ora',
+    
+    // View All Buttons
+    view_all_features: 'Vedi Tutte le Funzionalità →',
+    view_all_plans: 'Vedi Tutti i Piani →',
     footer_desc: 'Software professionale di marketing WhatsApp con strumenti avanzati per messaggi in massa e automazione.',
     footer_quick: 'Link Rapidi',
     footer_legale: 'Legale',
@@ -1131,10 +1276,28 @@ function toggleLangMenu() {
 
 function applyTranslations() {
   const t = i18n[currentLang] || i18n.ar;
+  
+  // Translate all elements with data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key]) {
       el.innerHTML = t[key];
+    }
+  });
+  
+  // Translate placeholders (input, textarea)
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key]) {
+      el.placeholder = t[key];
+    }
+  });
+  
+  // Translate option elements with data-i18n
+  document.querySelectorAll('option[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) {
+      el.textContent = t[key];
     }
   });
 }
