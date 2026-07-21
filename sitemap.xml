@@ -54,6 +54,19 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://wasendernew.com/tutorial.html" />
   </url>
 
+  <!-- Marketing Data Page (SEO Optimized) -->
+  <url>
+    <loc>https://wasendernew.com/marketing-data.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wasendernew.com/marketing-data.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://wasendernew.com/marketing-data.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wasendernew.com/marketing-data.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wasendernew.com/marketing-data.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://wasendernew.com/marketing-data.html" />
+  </url>
+
   <!-- Contact Page -->
   <url>
     <loc>https://wasendernew.com/contact.html</loc>

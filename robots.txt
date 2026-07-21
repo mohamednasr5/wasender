@@ -26,6 +26,7 @@ Allow: /index.html
 Allow: /features.html
 Allow: /pricing.html
 Allow: /tutorial.html
+Allow: /marketing-data.html
 Allow: /contact.html
 Allow: /privacy.html
 Allow: /terms.html
