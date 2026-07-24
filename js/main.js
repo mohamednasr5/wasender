@@ -15,15 +15,15 @@ const CONFIG = {
     iban: 'SA7636036036031909112576',
     swift: 'DBAKSARIXXX'
   },
-  // PayPal Links for all plans
+  // PayPal Links for all plans (each plan has its own unique payment link)
   paypalLinks: {
-    yearly: 'https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8',
-    '2yearly': 'https://www.paypal.com/ncp payment/PYEJ6X9HQL2L8',
-    '3yearly': 'https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8',
-    lifetime: 'https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8',
-    '2dev-yearly': 'https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8',
-    '3dev-yearly': 'https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8',
-    '2dev-2yr': 'https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8'
+    yearly: 'https://www.paypal.com/ncp/payment/S2MZ5XXCR65ZG',
+    '2yearly': 'https://www.paypal.com/ncp/payment/FNR3E3UFRLSTC',
+    '3yearly': 'https://www.paypal.com/ncp/payment/QF2GAKDECFGNJ',
+    lifetime: 'https://www.paypal.com/ncp/payment/YR7KL36E3G6DW',
+    '2dev-yearly': 'https://www.paypal.com/ncp/payment/UALYCA9GWSGYL',
+    '3dev-yearly': 'https://www.paypal.com/ncp/payment/2GKPTJEBQF7KL',
+    '2dev-2yr': 'https://www.paypal.com/ncp/payment/PMNSNED5TBWU8'
   }
 };
 
@@ -175,6 +175,7 @@ const i18n = {
     pm_paypal_title: 'فيزا / PayPal',
     pm_paypal_sub: 'دفع آمن بالبطاقة البنكية',
     pm_paypal_note: 'بعد الدفع، أرسل اسم البريد الإلكتروني المستخدم عبر واتساب.',
+    pm_paypal_note2: 'اضغط زر \'اشترِ الآن\' أو امسح QR أسفل الباقة التي تريدها في أعلى الصفحة، وسيتم توجيهك مباشرة لصفحة الدفع بالمبلغ الصحيح. بعد الدفع، أرسل اسم البريد الإلكتروني المستخدم عبر واتساب.',
     paypal_plan_yearly: '💳 PayPal - $5 (سنة)',
     paypal_plan_2yearly: '💳 PayPal - $15 (سنتين)',
     paypal_plan_3yearly: '💳 PayPal - $20 (3 سنوات)',
@@ -626,6 +627,7 @@ const i18n = {
     pm_paypal_title: 'Visa / PayPal',
     pm_paypal_sub: 'Secure payment with credit card',
     pm_paypal_note: 'After payment, send the email address used via WhatsApp.',
+    pm_paypal_note2: 'Click \'Buy Now\' or scan the QR code below the plan you want above, and you will be taken directly to the payment page with the correct amount. After payment, send the email address used via WhatsApp.',
     paypal_plan_yearly: '💳 PayPal - $5 (Year)',
     paypal_plan_2yearly: '💳 PayPal - $15 (2 Years)',
     paypal_plan_3yearly: '💳 PayPal - $20 (3 Years)',
@@ -1065,6 +1067,7 @@ const i18n = {
     pm_paypal_title: 'Visa / PayPal',
     pm_paypal_sub: 'Paiement sécurisé par carte bancaire',
     pm_paypal_note: 'Après le paiement, envoyez l\'adresse e-mail utilisée via WhatsApp.',
+    pm_paypal_note2: 'Cliquez sur \'Acheter\' ou scannez le QR sous le forfait souhaité ci-dessus pour aller directement à la page de paiement avec le bon montant. Après le paiement, envoyez l\'adresse e-mail utilisée via WhatsApp.',
     paypal_plan_yearly: '💳 PayPal - $5 (1 An)',
     paypal_plan_2yearly: '💳 PayPal - $15 (2 Ans)',
     paypal_plan_3yearly: '💳 PayPal - $20 (3 Ans)',
@@ -1504,6 +1507,7 @@ const i18n = {
     pm_paypal_title: 'Visa / PayPal',
     pm_paypal_sub: 'Безопасная оплата банковской картой',
     pm_paypal_note: 'После оплаты отправьте использованный адрес электронной почты через WhatsApp.',
+    pm_paypal_note2: 'Нажмите \'Купить\' или отсканируйте QR-код под нужным тарифом выше — вы сразу перейдёте на страницу оплаты с правильной суммой. После оплаты отправьте использованный адрес электронной почты через WhatsApp.',
     paypal_plan_yearly: '💳 PayPal - $5 (Год)',
     paypal_plan_2yearly: '💳 PayPal - $15 (2 Года)',
     paypal_plan_3yearly: '💳 PayPal - $20 (3 Года)',
@@ -1943,6 +1947,7 @@ const i18n = {
     pm_paypal_title: 'Visa / PayPal',
     pm_paypal_sub: 'Pagamento sicuro con carta di credito',
     pm_paypal_note: 'Dopo il pagamento, invia l\'indirizzo email utilizzato via WhatsApp.',
+    pm_paypal_note2: 'Clicca su \'Acquista ora\' o scansiona il QR sotto il piano desiderato in alto per andare direttamente alla pagina di pagamento con l\'importo corretto. Dopo il pagamento, invia l\'indirizzo email utilizzato via WhatsApp.',
     paypal_plan_yearly: '💳 PayPal - $5 (1 Anno)',
     paypal_plan_2yearly: '💳 PayPal - $15 (2 Anni)',
     paypal_plan_3yearly: '💳 PayPal - $20 (3 Anni)',
@@ -2726,14 +2731,12 @@ function toggleSound(btn) {
 
 // ── PRICING FUNCTIONS ──
 function goToCheckout(plan) {
-  // Scroll to payment methods section instead of redirecting
-  const paymentSection = document.querySelector('.checkout-container') || document.querySelector('[style*="bg-alt"]');
-  if (paymentSection) {
-    paymentSection.scrollIntoView({ behavior: 'smooth' });
-    // Open PayPal section by default
-    setTimeout(() => togglePayment('paypal'), 500);
-  }
+  // Redirect directly to the plan's dedicated PayPal payment link
   playClickSound();
+  const url = CONFIG.paypalLinks[plan];
+  if (url) {
+    window.open(url, '_blank', 'noopener');
+  }
 }
 
 function updateLocalPrices() {
