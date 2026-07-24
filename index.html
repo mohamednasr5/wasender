@@ -58,6 +58,42 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/css/style.css">
 
+  <!-- Pricing QR Code Styling -->
+  <style>
+    .price-qr-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin:14px 0;
+      padding:10px;
+      background:rgba(37,211,102,0.06);
+      border:1.5px dashed #25D366;
+      border-radius:12px;
+    }
+    .price-qr-wrap img{
+      width:84px;
+      height:84px;
+      border-radius:8px;
+      background:#fff;
+      padding:4px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.12);
+      flex-shrink:0;
+    }
+    .price-qr-text{
+      text-align:right;
+      font-size:12.5px;
+      line-height:1.5;
+      color:inherit;
+    }
+    .price-qr-text strong{
+      display:block;
+      font-size:13.5px;
+      margin-bottom:2px;
+      color:#25D366;
+    }
+  </style>
+
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -373,7 +409,11 @@
               <li data-i18n="pf4">استيراد جهات اتصال غير محدودة</li>
               <li data-i18n="pf5">التخصيص والأتمتة</li>
             </ul>
-            <a href="/pricing.html" class="btn-primary" style="width:100%;text-align:center;" data-i18n="btn_buy_now">اشترِ الآن</a>
+            <div class="price-qr-wrap">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeAQAAAADlUEq3AAACqUlEQVR4nO2bQYrkMAxFv8aBXjowB+ijpG5QRxr6SH2D+ChzgAJnWZDwZyE7tqs3TUE1GpAWRVJ+C4GwLH05Qnzbjl/fZwGHfwYG1/OJORCL/gBYuJcftbgb8dnhBziSJHcAcQfSfAgQd/BjDrpBSZJcLfnscDOusQSPzIFcEdj+04W1cEZ8dri3qX+JOwQ4BMAEpmug/JAbDj8NDxHEMQHxNhHbDEE8xlUrPjv8CAeSGUCSCVy3CSLvO7D8fSsLC8nXu+Hws/AmIiITHg++j/e7IM2AiIjIxZLPDjdjb337oIXNsGrEZ4cH4xqpDSDXvu4c2kOPoF14AjYBAQLY3ggg7PqULhCmGaUeTdebEZ8dHkw1meUhgdZXrggsZ6P3gyZhkLmkUm3mNXdyP+W20uVj8SxqEkbtF/bSNGjwdNOVV8AjaBfualHVsxHPBBpZdFF98ixqEj4TKFDEUdW46/bTqALwPWgU1pDVliKwBVR/eJYzHkGb8IR0gWqgxHYIsQmgLQUApOsNQMwvdsPhp2G0ClT3m5amCKdEw7Ot9z1oES7zwYV7rWlyDeiK2mvU+a8Rnx0eTA++cbirpamuoqhqvgeNwhOAY8Ky3oUAIIiBsnz+3oGYVVFjmvOL3XD4afjMk2ziWX/6DbdojPjs8GCtc2i9X8uddV6h6dWIzw4P1kqX2tGTdSgfTrEmuCZjFe7kz7YRy6ZD4MB5BC3C/Yy+hOwcRuRhaOERtAonKVYHFHcBcEgN6KGv8ifb8dnhZlOVzA7V15gkUJaso3khdMKbX+yGw0/DX+5sq7RW1e5uzOv3ZGzCfQTP068MCXO7YOE3nczCX7+biN3HSsBZ2HglYxRuG2xUtgHU3NnSqxGfHR6s+35Qn2Lt6LuBb3Rl2yws/g3vfw7/A0VtkkeHWINeAAAAAElFTkSuQmCC" alt="QR كود للدفع - اشتراك سنة واحدة" loading="lazy">
+              <div class="price-qr-text"><strong>📱 امسح للدفع السريع</strong>ادفع 5$ مباشرة عبر PayPal</div>
+            </div>
+            <a href="https://www.paypal.com/ncp/payment/S2MZ5XXCR65ZG" class="btn-primary" style="width:100%;text-align:center;" target="_blank" rel="nofollow noopener" data-i18n="btn_buy_now">اشترِ الآن</a>
           </div>
           
           <div class="price-card reveal delay-1">
@@ -388,7 +428,11 @@
               <li data-i18n="pf4">استيراد جهات اتصال غير محدودة</li>
               <li data-i18n="pf5">تحديثات مدى الحياة</li>
             </ul>
-            <a href="/pricing.html" class="btn-secondary" style="width:100%;text-align:center;" data-i18n="btn_buy_now">اشترِ الآن</a>
+            <div class="price-qr-wrap">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeAQAAAADlUEq3AAACy0lEQVR4nO2bS6rjMBBFb7UFGcrQC8hS5B1kSU3vzFpKFhCQhw9kbg/0iZUHzcOQUIOqgYmTM7hQlFS/CPFj23/9nAUM/gwMrv0TSSKkiQgJQGCuj2I+K9Fs8AvsSbI4ahfEeRfAZ/DvPJUAJUly1aTZ4Kdx9RnFZUwAV0xs35Hlh7VySjQbfDT38i4hzQLAgfEGIKz7J2QYfBoePOgJxGt2xDZD4Hc35jlKNBv8Ck8kE4AoIsDmIHLNQLhfiDgDCCTfL8PgU7ADNmkv/uEA/3CMN4Dx+iUEgPq716LZ4KPJcE7ujsBeTlZi+50H1upBnXCcAVk2kXJiRnEtPwUgy+YgywdkGHwSdgh3AeOVADARwJSB7ULEBcI4t0M03h5KNBs8WIm3sf9SCvyQanlYi0KrB1XCtY5nqnU8mSYiMHfnkeVToHlQI1zi7SUQiy9XTx4C0TyoE67hx1rxfXNjaYnW/poSzQYP9sw76+3H1hIN7TLsowolmg0erI4lPFmuwHrx9bHT8W5UotngEY5yIYBd6mMTkQVtsLQCQLzmt8sw+CTc7sFUm6OHERMTaks0WAzqhYfDkuRQXLC5thy05kGNcBvplkd16DM1rSUFaTGoGPZfgpD20jyTP8yQZXMAPCnLx2QYfBYO9wvbRgUJtDYawl1adlMWaPRoNvhgx1211E7R2oRh7bS13Rklmg0e7KUv2u68ZzS2XNQyGZ1wz1V6YyZ9y24aZx7UCLcagm0EcRhGpOpfO0U1w+POdm9qY5g4rYD1RbXCDvAJAHaHeEtElIkSUhnNC+tlmN4sw+DTsENZbfIPlH0L+IcQyI7xltA22Vx+rwyDT8PHrfsVxyZbz0D7pNBOUY3w+L+J3gMFynfAs91mmYxKuGabZJ/H97FEcZ5/5qrmQaXwJiIirm3d+wxZ2opMWyTdRRZNmg3uNu5s/99sZ1sj/A+7/EQdD/ogswAAAABJRU5ErkJggg==" alt="QR كود للدفع - اشتراك مدى الحياة" loading="lazy">
+              <div class="price-qr-text"><strong>📱 امسح للدفع السريع</strong>ادفع 50$ مباشرة عبر PayPal</div>
+            </div>
+            <a href="https://www.paypal.com/ncp/payment/YR7KL36E3G6DW" class="btn-secondary" style="width:100%;text-align:center;" target="_blank" rel="nofollow noopener" data-i18n="btn_buy_now">اشترِ الآن</a>
           </div>
         </div>
         
