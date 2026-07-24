@@ -37,6 +37,42 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Pricing QR Code Styling -->
+  <style>
+    .price-qr-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin:14px 0;
+      padding:10px;
+      background:rgba(37,211,102,0.06);
+      border:1.5px dashed #25D366;
+      border-radius:12px;
+    }
+    .price-qr-wrap img{
+      width:78px;
+      height:78px;
+      border-radius:8px;
+      background:#fff;
+      padding:4px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.12);
+      flex-shrink:0;
+    }
+    .price-qr-text{
+      text-align:right;
+      font-size:12px;
+      line-height:1.5;
+      color:inherit;
+    }
+    .price-qr-text strong{
+      display:block;
+      font-size:13px;
+      margin-bottom:2px;
+      color:#25D366;
+    }
+  </style>
   
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -156,7 +192,8 @@
               <li data-i18n="pf6">تحديثات مجانية خلال فترة الاشتراك</li>
               <li data-i18n="pf7">دعم فني مباشر عبر واتساب</li>
             </ul>
-            <button class="btn-primary" style="width:100%;" onclick="goToCheckout('yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
+            <div class="price-qr-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeAQAAAADlUEq3AAACqUlEQVR4nO2bQYrkMAxFv8aBXjowB+ijpG5QRxr6SH2D+ChzgAJnWZDwZyE7tqs3TUE1GpAWRVJ+C4GwLH05Qnzbjl/fZwGHfwYG1/OJORCL/gBYuJcftbgb8dnhBziSJHcAcQfSfAgQd/BjDrpBSZJcLfnscDOusQSPzIFcEdj+04W1cEZ8dri3qX+JOwQ4BMAEpmug/JAbDj8NDxHEMQHxNhHbDEE8xlUrPjv8CAeSGUCSCVy3CSLvO7D8fSsLC8nXu+Hws/AmIiITHg++j/e7IM2AiIjIxZLPDjdjb337oIXNsGrEZ4cH4xqpDSDXvu4c2kOPoF14AjYBAQLY3ggg7PqULhCmGaUeTdebEZ8dHkw1meUhgdZXrggsZ6P3gyZhkLmkUm3mNXdyP+W20uVj8SxqEkbtF/bSNGjwdNOVV8AjaBfualHVsxHPBBpZdFF98ixqEj4TKFDEUdW46/bTqALwPWgU1pDVliKwBVR/eJYzHkGb8IR0gWqgxHYIsQmgLQUApOsNQMwvdsPhp2G0ClT3m5amCKdEw7Ot9z1oES7zwYV7rWlyDeiK2mvU+a8Rnx0eTA++cbirpamuoqhqvgeNwhOAY8Ky3oUAIIiBsnz+3oGYVVFjmvOL3XD4afjMk2ziWX/6DbdojPjs8GCtc2i9X8uddV6h6dWIzw4P1kqX2tGTdSgfTrEmuCZjFe7kz7YRy6ZD4MB5BC3C/Yy+hOwcRuRhaOERtAonKVYHFHcBcEgN6KGv8ifb8dnhZlOVzA7V15gkUJaso3khdMKbX+yGw0/DX+5sq7RW1e5uzOv3ZGzCfQTP068MCXO7YOE3nczCX7+biN3HSsBZ2HglYxRuG2xUtgHU3NnSqxGfHR6s+35Qn2Lt6LuBb3Rl2yws/g3vfw7/A0VtkkeHWINeAAAAAElFTkSuQmCC" alt="QR كود للدفع" loading="lazy"><div class="price-qr-text"><strong>📱 امسح للدفع السريع</strong>ادفع 5$ مباشرة عبر PayPal</div></div>
+            <a href="https://www.paypal.com/ncp/payment/S2MZ5XXCR65ZG" class="btn-primary" style="width:100%;" target="_blank" rel="nofollow noopener" data-i18n="btn_buy_now">اشترِ الآن</a>
           </div>
 
           <!-- Two Years Plan -->
@@ -177,7 +214,8 @@
               <li data-i18n="pf6">تحديثات مجانية خلال فترة الاشتراك</li>
               <li data-i18n="pf7">دعم فني مباشر عبر واتساب</li>
             </ul>
-            <button class="btn-secondary" style="width:100%;" onclick="goToCheckout('2yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
+            <div class="price-qr-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeAQAAAADlUEq3AAACoklEQVR4nO2bTW7cMAxGHysDXcpADjBH8dys6M3so+QAAeTlADLYhSj/tJt0iqQMQC4G9ugtCAgi+ZGyKO+27dv7WQj4c2B03p+0AFPZ/8uqTFr7eq5OfA74YjpnVVWtaLMCQFKd22pfmGMH3cKbiIzAMm4iMiZlKpvInWQhdhGRj3cj4H+H1wGd80NYbqrAJv/FjYCfh5PKj9fvyvQqcqTFT3cj4L+xUx6c+ytkVZ1JGnnwK8CriIgMQK4Am+jMJpAfLYqKiIjcPfkc8GF62LzLh+moSvOxHmfQI9z0QnvSYhqiiUJTGPtq7KBLuCu+krRL+JbzbLkdyQKh6J3CvZIpf3Ri2oL9VJjiDLqE99iZzsdvUtV28vYmW9SiTuGB5Z6QSTcBtgFyUoFtUFYAUgVSFbIXnwO+2EkAWvFZgYsUjDzoGd5717ZvLQVqScq0l6ZEHvQL9yTHngxLMmUIWBk6ma5w4nPAv8Etij6sCbPcKrAOtm8/x6Qs7ceRzwEfZsK92CTJ5MOVaQVp5EGX8B5Ajx63KpBMI5rUjzzoGe7FJwBy751tkTGp3IEWVD/ajYCfgwdYBSW/iZoKHIFcENhEl1tFWV+qfKgbAT8NWxRt8qEPCa2zXc6hNPKgU/g8m2hPuefBY2u7UHTic8AXs0ZoSadB/SHrj5Z36EGnMJfpg+qpHXNsKDkUvVv4MqNnz35q59JuzOQaetArfL2zbWGzt9G0ScGYDzqH+101lltF7J5v0n7PN2noQc/wgE0F36DpQR42KZzKS2W5C0CqsoxvTnwO+GJdQ9SuDPV8X/Q6YnLic8BnG84vrTEDyiowlRdYRoSpddzi6zOP8PXbpX4Qj/kgeS9So5JxCZ9r0euF+9Ong3YLOHbQIyzxDe8Xh38BDMV0Myb9YXEAAAAASUVORK5CYII=" alt="QR كود للدفع" loading="lazy"><div class="price-qr-text"><strong>📱 امسح للدفع السريع</strong>ادفع 15$ مباشرة عبر PayPal</div></div>
+            <a href="https://www.paypal.com/ncp/payment/FNR3E3UFRLSTC" class="btn-secondary" style="width:100%;" target="_blank" rel="nofollow noopener" data-i18n="btn_buy_now">اشترِ الآن</a>
           </div>
 
           <!-- 3 Years Plan -->
@@ -198,7 +236,8 @@
               <li data-i18n="pf6">تحديثات مجانية خلال فترة الاشتراك</li>
               <li data-i18n="pf7">دعم فني مباشر عبر واتساب</li>
             </ul>
-            <button class="btn-secondary" style="width:100%;" onclick="goToCheckout('3yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
+            <div class="price-qr-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeAQAAAADlUEq3AAACtElEQVR4nO2bTWrkMBBGX40Fs5RvMEexb5Az5WbWUeYADeplwOabhSRHTjahoRsNVC1My36LgqL+1SZ+LMevn7Pg8GtgtJ2/JIklT2LJwKK9PorEfRCdHf4CR0nSDtzNSPNhEHf0Pk/FQSVJ2kbS2eELfJjZDMAkbUzS+wy2chhpBpKZPV8Nhx+Cw+V0GEueDQgorQGW7XiFGg4/DF8sGIUR9yDuM0bML1PD4YdhtLU8qI2zsIk7LHmStri3POiVzJBwgLu1Q7wFiLeg9AZKfz5MAPV7HEVnhy+iXna0xb19yJOuXwfR2eErnGawtTQSAPfQmdHWe8DWF6jh8INwiaICAUwCph3uv0VaMaW5BdH0dhtEZ4cvUkqXMn/J7Z3asXpjLOF1EJ0dvoiUW84rVWmexNJK0zKx2SjvBtHZ4V4CxD2Q3j6M5W/YjfhhSvMNiBmrMfbZajj8MFx8sMyzy7HNs1sAVXFOn2wPCnd15xe7febGamSPokPCdadES4ElGW58m864BYeFkwWAw+rjbmYrLahugN7/7E9Xw+EHYco6aWNSq0rbu5oRz62v++CQcOsHcy1i+uaimbHuf72SGRI+F/BnCox1Clq+1lZQ7oOjwjXTFc8778SU5iJK4BYcHD5bhdb2VWu17Fct6FF0WLjGyf7Yx86y4a0x1i04InyZybR9fPFBuMxK3QfHhOsQ5hxld91EfXTcIDo73EtgydR0B9NuxBpTbdFhImZI67Q/Vw2HH4a/39lWm6oVb4z75wpxEJ0d7iVQLxUegbSC0nwLLHnGyraeSQ0ZRWeHL9Jt4etMpk1izhk31OnMIDo7fJH+HsVnX3FuJOoFC7+rNix88cF8du9Q3kErSL0WHRTu72zr7AKVgXMc4/dFR4b7WrT8iv1Urdv1ei06Jmz+H97/HP4H7Vtj7TNMgEwAAAAASUVORK5CYII=" alt="QR كود للدفع" loading="lazy"><div class="price-qr-text"><strong>📱 امسح للدفع السريع</strong>ادفع 20$ مباشرة عبر PayPal</div></div>
+            <a href="https://www.paypal.com/ncp/payment/QF2GAKDECFGNJ" class="btn-secondary" style="width:100%;" target="_blank" rel="nofollow noopener" data-i18n="btn_buy_now">اشترِ الآن</a>
           </div>
 
           <!-- Lifetime Plan -->
@@ -219,7 +258,8 @@
               <li data-i18n="pf9">✨ أولوية في الدعم الفني</li>
               <li data-i18n="pf7">دعم فني مباشر عبر واتساب</li>
             </ul>
-            <button class="btn-primary" style="width:100%;background:linear-gradient(135deg,#1e293b,#334155);" onclick="goToCheckout('lifetime')" data-i18n="btn_buy_now">اشترِ الآن</button>
+            <div class="price-qr-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeAQAAAADlUEq3AAACy0lEQVR4nO2bS6rjMBBFb7UFGcrQC8hS5B1kSU3vzFpKFhCQhw9kbg/0iZUHzcOQUIOqgYmTM7hQlFS/CPFj23/9nAUM/gwMrv0TSSKkiQgJQGCuj2I+K9Fs8AvsSbI4ahfEeRfAZ/DvPJUAJUly1aTZ4Kdx9RnFZUwAV0xs35Hlh7VySjQbfDT38i4hzQLAgfEGIKz7J2QYfBoePOgJxGt2xDZD4Hc35jlKNBv8Ck8kE4AoIsDmIHLNQLhfiDgDCCTfL8PgU7ADNmkv/uEA/3CMN4Dx+iUEgPq716LZ4KPJcE7ujsBeTlZi+50H1upBnXCcAVk2kXJiRnEtPwUgy+YgywdkGHwSdgh3AeOVADARwJSB7ULEBcI4t0M03h5KNBs8WIm3sf9SCvyQanlYi0KrB1XCtY5nqnU8mSYiMHfnkeVToHlQI1zi7SUQiy9XTx4C0TyoE67hx1rxfXNjaYnW/poSzQYP9sw76+3H1hIN7TLsowolmg0erI4lPFmuwHrx9bHT8W5UotngEY5yIYBd6mMTkQVtsLQCQLzmt8sw+CTc7sFUm6OHERMTaks0WAzqhYfDkuRQXLC5thy05kGNcBvplkd16DM1rSUFaTGoGPZfgpD20jyTP8yQZXMAPCnLx2QYfBYO9wvbRgUJtDYawl1adlMWaPRoNvhgx1211E7R2oRh7bS13Rklmg0e7KUv2u68ZzS2XNQyGZ1wz1V6YyZ9y24aZx7UCLcagm0EcRhGpOpfO0U1w+POdm9qY5g4rYD1RbXCDvAJAHaHeEtElIkSUhnNC+tlmN4sw+DTsENZbfIPlH0L+IcQyI7xltA22Vx+rwyDT8PHrfsVxyZbz0D7pNBOUY3w+L+J3gMFynfAs91mmYxKuGabZJ/H97FEcZ5/5qrmQaXwJiIirm3d+wxZ2opMWyTdRRZNmg3uNu5s/99sZ1sj/A+7/EQdD/ogswAAAABJRU5ErkJggg==" alt="QR كود للدفع" loading="lazy"><div class="price-qr-text"><strong>📱 امسح للدفع السريع</strong>ادفع 50$ مباشرة عبر PayPal</div></div>
+            <a href="https://www.paypal.com/ncp/payment/YR7KL36E3G6DW" class="btn-primary" style="width:100%;background:linear-gradient(135deg,#1e293b,#334155);" target="_blank" rel="nofollow noopener" data-i18n="btn_buy_now">اشترِ الآن</a>
           </div>
 
         </div>
@@ -245,7 +285,8 @@
               <li data-i18n="pf3">جميع الميزات المميزة</li>
               <li data-i18n="pf7">دعم فني مباشر</li>
             </ul>
-            <button class="btn-secondary" style="width:100%;" onclick="goToCheckout('2dev-yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
+            <div class="price-qr-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeAQAAAADlUEq3AAACo0lEQVR4nO2bTW7cMAxGHysDXcpAD9CjaK7WI/UG9lF6gADycgAbXxf6GTurNOkECkAtBM/oLQgQFD+Stok3r+Pb21lw+LPg1epitan/fxhsZsDRzudxbHb4AkdJ0g4pA2v35TqHEqCSJC0j2ezwBT7MbAbW+TCIO3aL1aH1wMyeb4bDH4ZTbkG3AGY/76bl881w+J/g6fLrMKV8YESAbcJSPj7DDIc/BAdJGVh/7pSfC6AlSvo1A0nS881w+L3wZmbWZWhJhmXVpyJFbyPZ7PBj6bRykJa4I6luTakWuTqIzQ5f4Rp0h9mtBF2Q2Qxmc1ARpDcOY/V6cEiYVgoGQdR124G4I5VTj8ERYaRcywdSLdzrqvql6hwt7sEh4QkIuyWBwTEp6ZgEx0TdwCDszzXD4XfDPfz2Wj4oP85CabfVA1cyQ8Jnybm07FfrQWpR2LKke3BEmGvfrGiaEnQLPIp5z4Ojwl3JBLURRDjJ0Lr8Fh0Xbs7LpyFSe+olRcpBJPfgkHDLgy3yau1HnVKQMvRmzSA2O3yFV5vQwmGkHGS3eDeS9hNjtVkzjs0On1ZJfEW/0Bszj2T4QPwWHRKueXCJ/SotabFuTdPIb9FR4T6HUOlil2gsHuxyJmWvJoaFeyGxn2q/8lQc2nsy7sEx4TYfzKHH4KuZYdOiXg+OCdfmWemGxvNct2Y/6oF31QaFz/G20BuhenRDJb9FR4ZPfdFWNKi/iN9eulhwJTMs/BgdVUHar9LWVWu9Uq8Hx4TbIDe+ANuPnfR7or6stlnbYkZPNcPh/wPHu/Wcx7k7s034ly9fAF7nILuVL5YANrPmy7v3RUeFJ2ov7YD0xwDCbkQw4svU3r//Lvz7wTHhixbtuvPVfLCdDmKzw+dl/g3vF4f/AsvgPUP9lkmLAAAAAElFTkSuQmCC" alt="QR كود للدفع" loading="lazy"><div class="price-qr-text"><strong>📱 امسح للدفع السريع</strong>ادفع 8$ مباشرة عبر PayPal</div></div>
+            <a href="https://www.paypal.com/ncp/payment/UALYCA9GWSGYL" class="btn-secondary" style="width:100%;" target="_blank" rel="nofollow noopener" data-i18n="btn_buy_now">اشترِ الآن</a>
           </div>
 
           <!-- 3 Devices / Year -->
@@ -264,7 +305,8 @@
               <li data-i18n="pf3">جميع الميزات المميزة</li>
               <li data-i18n="pf12">دعم فني ذهبي</li>
             </ul>
-            <button class="btn-secondary" style="width:100%;" onclick="goToCheckout('3dev-yearly')" data-i18n="btn_buy_now">اشترِ الآن</button>
+            <div class="price-qr-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeAQAAAADlUEq3AAAChUlEQVR4nO2bS4rcUAxFj+KCHtqQBbl2FrIzeylZQIM9LLC5Gbyviw50mqRRiDQwZfsMBBdZn6cy8W47v7yfhYA/C14tG+vUnp8GuxlwlveTH58DvsCjJOmgSAas9iK7A6wTSJK0ePI54Go34LzB+AowHMa4YXCaWkiud9BfdSPgD8O37ves0wRJLWzepk9zI+A/Aq/2ItjN7M5p+j6Bfds+3Y2AfzsGBwEnzAKbFwH7V8H4miN01t92I+APw2hpv8bjzUu28XDic8AXU2fbIOZtSDeQFGyvQ0GPcNLocluCbi6q5mcRgy5hcrwxiFkHl4uUZFwA5ohBl3DKg9JWLst4wLxB7vLHo6TKiEGX8DUGa/Yrt+ntrFTTOPE54It14ScdXWkKDMrPxqhk3MJVskFZqG1QjsEtK1g/qk58DvhiSS1aBbrlZy0tpkAMBX3CPMVbqTtV0mL3KQ0FPcI5yS3UPFj6+C4ui4xOfA74Yrl9qAVp6wxTbqQbtznxOeCLtcjLffzW9xXlGaGgV/gG+4QxDjIYlA7pVwPBCewT9azXic8BX6xrAFM5UybbqSDNU9PIg27hkuRqCnzKfqoZMRT0CZdatOS8Mg1th0200tSJzwH3VjedBtlqOQ9qvRtifKSsaGAo9kV9wm/OXyAFXT04jBj0C/dn9At5xp0PI9K4rfvGOvE54Is978nUBYvUGVI3ZqKScQvnoyNgf5HdOa00Eg8j1af7jdi6dwpTl2BqS0EawkC9ZUzHvE58DviX8PiwpqWW8WG5pfiR/hfj0ef/Hu5jsJUzS9mOaTOZqEWdwm2Folu1aLmx+7KGgj7h51qUNEFra79AidBQ0CNs8R/efxz+CYCCafxCIkG2AAAAAElFTkSuQmCC" alt="QR كود للدفع" loading="lazy"><div class="price-qr-text"><strong>📱 امسح للدفع السريع</strong>ادفع 12$ مباشرة عبر PayPal</div></div>
+            <a href="https://www.paypal.com/ncp/payment/2GKPTJEBQF7KL" class="btn-secondary" style="width:100%;" target="_blank" rel="nofollow noopener" data-i18n="btn_buy_now">اشترِ الآن</a>
           </div>
 
           <!-- 2 Devices / 2 Years -->
@@ -283,7 +325,8 @@
               <li data-i18n="pf3">جميع الميزات المميزة</li>
               <li data-i18n="pf13">توفير 1$ عن الشراء المنفصل</li>
             </ul>
-            <button class="btn-secondary" style="width:100%;" onclick="goToCheckout('2dev-2yr')" data-i18n="btn_buy_now">اشترِ الآن</button>
+            <div class="price-qr-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeAQAAAADlUEq3AAACrUlEQVR4nO2bQWrmMAxGnyaGf+nAHKBHSW5W5mbxUXqAQrIsJHyzsJ04nU0p044HpEVInLcQCDn6ZMXEh+348XEWHP4uOFmx2/phsJkBR30/9uOzwzc4SpJ2SGONW7KHSOMg0giSJC09+ezwaQE4AsRXYAsYDLtN69imZJpBX+qGw38N1hJ3tESJSfs/c8Phj5uWuANxR1oBGMS0kh8l7WgpXCc+O3wzLfU7WC9SXiuXa80j2Cm8mZlZgDRSyxmuC+RSdO7JZ4cv02ULQ/761YW9fSt5DvYJpxE4841kAZu3Ux5ulhWGzR357PB72Mwesme9WalA447NDLI5SjXIffnscLFmx1yiBFVIXLoil6uT76JdwjmCTOuQL1fxmbNxWivntWifcFGB0wpaGFRFIQBDk5xeyXQKl7gtDGUDJe7n2pWhAJ6DXcKtom/UxLmp5pT072DX8BaweXvI5vhm5bF22riabL/Gjnx2+LKmedYUn2c2nturVzKdwvV0iYeMWBYNDiONr/lObOanS33DWuKbMb0E7PklwCQJtoeYJNn8TW44/Ak4wPaQwUOkJ9X0M4D4asARlEawafU5mR7hqgf/PFgq4xe1KvVatFO41i9ZzJ+NGTibbKUgdUXfKVzP6IEi5qMEVeW3ofUIdgmXHCzpV9eao8F2rROfHb5Z2w0trRdqf011HLgI/E58dvhm7Rn9+2OJRsz72USvcCDN5VbTSjODLzYAjiBwNdEtfJtVaw4Jy1rJQcB30U7h27yoTgFYd9ESvNwc9Qj2CIfb0xFyLNO4ivS0Y9P6c7fSnenFZ4dbu0dwkJUu9hFyPzs97cAWvtgNhz8NB/IWyQFsI0rzsBtxkBFfA2whC375/4PdwtfM9tM5ZbGFPDtjM2SNaHNPPjt8mvk/vP85/BsqM1VMhi/QgAAAAABJRU5ErkJggg==" alt="QR كود للدفع" loading="lazy"><div class="price-qr-text"><strong>📱 امسح للدفع السريع</strong>ادفع 25$ مباشرة عبر PayPal</div></div>
+            <a href="https://www.paypal.com/ncp/payment/PMNSNED5TBWU8" class="btn-secondary" style="width:100%;" target="_blank" rel="nofollow noopener" data-i18n="btn_buy_now">اشترِ الآن</a>
           </div>
 
         </div>
@@ -382,7 +425,7 @@
               </div>
             </div>
 
-            <!-- PayPal / Visa with ALL Plans -->
+            <!-- PayPal / Visa - now handled directly on each plan card above via QR + direct button -->
             <div class="payment-method">
               <div class="pm-header" onclick="togglePayment('paypal')">
                 <span class="pm-icon">💳</span>
@@ -392,16 +435,7 @@
                 </div>
               </div>
               <div class="pm-body" id="pm-paypal">
-                <div class="paypal-btns">
-                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_yearly">💳 PayPal - $5 (سنة)</a>
-                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_2yearly">💳 PayPal - $15 (سنتين)</a>
-                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_3yearly">💳 PayPal - $20 (3 سنوات)</a>
-                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_lifetime">💳 PayPal - $50 (مدى الحياة)</a>
-                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_2dev_yearly">💳 PayPal - $8 (جهازان/سنة)</a>
-                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_3dev_yearly">💳 PayPal - $12 (3 أجهزة/سنة)</a>
-                  <a href="https://www.paypal.com/ncp/payment/PYEJ6X9HQL2L8" class="paypal-btn" target="_blank" rel="noopener" data-i18n="paypal_plan_2dev_2yr">💳 PayPal - $25 (جهازان/سنتين)</a>
-                </div>
-                <p class="pm-note" data-i18n="pm_paypal_note">بعد الدفع، أرسل اسم البريد الإلكتروني المستخدم عبر واتساب.</p>
+                <p class="pm-note" data-i18n="pm_paypal_note2">اضغط زر "اشترِ الآن" أو امسح QR الموجود أسفل الباقة التي تريدها في أعلى الصفحة، وسيتم توجيهك مباشرة لصفحة الدفع بالمبلغ الصحيح. بعد الدفع، أرسل اسم البريد الإلكتروني المستخدم عبر واتساب.</p>
               </div>
             </div>
 
