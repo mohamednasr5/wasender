@@ -6,7 +6,7 @@ WA Sender is a Windows desktop application for WhatsApp marketing automation: bu
 
 ## Official Links
 - Website: https://wasendernew.com/
-- Free download: https://archive.org/download/wasender/wasender.exe
+- Free download: https://wasendernew.com/wasender.exe
 - WhatsApp support / activation: https://wa.me/201279934735
 - Contact email: elfannanm@gmail.com
 

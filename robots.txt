@@ -14,21 +14,3 @@ Crawl-delay: 1
 Disallow: /admin/
 Disallow: /private/
 Disallow: /*.json$
-
-# Allow important assets
-Allow: /css/
-Allow: /js/
-Allow: /assets/
-Allow: /video/
-
-# Allow all pages
-Allow: /index.html
-Allow: /features.html
-Allow: /pricing.html
-Allow: /tutorial.html
-Allow: /marketing-data.html
-Allow: /contact.html
-Allow: /privacy.html
-Allow: /terms.html
-Allow: /purchase-policy.html
-Allow: /refund-policy.html
