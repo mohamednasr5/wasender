@@ -3280,7 +3280,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ═══════════════════════════════════════════════════════════════
-// ADVANCED ANIMATIONS & DYNAMIC INTERACTIONS
+// ADVANCED ANIMATIONS & DYNAMIC INTERACTIONS (FIXED VERSION)
 // ═══════════════════════════════════════════════════════════════
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -3302,16 +3302,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── 6. NAVBAR SCROLL EFFECTS ──
   initNavbarScroll();
   
-  // ── 7. SMOOTH PAGE TRANSITIONS ──
-  initPageTransitions();
-  
-  // ── 8. PARALLAX EFFECTS ──
+  // ── 7. PARALLAX EFFECTS ──
   initParallaxEffect();
   
-  // ── 9. FAQ ACCORDION ──
+  // ── 8. FAQ ACCORDION ──
   initFaqAccordion();
   
-  // ── 10. MAGNETIC BUTTONS ──
+  // ── 9. MAGNETIC BUTTONS ──
   initMagneticButtons();
 });
 
@@ -3325,8 +3322,8 @@ function initScrollProgress() {
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    progressBar.style.width = scrollPercent + '%';
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = Math.min(scrollPercent, 100) + '%';
   }, { passive: true });
 }
 
@@ -3358,7 +3355,7 @@ function initScrollReveal() {
           );
           const index = siblings.indexOf(entry.target);
           if (index > 0) {
-            entry.target.style.transitionDelay = `${index * 0.1}s`;
+            entry.target.style.transitionDelay = `${Math.min(index * 0.1, 0.5)}s`;
           }
         }
         
@@ -3375,8 +3372,6 @@ function initRippleEffect() {
   const buttons = document.querySelectorAll('.btn, .buy-btn, .cta-btn, .wacrm-buy-btn, .pricing-btn');
   
   buttons.forEach(button => {
-    button.classList.add('ripple-container');
-    
     button.addEventListener('click', function(e) {
       const existingRipple = this.querySelector('.ripple');
       if (existingRipple) existingRipple.remove();
@@ -3402,6 +3397,8 @@ function initRippleEffect() {
         top: ${y}px;
       `;
       
+      this.style.position = 'relative';
+      this.style.overflow = 'hidden';
       this.appendChild(ripple);
       
       setTimeout(() => ripple.remove(), 600);
@@ -3422,7 +3419,6 @@ function initCounterAnimation() {
     const target = parseFloat(match[1]);
     const suffix = match[2] || '';
     const duration = 2000;
-    const start = 0;
     const startTime = performance.now();
     
     const updateCounter = (currentTime) => {
@@ -3438,6 +3434,7 @@ function initCounterAnimation() {
       }
     };
     
+    const start = 0;
     requestAnimationFrame(updateCounter);
   };
   
@@ -3455,6 +3452,9 @@ function initCounterAnimation() {
 
 // ── TILT EFFECT FOR CARDS ──
 function initTiltEffect() {
+  // Only enable on desktop
+  if (window.matchMedia('(max-width: 768px)').matches) return;
+  
   const tiltCards = document.querySelectorAll('.card, .feature-card, .product-card, .why-card, .pricing-card');
   
   tiltCards.forEach(card => {
@@ -3472,8 +3472,13 @@ function initTiltEffect() {
     });
     
     card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      card.style.transform = '';
     });
+    
+    // Disable on touch devices
+    card.addEventListener('touchstart', () => {
+      card.style.transform = '';
+    }, { passive: true });
   });
 }
 
@@ -3481,75 +3486,49 @@ function initTiltEffect() {
 function initNavbarScroll() {
   const navWrapper = document.querySelector('.nav-wrapper');
   
+  if (!navWrapper) return;
+  
   window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY;
     
     if (currentScroll > 50) {
-      navWrapper?.classList.add('scrolled');
+      navWrapper.classList.add('scrolled');
     } else {
-      navWrapper?.classList.remove('scrolled');
+      navWrapper.classList.remove('scrolled');
     }
   }, { passive: true });
 }
 
-// ── SMOOTH PAGE TRANSITIONS ──
-function initPageTransitions() {
-  const overlay = document.createElement('div');
-  overlay.className = 'page-transition';
-  overlay.id = 'pageTransition';
-  overlay.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #25D366;
-    z-index: 99999;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-    pointer-events: none;
-  `;
-  document.body.appendChild(overlay);
-  
-  const internalLinks = document.querySelectorAll('a[href^="/"]:not([href^="//"]):not([target="_blank"])');
-  
-  internalLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      
-      if (href.startsWith('#') || href.startsWith('http')) return;
-      
-      e.preventDefault();
-      
-      overlay.style.transformOrigin = 'top';
-      overlay.classList.add('active');
-      
-      setTimeout(() => {
-        window.location.href = href;
-      }, 500);
-    });
-  });
-}
-
 // ── PARALLAX EFFECTS ──
 function initParallaxEffect() {
+  // Only enable on desktop and if reduced motion is not preferred
+  if (window.matchMedia('(max-width: 768px)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  
   const parallaxElements = document.querySelectorAll('.hero-shape, .particle');
   
-  if (parallaxElements.length === 0 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (parallaxElements.length === 0) return;
+  
+  let rafId = null;
   
   window.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX / window.innerWidth - 0.5;
-    const mouseY = e.clientY / window.innerHeight - 0.5;
+    if (rafId) return;
     
-    parallaxElements.forEach((el, index) => {
-      const speed = (index + 1) * 20;
-      const x = mouseX * speed;
-      const y = mouseY * speed;
+    rafId = requestAnimationFrame(() => {
+      const mouseX = e.clientX / window.innerWidth - 0.5;
+      const mouseY = e.clientY / window.innerHeight - 0.5;
       
-      el.style.transform = `translate(${x}px, ${y}px)`;
+      parallaxElements.forEach((el, index) => {
+        const speed = (index + 1) * 20;
+        const x = mouseX * speed;
+        const y = mouseY * speed;
+        
+        el.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      
+      rafId = null;
     });
-  });
+  }, { passive: true });
 }
 
 // ── FAQ ACCORDION ──
@@ -3559,7 +3538,9 @@ function initFaqAccordion() {
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
     
-    question?.addEventListener('click', () => {
+    if (!question) return;
+    
+    question.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
       
       faqItems.forEach(otherItem => {
@@ -3569,8 +3550,6 @@ function initFaqAccordion() {
       });
       
       item.classList.toggle('active', !isActive);
-      
-      if (typeof playClickSound === 'function') playClickSound();
     });
   });
 }
@@ -3591,7 +3570,7 @@ function initMagneticButtons() {
     });
     
     btn.addEventListener('mouseleave', () => {
-      btn.style.transform = 'translate(0, 0)';
+      btn.style.transform = '';
     });
   });
 }
@@ -3599,6 +3578,8 @@ function initMagneticButtons() {
 // ── LAZY LOAD IMAGES ──
 function initLazyLoad() {
   const images = document.querySelectorAll('img[data-src]');
+  
+  if (images.length === 0) return;
   
   const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -3614,10 +3595,9 @@ function initLazyLoad() {
   images.forEach(img => imageObserver.observe(img));
 }
 
-initLazyLoad();
-
-console.log(
-  '%c🚀 WA Sender %c Professional WhatsApp Marketing Tool ',
-  'background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 10px 15px; border-radius: 8px 0 0 8px; font-weight: bold;',
-  'background: #1a1a2e; color: #25D366; padding: 10px 15px; border-radius: 0 8px 8px 0;'
-);
+// Initialize lazy loading safely
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLazyLoad);
+} else {
+  initLazyLoad();
+}
