@@ -3278,3 +3278,346 @@ document.addEventListener('keydown', (e) => {
     document.querySelector('.nav-links')?.classList.remove('open');
   }
 });
+
+// ═══════════════════════════════════════════════════════════════
+// ADVANCED ANIMATIONS & DYNAMIC INTERACTIONS
+// ═══════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ── 1. SCROLL PROGRESS INDICATOR ──
+  initScrollProgress();
+  
+  // ── 2. SCROLL REVEAL ANIMATIONS ──
+  initScrollReveal();
+  
+  // ── 3. RIPPLE EFFECT FOR BUTTONS ──
+  initRippleEffect();
+  
+  // ── 4. COUNTER ANIMATION ──
+  initCounterAnimation();
+  
+  // ── 5. TILT EFFECT FOR CARDS ──
+  initTiltEffect();
+  
+  // ── 6. NAVBAR SCROLL EFFECTS ──
+  initNavbarScroll();
+  
+  // ── 7. SMOOTH PAGE TRANSITIONS ──
+  initPageTransitions();
+  
+  // ── 8. PARALLAX EFFECTS ──
+  initParallaxEffect();
+  
+  // ── 9. FAQ ACCORDION ──
+  initFaqAccordion();
+  
+  // ── 10. MAGNETIC BUTTONS ──
+  initMagneticButtons();
+});
+
+// ── SCROLL PROGRESS INDICATOR ──
+function initScrollProgress() {
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  progressBar.style.cssText = 'position:fixed;top:0;left:0;height:4px;background:linear-gradient(135deg, #25D366, #128C7E);z-index:10001;transition:width 0.1s ease;box-shadow:0 0 10px rgba(37,211,102,0.5);';
+  document.body.appendChild(progressBar);
+  
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+  }, { passive: true });
+}
+
+// ── SCROLL REVEAL ANIMATIONS ──
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll(
+    '.reveal, .reveal-on-scroll, .reveal-left, .reveal-right, .reveal-scale, ' +
+    '.feature-card, .step-card, .pricing-card, .product-card, .why-card, .faq-item'
+  );
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -80px 0px',
+    threshold: 0.1
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        
+        const parent = entry.target.parentElement;
+        if (parent) {
+          const siblings = Array.from(parent.children).filter(el => 
+            el.classList.contains('reveal') || 
+            el.classList.contains('reveal-on-scroll') ||
+            el.classList.contains('feature-card') ||
+            el.classList.contains('step-card')
+          );
+          const index = siblings.indexOf(entry.target);
+          if (index > 0) {
+            entry.target.style.transitionDelay = `${index * 0.1}s`;
+          }
+        }
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  revealElements.forEach(el => observer.observe(el));
+}
+
+// ── RIPPLE EFFECT FOR BUTTONS ──
+function initRippleEffect() {
+  const buttons = document.querySelectorAll('.btn, .buy-btn, .cta-btn, .wacrm-buy-btn, .pricing-btn');
+  
+  buttons.forEach(button => {
+    button.classList.add('ripple-container');
+    
+    button.addEventListener('click', function(e) {
+      const existingRipple = this.querySelector('.ripple');
+      if (existingRipple) existingRipple.remove();
+      
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.cssText = `
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${x}px;
+        top: ${y}px;
+      `;
+      
+      this.appendChild(ripple);
+      
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+}
+
+// ── COUNTER ANIMATION ──
+function initCounterAnimation() {
+  const counters = document.querySelectorAll('.stat-number, .counter');
+  
+  const animateCounter = (el) => {
+    const text = el.textContent.trim();
+    const match = text.match(/^([\d.]+)([M+K+]*)$/);
+    
+    if (!match) return;
+    
+    const target = parseFloat(match[1]);
+    const suffix = match[2] || '';
+    const duration = 2000;
+    const start = 0;
+    const startTime = performance.now();
+    
+    const updateCounter = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const current = start + (target - start) * easeOutQuart;
+      
+      el.textContent = current.toFixed(current % 1 === 0 ? 0 : 1) + suffix;
+      
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      }
+    };
+    
+    requestAnimationFrame(updateCounter);
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  counters.forEach(counter => observer.observe(counter));
+}
+
+// ── TILT EFFECT FOR CARDS ──
+function initTiltEffect() {
+  const tiltCards = document.querySelectorAll('.card, .feature-card, .product-card, .why-card, .pricing-card');
+  
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+    });
+  });
+}
+
+// ── NAVBAR SCROLL EFFECTS ──
+function initNavbarScroll() {
+  const navWrapper = document.querySelector('.nav-wrapper');
+  
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    
+    if (currentScroll > 50) {
+      navWrapper?.classList.add('scrolled');
+    } else {
+      navWrapper?.classList.remove('scrolled');
+    }
+  }, { passive: true });
+}
+
+// ── SMOOTH PAGE TRANSITIONS ──
+function initPageTransitions() {
+  const overlay = document.createElement('div');
+  overlay.className = 'page-transition';
+  overlay.id = 'pageTransition';
+  overlay.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #25D366;
+    z-index: 99999;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    pointer-events: none;
+  `;
+  document.body.appendChild(overlay);
+  
+  const internalLinks = document.querySelectorAll('a[href^="/"]:not([href^="//"]):not([target="_blank"])');
+  
+  internalLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      
+      if (href.startsWith('#') || href.startsWith('http')) return;
+      
+      e.preventDefault();
+      
+      overlay.style.transformOrigin = 'top';
+      overlay.classList.add('active');
+      
+      setTimeout(() => {
+        window.location.href = href;
+      }, 500);
+    });
+  });
+}
+
+// ── PARALLAX EFFECTS ──
+function initParallaxEffect() {
+  const parallaxElements = document.querySelectorAll('.hero-shape, .particle');
+  
+  if (parallaxElements.length === 0 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  
+  window.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX / window.innerWidth - 0.5;
+    const mouseY = e.clientY / window.innerHeight - 0.5;
+    
+    parallaxElements.forEach((el, index) => {
+      const speed = (index + 1) * 20;
+      const x = mouseX * speed;
+      const y = mouseY * speed;
+      
+      el.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  });
+}
+
+// ── FAQ ACCORDION ──
+function initFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question?.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+        }
+      });
+      
+      item.classList.toggle('active', !isActive);
+      
+      if (typeof playClickSound === 'function') playClickSound();
+    });
+  });
+}
+
+// ── MAGNETIC BUTTONS ──
+function initMagneticButtons() {
+  if (window.matchMedia('(max-width: 768px)').matches) return;
+  
+  const magneticBtns = document.querySelectorAll('.btn-primary, .btn-gold, .wa-float');
+  
+  magneticBtns.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0, 0)';
+    });
+  });
+}
+
+// ── LAZY LOAD IMAGES ──
+function initLazyLoad() {
+  const images = document.querySelectorAll('img[data-src]');
+  
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+        imageObserver.unobserve(img);
+      }
+    });
+  });
+  
+  images.forEach(img => imageObserver.observe(img));
+}
+
+initLazyLoad();
+
+console.log(
+  '%c🚀 WA Sender %c Professional WhatsApp Marketing Tool ',
+  'background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 10px 15px; border-radius: 8px 0 0 8px; font-weight: bold;',
+  'background: #1a1a2e; color: #25D366; padding: 10px 15px; border-radius: 0 8px 8px 0;'
+);
