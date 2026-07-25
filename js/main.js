@@ -181,6 +181,45 @@ const i18n = {
   }
 };
 
+// ── VIDEO PLAYLIST DATA ──
+// ⚠️ عدّل مسارات "src" و"poster" هنا لتشير إلى ملفات الفيديو والصور الحقيقية الخاصة بك.
+// ⚠️ ملفات الفيديو موجودة في مجلد /video/ بأسماء أرقام (1.mp4 ... 10.mp4).
+// إذا كانت الامتدادات مختلفة (مثل .mp4 فعلاً) أو المسار على السيرفر مختلف، عدّل قيمة "src" لكل فيديو.
+// مدة كل فيديو (duration) قيمة مبدئية "--:--"، حدّثها بالمدة الحقيقية لكل فيديو.
+const videoData = [
+  { id: 1, duration: '--:--', src: '/video/1.mp4',
+    title: { ar: 'استخراج أرقام أعضاء مجموعات ومجتمع واتساب', en: 'Extracting Numbers of WhatsApp Group & Community Members' },
+    desc: { ar: 'شرح كيفية استخراج أرقام أعضاء مجموعات ومجتمعات واتساب باستخدام WA Sender Pro.', en: 'How to extract member numbers from WhatsApp groups and communities using WA Sender Pro.' } },
+  { id: 2, duration: '--:--', src: '/video/2.mp4',
+    title: { ar: 'عمل حملة إعلانية باستخدام WA Sender Pro', en: 'Running an Ad Campaign with WA Sender Pro' },
+    desc: { ar: 'شرح إنشاء وإرسال حملة إعلانية احترافية عبر برنامج WA Sender Pro.', en: 'How to create and send a professional ad campaign using WA Sender Pro.' } },
+  { id: 3, duration: '--:--', src: '/video/3.mp4',
+    title: { ar: 'تحويل البيانات إلى ملف جهات اتصال CSV', en: 'Converting Data into a CSV Contacts File' },
+    desc: { ar: 'شرح تحويل الأرقام والبيانات إلى ملف CSV جاهز للاستيراد والاستخدام.', en: 'How to convert numbers and data into a ready-to-import CSV file.' } },
+  { id: 4, duration: '--:--', src: '/video/4.mp4',
+    title: { ar: 'استخراج جهات الاتصال أو مجموعات واتساب المحفوظة', en: 'Extracting Saved WhatsApp Contacts or Groups' },
+    desc: { ar: 'شرح استخراج جهات الاتصال والمجموعات المحفوظة داخل واتساب بسهولة.', en: 'How to easily extract saved contacts and groups from WhatsApp.' } },
+  { id: 5, duration: '--:--', src: '/video/5.mp4',
+    title: { ar: 'خدمة الرد التلقائي', en: 'Auto-Reply Service' },
+    desc: { ar: 'شرح إعداد واستخدام خدمة الرد التلقائي في برنامج WA Sender Pro.', en: 'How to set up and use the auto-reply service in WA Sender Pro.' } },
+  { id: 6, duration: '--:--', src: '/video/6.mp4',
+    title: { ar: 'استخراج دردشات واتساب', en: 'Extracting WhatsApp Chats' },
+    desc: { ar: 'شرح استخراج محادثات واتساب وإدارتها باستخدام WA Sender Pro.', en: 'How to extract and manage WhatsApp conversations using WA Sender Pro.' } },
+  { id: 7, duration: '--:--', src: '/video/7.mp4',
+    title: { ar: 'استخراج روابط مجموعات واتساب من صفحات الويب', en: 'Extracting WhatsApp Group Links from Web Pages' },
+    desc: { ar: 'شرح استخراج روابط مجموعات واتساب المنشورة على مواقع الويب تلقائيًا.', en: 'How to automatically extract WhatsApp group links published on websites.' } },
+  { id: 8, duration: '--:--', src: '/video/8.mp4',
+    title: { ar: 'تحويل البيانات إلى جهات اتصال CSV', en: 'Converting Data into CSV Contacts' },
+    desc: { ar: 'شرح تجهيز ملفات CSV وإدارتها لاستخدامها في حملات واتساب.', en: 'How to prepare and manage CSV files for use in WhatsApp campaigns.' } },
+  { id: 9, duration: '--:--', src: '/video/9.mp4',
+    title: { ar: 'استخراج الأرقام والبيانات من خرائط جوجل', en: 'Extracting Numbers and Data from Google Maps' },
+    desc: { ar: 'شرح استخراج أرقام الهواتف والبيانات التجارية من خرائط جوجل باستخدام WA Sender Pro.', en: 'How to extract phone numbers and business data from Google Maps using WA Sender Pro.' } },
+  { id: 10, duration: '--:--', src: '/video/10.mp4',
+    title: { ar: 'طريقة عمل حملة إعلانية على واتساب - آخر تحديث', en: 'How to Run a WhatsApp Ad Campaign - Latest Update' },
+    desc: { ar: 'شرح أحدث طريقة لإنشاء حملة إعلانية عبر واتساب مع أفضل الممارسات لتقليل نسبة الحظر.', en: 'The latest method for creating a WhatsApp ad campaign with best practices to reduce ban risk.' } }
+];
+let currentVideoIndex = 0;
+
 let currentLang = localStorage.getItem('wasender_lang') || 'ar';
 let soundEnabled = localStorage.getItem('wasender_sound') !== 'false';
 
@@ -191,6 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRevealAnimations();
   initAccordions();
   initPWABanner();
+  initVideoPlaylist();
 });
 
 function updateFooterCopyrightYear() {
@@ -239,6 +279,19 @@ function applyTranslations() {
     if (t[key]) el.innerHTML = t[key];
   });
   updateFooterCopyrightYear();
+
+  if (document.getElementById('videoPlaylist') && typeof videoData !== 'undefined') {
+    renderVideoPlaylist();
+    const numEl = document.getElementById('videoCurrentNum');
+    const titleEl = document.getElementById('videoCurrentTitle');
+    const descEl = document.getElementById('videoCurrentDesc');
+    const item = videoData[currentVideoIndex];
+    if (item) {
+      if (numEl) numEl.textContent = String(currentVideoIndex + 1).padStart(2, '0');
+      if (titleEl) titleEl.textContent = videoText('title', item);
+      if (descEl) descEl.textContent = videoText('desc', item);
+    }
+  }
 }
 
 function initNavigation() {
@@ -281,6 +334,93 @@ function toggleSound(btn) {
   soundEnabled = !soundEnabled;
   localStorage.setItem('wasender_sound', soundEnabled);
   if (btn) btn.textContent = soundEnabled ? '🔊' : '🔇';
+}
+
+/* ── VIDEO PLAYLIST (tutorial.html) ── */
+function initVideoPlaylist() {
+  const playlistEl = document.getElementById('videoPlaylist');
+  if (!playlistEl || !videoData.length) return;
+
+  renderVideoPlaylist();
+  loadVideo(0, { silent: true });
+
+  document.getElementById('prevVidBtn')?.addEventListener('click', () => {
+    loadVideo((currentVideoIndex - 1 + videoData.length) % videoData.length);
+  });
+  document.getElementById('nextVidBtn')?.addEventListener('click', () => {
+    loadVideo((currentVideoIndex + 1) % videoData.length);
+  });
+}
+
+function videoText(field, item) {
+  const lang = i18n[currentLang] ? currentLang : 'ar';
+  return (item[field][lang] || item[field].en || item[field].ar);
+}
+
+function renderVideoPlaylist() {
+  const playlistEl = document.getElementById('videoPlaylist');
+  if (!playlistEl) return;
+
+  playlistEl.innerHTML = videoData.map((item, i) => `
+    <div class="video-item${i === currentVideoIndex ? ' active' : ''}" data-index="${i}" style="--i:${i}" role="option" aria-selected="${i === currentVideoIndex}">
+      <div class="video-item-thumb">
+        <span class="video-item-num">${String(i + 1).padStart(2, '0')}</span>
+        <div class="video-item-eq"><span></span><span></span><span></span></div>
+      </div>
+      <div class="video-item-body">
+        <h4>${videoText('title', item)}</h4>
+        <span>⏱ ${item.duration}</span>
+      </div>
+    </div>
+  `).join('');
+
+  playlistEl.querySelectorAll('.video-item').forEach(el => {
+    el.addEventListener('click', () => loadVideo(parseInt(el.dataset.index, 10)));
+  });
+}
+
+function loadVideo(index, opts = {}) {
+  if (index < 0 || index >= videoData.length) return;
+  currentVideoIndex = index;
+  const item = videoData[index];
+
+  const player = document.getElementById('mainVideo');
+  if (player) {
+    if (item.poster) {
+      player.setAttribute('poster', item.poster);
+    } else {
+      player.removeAttribute('poster');
+    }
+    if (player.getAttribute('src') !== item.src) {
+      player.setAttribute('src', item.src);
+    }
+    if (!opts.silent) {
+      player.play().catch(() => {});
+    }
+  }
+
+  const numEl = document.getElementById('videoCurrentNum');
+  const titleEl = document.getElementById('videoCurrentTitle');
+  const descEl = document.getElementById('videoCurrentDesc');
+  const infoWrap = document.querySelector('.video-current-info');
+
+  if (numEl) numEl.textContent = String(index + 1).padStart(2, '0');
+  if (titleEl) titleEl.textContent = videoText('title', item);
+  if (descEl) descEl.textContent = videoText('desc', item);
+  if (infoWrap) {
+    infoWrap.style.animation = 'none';
+    void infoWrap.offsetWidth;
+    infoWrap.style.animation = '';
+  }
+
+  document.querySelectorAll('.video-playlist .video-item').forEach(el => {
+    const isActive = parseInt(el.dataset.index, 10) === index;
+    el.classList.toggle('active', isActive);
+    el.setAttribute('aria-selected', isActive);
+  });
+
+  const activeItem = document.querySelector('.video-playlist .video-item.active');
+  activeItem?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
 /* ── SCROLL-REVEAL ANIMATIONS ──
