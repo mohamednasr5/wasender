@@ -188,6 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguage();
   initNavigation();
   updateFooterCopyrightYear();
+  initRevealAnimations();
+  initAccordions();
+  initPWABanner();
 });
 
 function updateFooterCopyrightYear() {
@@ -278,4 +281,136 @@ function toggleSound(btn) {
   soundEnabled = !soundEnabled;
   localStorage.setItem('wasender_sound', soundEnabled);
   if (btn) btn.textContent = soundEnabled ? '🔊' : '🔇';
+}
+
+/* ── SCROLL-REVEAL ANIMATIONS ──
+   Powers every .reveal element across the site (hero, cards, sections).
+   Elements fade + slide into view once they cross the viewport threshold. */
+function initRevealAnimations() {
+  const targets = document.querySelectorAll('.reveal');
+  if (!targets.length) return;
+
+  // If the browser doesn't support IntersectionObserver, just show everything.
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  targets.forEach(el => observer.observe(el));
+}
+
+/* ── ACCORDIONS (payment methods on pricing.html + FAQ on pricing.html) ──
+   Delegated so it works regardless of how many items are on the page. */
+function initAccordions() {
+  // Pricing page FAQ (.faq-item > .faq-q / .faq-a)
+  document.querySelectorAll('.faq-list .faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      if (!item) return;
+      const wasOpen = item.classList.contains('open');
+      item.parentElement.querySelectorAll('.faq-item.open').forEach(other => {
+        if (other !== item) other.classList.remove('open');
+      });
+      item.classList.toggle('open', !wasOpen);
+    });
+  });
+}
+
+/* Payment method accordion (pricing.html) — called via onclick="togglePayment('vodafone')" */
+function togglePayment(id) {
+  const body = document.getElementById('pm-' + id);
+  if (!body) return;
+  const method = body.closest('.payment-method');
+  if (!method) return;
+  const wasOpen = method.classList.contains('open');
+
+  document.querySelectorAll('.payment-method.open').forEach(other => {
+    if (other !== method) other.classList.remove('open');
+  });
+
+  method.classList.toggle('open', !wasOpen);
+}
+
+/* Copy bank/wallet numbers to clipboard — called via onclick="copyToClipboard('...', this)" */
+function copyToClipboard(text, btn) {
+  const done = () => {
+    if (!btn) return;
+    const original = btn.textContent;
+    btn.textContent = '✓ تم النسخ';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 1800);
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+
+function fallbackCopy(text, cb) {
+  const tmp = document.createElement('textarea');
+  tmp.value = text;
+  tmp.style.position = 'fixed';
+  tmp.style.opacity = '0';
+  document.body.appendChild(tmp);
+  tmp.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(tmp);
+  if (cb) cb();
+}
+
+/* ── PWA INSTALL BANNER ── */
+let deferredInstallPrompt = null;
+
+function initPWABanner() {
+  const banner = document.getElementById('pwaBanner');
+  if (!banner) return;
+
+  if (localStorage.getItem('wasender_pwa_dismissed') === 'true') return;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    banner.classList.add('show');
+  });
+
+  window.addEventListener('appinstalled', () => {
+    banner.classList.remove('show');
+    localStorage.setItem('wasender_pwa_dismissed', 'true');
+  });
+}
+
+function installPWA() {
+  const banner = document.getElementById('pwaBanner');
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.finally(() => {
+      deferredInstallPrompt = null;
+      if (banner) banner.classList.remove('show');
+    });
+  } else if (banner) {
+    banner.classList.remove('show');
+  }
+}
+
+function hidePWAInstallBanner() {
+  const banner = document.getElementById('pwaBanner');
+  if (banner) banner.classList.remove('show');
+  localStorage.setItem('wasender_pwa_dismissed', 'true');
 }
