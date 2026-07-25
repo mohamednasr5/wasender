@@ -6,7 +6,6 @@
 // ── GLOBAL CONFIG ──
 const CONFIG = {
   downloadUrl: 'https://wasendernew.com/wasender.exe',
-  wadefenderDownloadUrl: 'https://wasendernew.com/WaDefender.msi',
   whatsappNumber: '201279934735',
   siteUrl: 'https://wasendernew.com',
   // D360 Bank Details
@@ -24,8 +23,7 @@ const CONFIG = {
     lifetime: 'https://www.paypal.com/ncp/payment/YR7KL36E3G6DW',
     '2dev-yearly': 'https://www.paypal.com/ncp/payment/UALYCA9GWSGYL',
     '3dev-yearly': 'https://www.paypal.com/ncp/payment/2GKPTJEBQF7KL',
-    '2dev-2yr': 'https://www.paypal.com/ncp/payment/PMNSNED5TBWU8',
-    wadefenderYearly: 'https://www.paypal.com/ncp/payment/6A5DXLMT28W84'
+    '2dev-2yr': 'https://www.paypal.com/ncp/payment/PMNSNED5TBWU8'
   }
 };
 
@@ -42,6 +40,7 @@ const i18n = {
     nav_policies: 'السياسات',
     nav_marketing: '📊 بيانات التسويق',
     nav_wacrm: '🟢 WA CRM',
+    nav_wadefender: '🛡️ WaDefender',
     
     // Bottom Navigation
     bn_home: 'الرئيسية',
@@ -268,48 +267,6 @@ const i18n = {
     wacrm_price_feat4: 'ترخيص لجهاز واحد',
     wacrm_cta_ready: 'جاهز لإدارة عملائك باحترافية؟',
     wacrm_cta_desc: 'حمّل WA CRM الآن وابدأ تنظيم علاقات عملائك من اليوم',
-
-    // WaDefender
-    nav_wadefender: '🛡️ WaDefender',
-    bn_wadefender: 'WaDefender',
-    wadefender_download: 'تحميل مجاني',
-    wadefender_buy: 'اشترِ الآن - 5$/سنة',
-    wadefender_badge: 'أداة تحليل وحماية الحسابات',
-    wadefender_hero_title: 'WaDefender<br>محلل قوة حساب الواتساب',
-    wadefender_hero_sub: 'يراجع عمر حسابك، حجم محادثاتك، وأنماط تفاعلك مع جهات الاتصال والمجموعات، ويقدّم لك تقريرًا وتوصيات عملية قبل ما تبدأ أي حملة إرسال',
-    wadefender_about_title: 'إيه هو WaDefender؟',
-    wadefender_about_p1: 'WaDefender برنامج لسطح المكتب (ويندوز) بيحلل نشاط حساب الواتساب بتاعك من غير ما يبعت أي رسالة نيابة عنك.',
-    wadefender_about_p2: 'بيدّيك صورة واضحة عن عمر الحساب، حجم المحادثات، وطبيعة تفاعلك مع جهات الاتصال والمجموعات، عشان تقدر تراجع مؤشرات حسابك قبل ما توسّع أي نشاط إرسال جماعي.',
-    wadefender_about_p3: 'مناسب للوكالات وفرق المبيعات والدعم اللي بتستخدم واتساب كقناة تواصل أساسية مع عملائها.',
-    wadefender_feat_label: 'المميزات',
-    wadefender_feat_title: 'إيه اللي بيحلله WaDefender؟',
-    wadefender_feat_sub: 'مجموعة أدوات تحليل عملية تساعدك تاخد قرارات مدروسة عن استخدامك للواتساب',
-    wadefender_f1_title: 'تحليل عمر الحساب', wadefender_f1_desc: 'يراجع عمر الحساب اعتمادًا على سجل المحادثات عشان يديك فكرة عن أنماط الاستخدام على المدى الطويل.',
-    wadefender_f2_title: 'مراجعة حجم المحادثات', wadefender_f2_desc: 'يقيّم إجمالي عدد المحادثات عشان تفهم مستوى النشاط العام على حسابك.',
-    wadefender_f3_title: 'تفاعل جهات الاتصال المحفوظة', wadefender_f3_desc: 'يحلل المحادثات مع جهات الاتصال المحفوظة، اللي غالبًا بتدل على علاقات تواصل راسخة.',
-    wadefender_f4_title: 'كشف المحادثات الضعيفة التفاعل', wadefender_f4_desc: 'يبرز المحادثات اللي معدل تفاعل المستلمين فيها منخفض، ومراجعة الأنماط مع جهات الاتصال غير المحفوظة.',
-    wadefender_f5_title: 'تحليل التفاعل مع المجموعات', wadefender_f5_desc: 'يحسب عدد المجموعات المنضم لها ومدى مشاركتك بالرسائل مقارنة بباقي الأعضاء.',
-    wadefender_f6_title: 'تقرير مفصّل وتوصيات', wadefender_f6_desc: 'يقدّم تقريرًا شاملاً بمؤشرات الحساب مع توصيات عملية لتعديل طريقة إدارتك للمراسلة.',
-    wadefender_how_label: 'طريقة العمل',
-    wadefender_how_title: 'إزاي يشتغل WaDefender؟',
-    wadefender_how_sub: '3 خطوات بسيطة لمراجعة حالة حسابك',
-    wadefender_step1_title: 'حمّل البرنامج', wadefender_step1_desc: 'حمّل WaDefender مجانًا وثبّته على جهازك بخطوات بسيطة.',
-    wadefender_step2_title: 'اشترك وفعّل', wadefender_step2_desc: 'اشتراك سنوي بسعر 5$ فقط واحصل على كود التفعيل فورًا.',
-    wadefender_step3_title: 'اعمل فحص لحسابك', wadefender_step3_desc: 'اربط حسابك وشغّل الفحص عشان تشوف التقرير والتوصيات.',
-    wadefender_price_label: 'الأسعار',
-    wadefender_price_title: 'خطة واحدة شاملة',
-    wadefender_price_sub: 'اشتراك سنوي واحد يشمل كل مميزات التحليل',
-    wadefender_price_badge: '⭐ الخطة الوحيدة',
-    wadefender_price_name: 'اشتراك سنوي',
-    wadefender_price_period: '/ سنة',
-    wadefender_pf1: 'تحليل كامل لحساب واتساب واحد',
-    wadefender_pf2: 'تقارير غير محدودة طوال فترة الاشتراك',
-    wadefender_pf3: 'تحديثات مجانية مستمرة',
-    wadefender_pf4: 'دعم فني مباشر عبر واتساب',
-    wadefender_qr_title: '📱 امسح للدفع السريع',
-    wadefender_qr_desc: 'ادفع 5$ مباشرة عبر PayPal',
-    wadefender_cta_ready: 'جاهز تراجع حالة حسابك؟',
-    wadefender_cta_desc: 'حمّل WaDefender الآن وابدأ فحص حسابك من اليوم',
     
     // Policies
     privacy_title: 'سياسة الخصوصية',
@@ -576,7 +533,45 @@ const i18n = {
     tm57: '13. القانون الواجب التطبيق',
     tm58: 'تخضع هذه الشروط وتفسر وفقاً للقوانين المعمول بها. أي نزاعات تنشأ عن هذه الشروط ستخضع للولاية القضائية الحصرية للمحاكم المختصة.',
     tm59: '14. الاتصال بنا',
-    tm60: 'للاستفسارات حول هذه الشروط:'
+    tm60: 'للاستفسارات حول هذه الشروط:',
+
+    // WaDefender Page
+    wadefender_title: 'WaDefender - محلل قوة حساب واتساب',
+    wadefender_desc: 'أداة احترافية لفحص وتحليل قوة حسابك على واتساب',
+    wadefender_badge: '🛡️ أداة حماية متقدمة',
+    wadefender_hero_title: 'WaDefender<br>محلل قوة حساب واتساب',
+    wadefender_hero_sub: 'أداة احترافية لفحص وتحليل قوة حسابك على واتساب، اكتشف نقاط الضعف وقوِّ حسابك ضد خطر الحظر.',
+    wadefender_download: 'تحميل مجاني',
+    wadefender_buy: 'اشترك الآن - 5$/سنة',
+    wadefender_feature1_title: 'تحليل قوة الحساب',
+    wadefender_feature1_desc: 'فحص شامل لحالة حساب واتساب الخاصك مع تقرير مفصل عن نقاط القوة والضعف.',
+    wadefender_feature2_title: 'فحص صحة الأرقام',
+    wadefender_feature2_desc: 'التحقق من نشاط أرقام واتساب ومعرفة إذا كانت مسجلة أو محظورة.',
+    wadefender_feature3_title: 'حماية من الحظر',
+    wadefender_feature3_desc: 'تقييم مخاطر الحظر على حسابك وإجراءات وقائية للحماية.',
+    wadefender_feature4_title: 'تقارير تفصيلية',
+    wadefender_feature4_desc: 'تقارير شاملة ومحدثة عن حالة حسابك.',
+    wadefender_how_title: 'ابدأ في 3 خطوات بسيطة',
+    wadefender_step1_title: 'حمّل البرنامج',
+    wadefender_step1_desc: 'حمّل WaDefender مجانًا وثبته على جهازك.',
+    wadefender_step2_title: 'اشترك وفعّل',
+    wadefender_step2_desc: 'اشترك بسعر 5 دولار فقط للسنة الكاملة.',
+    wadefender_step3_title: 'ابدأ التحليل',
+    wadefender_step3_desc: 'أدخل كود التفعيل وابدأ فحص حسابك.',
+    wadefender_price_title: 'الباقة السنوية',
+    wadefender_price_amount: '$5',
+    wadefender_price_period: '/ سنة',
+
+    // Gulf Data Packages
+    kuwait_title: 'باقة الكويت',
+    kuwait_count: '2 مليون رقم',
+    kuwait_price: '$25 USD',
+    uae_title: 'باقة الإمارات',
+    uae_count: '1 مليون رقم',
+    uae_price: '$15 USD',
+    gulf_title: 'باقة دول الخليج مجمعة',
+    gulf_count: '+10 ملايين رقم',
+    gulf_price: '$250 USD'
   },
   
   en: {
@@ -589,6 +584,7 @@ const i18n = {
     nav_policies: 'Policies',
     nav_marketing: '📊 Marketing Data',
     nav_wacrm: '🟢 WA CRM',
+    nav_wadefender: '🛡️ WaDefender',
     bn_home: 'Home',
     bn_videos: 'Videos',
     bn_pricing: 'Prices',
@@ -789,48 +785,6 @@ const i18n = {
     wacrm_price_feat4: 'Single device license',
     wacrm_cta_ready: 'Ready to manage your clients professionally?',
     wacrm_cta_desc: 'Download WA CRM now and start organizing your client relationships today',
-
-    // WaDefender
-    nav_wadefender: '🛡️ WaDefender',
-    bn_wadefender: 'WaDefender',
-    wadefender_download: 'Free Download',
-    wadefender_buy: 'Buy Now - $5/year',
-    wadefender_badge: 'Account Analysis & Safety Tool',
-    wadefender_hero_title: 'WaDefender<br>WhatsApp Account Strength Analyzer',
-    wadefender_hero_sub: 'Reviews your account age, chat volume, and interaction patterns with contacts and groups, giving you a report and practical recommendations before you scale up any sending campaign',
-    wadefender_about_title: 'What is WaDefender?',
-    wadefender_about_p1: 'WaDefender is a Windows desktop application that analyzes your WhatsApp account activity without sending any messages on your behalf.',
-    wadefender_about_p2: 'It gives you a clear picture of account age, chat volume, and how you interact with contacts and groups, so you can review your account indicators before scaling up bulk messaging activity.',
-    wadefender_about_p3: 'Suitable for agencies and sales or support teams that rely on WhatsApp as a primary communication channel with clients.',
-    wadefender_feat_label: 'Features',
-    wadefender_feat_title: 'What does WaDefender analyze?',
-    wadefender_feat_sub: 'A practical set of analysis tools to help you make informed decisions about your WhatsApp usage',
-    wadefender_f1_title: 'Account Age Analysis', wadefender_f1_desc: 'Reviews account age based on chat history to give you a sense of long-term usage patterns.',
-    wadefender_f2_title: 'Chat Volume Review', wadefender_f2_desc: 'Evaluates the total number of chats to help you understand overall account activity.',
-    wadefender_f3_title: 'Saved Contact Interactions', wadefender_f3_desc: 'Analyzes conversations with saved contacts, which often indicate established communication relationships.',
-    wadefender_f4_title: 'Low-Engagement Chat Detection', wadefender_f4_desc: 'Highlights conversations with limited recipient engagement and reviews patterns with unsaved contacts.',
-    wadefender_f5_title: 'Group Engagement Analysis', wadefender_f5_desc: 'Counts group memberships and compares your message contribution against other members.',
-    wadefender_f6_title: 'Detailed Report & Recommendations', wadefender_f6_desc: 'Provides a consolidated report of account indicators along with practical suggestions for adjusting your messaging habits.',
-    wadefender_how_label: 'How It Works',
-    wadefender_how_title: 'How does WaDefender work?',
-    wadefender_how_sub: '3 simple steps to review your account status',
-    wadefender_step1_title: 'Download the Program', wadefender_step1_desc: 'Download WaDefender for free and install it on your device in simple steps.',
-    wadefender_step2_title: 'Subscribe & Activate', wadefender_step2_desc: 'Annual subscription for only $5 and get your activation code instantly.',
-    wadefender_step3_title: 'Scan Your Account', wadefender_step3_desc: 'Connect your account and run the scan to see your report and recommendations.',
-    wadefender_price_label: 'Pricing',
-    wadefender_price_title: 'One Comprehensive Plan',
-    wadefender_price_sub: 'A single annual subscription that includes all analysis features',
-    wadefender_price_badge: '⭐ The Only Plan',
-    wadefender_price_name: 'Annual Subscription',
-    wadefender_price_period: '/ year',
-    wadefender_pf1: 'Full analysis for one WhatsApp account',
-    wadefender_pf2: 'Unlimited reports throughout the subscription',
-    wadefender_pf3: 'Free continuous updates',
-    wadefender_pf4: 'Direct support via WhatsApp',
-    wadefender_qr_title: '📱 Scan for Quick Payment',
-    wadefender_qr_desc: 'Pay $5 directly via PayPal',
-    wadefender_cta_ready: 'Ready to review your account status?',
-    wadefender_cta_desc: 'Download WaDefender now and start scanning your account today',
     privacy_title: 'Privacy Policy',
     purchase_title: 'Purchase Policy',
     refund_title: 'Refund Policy',
@@ -1089,7 +1043,45 @@ const i18n = {
     tm57: '13. Governing Law',
     tm58: 'These terms are governed by and construed in accordance with applicable law. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the competent courts.',
     tm59: '14. Contact Us',
-    tm60: 'For inquiries about these terms:'
+    tm60: 'For inquiries about these terms:',
+
+    // WaDefender Page
+    wadefender_title: 'WaDefender - WhatsApp Account Strength Analyzer',
+    wadefender_desc: 'Professional tool to analyze your WhatsApp account strength',
+    wadefender_badge: '🛡️ Advanced Protection Tool',
+    wadefender_hero_title: 'WaDefender<br>WhatsApp Account Analyzer',
+    wadefender_hero_sub: 'Professional tool to analyze and check your WhatsApp account strength, discover weaknesses and protect against bans.',
+    wadefender_download: 'Free Download',
+    wadefender_buy: 'Subscribe Now - $5/year',
+    wadefender_feature1_title: 'Account Strength Analysis',
+    wadefender_feature1_desc: 'Comprehensive check of your WhatsApp account status with detailed report on strengths and weaknesses.',
+    wadefender_feature2_title: 'Number Validity Check',
+    wadefender_feature2_desc: 'Verify WhatsApp numbers activity and know if they are registered or banned.',
+    wadefender_feature3_title: 'Ban Protection',
+    wadefender_feature3_desc: 'Assess ban risks on your account and preventive protection measures.',
+    wadefender_feature4_title: 'Detailed Reports',
+    wadefender_feature4_desc: 'Comprehensive and updated reports about your account status.',
+    wadefender_how_title: 'Get Started in 3 Simple Steps',
+    wadefender_step1_title: 'Download the Program',
+    wadefender_step1_desc: 'Download WaDefender for free and install it on your device.',
+    wadefender_step2_title: 'Subscribe & Activate',
+    wadefender_step2_desc: 'Subscribe for only $5 for the full year.',
+    wadefender_step3_title: 'Start Analysis',
+    wadefender_step3_desc: 'Enter activation code and start checking your account.',
+    wadefender_price_title: 'Annual Plan',
+    wadefender_price_amount: '$5',
+    wadefender_price_period: '/year',
+
+    // Gulf Data Packages
+    kuwait_title: 'Kuwait Package',
+    kuwait_count: '2 Million Numbers',
+    kuwait_price: '$25 USD',
+    uae_title: 'UAE Package',
+    uae_count: '1 Million Numbers',
+    uae_price: '$15 USD',
+    gulf_title: 'Gulf Countries Bundle',
+    gulf_count: '10M+ Numbers',
+    gulf_price: '$250 USD'
   },
   
   fr: {
@@ -1102,6 +1094,7 @@ const i18n = {
     nav_policies: 'Politiques',
     nav_marketing: '📊 Données Marketing',
     nav_wacrm: '🟢 WA CRM',
+    nav_wadefender: '🛡️ WaDefender',
     bn_home: 'Accueil',
     bn_videos: 'Vidéos',
     bn_pricing: 'Tarifs',
@@ -1302,48 +1295,6 @@ const i18n = {
     wacrm_price_feat4: 'Licence pour un seul appareil',
     wacrm_cta_ready: 'Prêt à gérer vos clients professionnellement ?',
     wacrm_cta_desc: 'Téléchargez WA CRM maintenant et commencez à organiser vos relations clients aujourd\'hui',
-
-    // WaDefender
-    nav_wadefender: '🛡️ WaDefender',
-    bn_wadefender: 'WaDefender',
-    wadefender_download: 'Téléchargement Gratuit',
-    wadefender_buy: 'Acheter maintenant - 5$/an',
-    wadefender_badge: 'Outil d\'analyse et de sécurité de compte',
-    wadefender_hero_title: 'WaDefender<br>Analyseur de Solidité de Compte WhatsApp',
-    wadefender_hero_sub: 'Examine l\'ancienneté de votre compte, le volume de vos conversations et vos habitudes d\'interaction avec les contacts et les groupes, puis vous fournit un rapport et des recommandations pratiques avant de lancer une campagne d\'envoi',
-    wadefender_about_title: 'Qu\'est-ce que WaDefender ?',
-    wadefender_about_p1: 'WaDefender est une application de bureau Windows qui analyse l\'activité de votre compte WhatsApp sans envoyer aucun message en votre nom.',
-    wadefender_about_p2: 'Il vous donne une image claire de l\'ancienneté du compte, du volume des conversations et de votre façon d\'interagir avec les contacts et les groupes, afin d\'examiner les indicateurs de votre compte avant d\'intensifier l\'envoi en masse.',
-    wadefender_about_p3: 'Adapté aux agences ainsi qu\'aux équipes commerciales et support qui utilisent WhatsApp comme canal de communication principal avec leurs clients.',
-    wadefender_feat_label: 'Fonctionnalités',
-    wadefender_feat_title: 'Que analyse WaDefender ?',
-    wadefender_feat_sub: 'Un ensemble d\'outils d\'analyse pratiques pour vous aider à prendre des décisions éclairées sur votre utilisation de WhatsApp',
-    wadefender_f1_title: 'Analyse de l\'ancienneté du compte', wadefender_f1_desc: 'Examine l\'ancienneté du compte à partir de l\'historique des conversations pour donner une idée des habitudes d\'utilisation à long terme.',
-    wadefender_f2_title: 'Examen du volume de conversations', wadefender_f2_desc: 'Évalue le nombre total de conversations pour comprendre le niveau d\'activité global du compte.',
-    wadefender_f3_title: 'Interactions avec contacts enregistrés', wadefender_f3_desc: 'Analyse les conversations avec les contacts enregistrés, qui indiquent souvent des relations de communication établies.',
-    wadefender_f4_title: 'Détection des conversations peu engagées', wadefender_f4_desc: 'Met en évidence les conversations où l\'engagement des destinataires est limité et examine les habitudes avec les contacts non enregistrés.',
-    wadefender_f5_title: 'Analyse de l\'engagement dans les groupes', wadefender_f5_desc: 'Compte le nombre de groupes rejoints et compare votre contribution aux messages par rapport aux autres membres.',
-    wadefender_f6_title: 'Rapport détaillé et recommandations', wadefender_f6_desc: 'Fournit un rapport consolidé des indicateurs du compte ainsi que des suggestions pratiques pour ajuster vos habitudes de messagerie.',
-    wadefender_how_label: 'Fonctionnement',
-    wadefender_how_title: 'Comment fonctionne WaDefender ?',
-    wadefender_how_sub: '3 étapes simples pour examiner l\'état de votre compte',
-    wadefender_step1_title: 'Télécharger le Programme', wadefender_step1_desc: 'Téléchargez WaDefender gratuitement et installez-le sur votre appareil en quelques étapes simples.',
-    wadefender_step2_title: 'S\'abonner et Activer', wadefender_step2_desc: 'Abonnement annuel pour seulement 5$ et recevez votre code d\'activation instantanément.',
-    wadefender_step3_title: 'Scanner votre compte', wadefender_step3_desc: 'Connectez votre compte et lancez l\'analyse pour voir votre rapport et vos recommandations.',
-    wadefender_price_label: 'Tarifs',
-    wadefender_price_title: 'Plan Complet Unique',
-    wadefender_price_sub: 'Un abonnement annuel unique incluant toutes les fonctionnalités d\'analyse',
-    wadefender_price_badge: '⭐ Le Seul Plan',
-    wadefender_price_name: 'Abonnement Annuel',
-    wadefender_price_period: '/ an',
-    wadefender_pf1: 'Analyse complète pour un compte WhatsApp',
-    wadefender_pf2: 'Rapports illimités pendant toute la durée de l\'abonnement',
-    wadefender_pf3: 'Mises à jour gratuites continues',
-    wadefender_pf4: 'Support direct via WhatsApp',
-    wadefender_qr_title: '📱 Scanner pour un Paiement Rapide',
-    wadefender_qr_desc: 'Payez 5$ directement via PayPal',
-    wadefender_cta_ready: 'Prêt à examiner l\'état de votre compte ?',
-    wadefender_cta_desc: 'Téléchargez WaDefender maintenant et commencez à scanner votre compte dès aujourd\'hui',
     privacy_title: 'Politique de Confidentialité',
     purchase_title: 'Politique d\'Achat',
     refund_title: 'Politique de Remboursement',
@@ -1602,7 +1553,45 @@ const i18n = {
     tm57: '13. Loi applicable',
     tm58: 'Les présentes conditions sont régies et interprétées conformément à la loi applicable. Tout litige découlant de ces conditions relèvera de la compétence exclusive des tribunaux compétents.',
     tm59: '14. Nous contacter',
-    tm60: 'Pour toute question concernant les présentes conditions :'
+    tm60: 'Pour toute question concernant les présentes conditions :',
+
+    // WaDefender Page
+    wadefender_title: 'WaDefender - Analyseur de Force de Compte WhatsApp',
+    wadefender_desc: 'Outil professionnel pour analyser la force de votre compte WhatsApp',
+    wadefender_badge: '🛡️ Outil de Protection Avancé',
+    wadefender_hero_title: 'WaDefender<br>Analyseur de Compte WhatsApp',
+    wadefender_hero_sub: 'Outil professionnel pour analyser et vérifier la force de votre compte WhatsApp, découvrir les faiblesses et vous protéger contre les blocages.',
+    wadefender_download: 'Téléchargement Gratuit',
+    wadefender_buy: 'Abonnez-vous - 5$/an',
+    wadefender_feature1_title: 'Analyse de la Force du Compte',
+    wadefender_feature1_desc: 'Vérification complète de l\'état de votre compte WhatsApp avec un rapport détaillé sur les forces et faiblesses.',
+    wadefender_feature2_title: 'Vérification de Validité des Numéros',
+    wadefender_feature2_desc: 'Vérifier l\'activité des numéros WhatsApp et savoir s\'ils sont enregistrés ou bloqués.',
+    wadefender_feature3_title: 'Protection contre le Blocage',
+    wadefender_feature3_desc: 'Évaluer les risques de blocage sur votre compte et mesures préventives de protection.',
+    wadefender_feature4_title: 'Rapports Détaillés',
+    wadefender_feature4_desc: 'Rapports complets et à jour sur l\'état de votre compte.',
+    wadefender_how_title: 'Commencez en 3 Étapes Simples',
+    wadefender_step1_title: 'Télécharger le Programme',
+    wadefender_step1_desc: 'Téléchargez WaDefender gratuitement et installez-le sur votre appareil.',
+    wadefender_step2_title: 'Abonnez-vous et Activez',
+    wadefender_step2_desc: 'Abonnez-vous pour seulement 5$ pour l\'année complète.',
+    wadefender_step3_title: 'Commencez l\'Analyse',
+    wadefender_step3_desc: 'Entrez le code d\'activation et commencez à vérifier votre compte.',
+    wadefender_price_title: 'Plan Annuel',
+    wadefender_price_amount: '$5',
+    wadefender_price_period: '/an',
+
+    // Gulf Data Packages
+    kuwait_title: 'Pack Koweït',
+    kuwait_count: '2 Millions de Numéros',
+    kuwait_price: '$25 USD',
+    uae_title: 'Pack EAU',
+    uae_count: '1 Million de Numéros',
+    uae_price: '$15 USD',
+    gulf_title: 'Bundle Pays du Golfe',
+    gulf_count: '10M+ Numéros',
+    gulf_price: '$250 USD'
   },
   
   ru: {
@@ -1615,6 +1604,7 @@ const i18n = {
     nav_policies: 'Политики',
     nav_marketing: '📊 Маркетинговые данные',
     nav_wacrm: '🟢 WA CRM',
+    nav_wadefender: '🛡️ WaDefender',
     bn_home: 'Главная',
     bn_videos: 'Видео',
     bn_pricing: 'Цены',
@@ -1815,48 +1805,6 @@ const i18n = {
     wacrm_price_feat4: 'Лицензия на одно устройство',
     wacrm_cta_ready: 'Готовы управлять клиентами профессионально?',
     wacrm_cta_desc: 'Загрузите WA CRM прямо сейчас и начните организовывать отношения с клиентами сегодня',
-
-    // WaDefender
-    nav_wadefender: '🛡️ WaDefender',
-    bn_wadefender: 'WaDefender',
-    wadefender_download: 'Бесплатная загрузка',
-    wadefender_buy: 'Купить сейчас - 5$/год',
-    wadefender_badge: 'Инструмент анализа и безопасности аккаунта',
-    wadefender_hero_title: 'WaDefender<br>Анализатор надёжности аккаунта WhatsApp',
-    wadefender_hero_sub: 'Анализирует возраст вашего аккаунта, объём переписки и характер взаимодействия с контактами и группами, предоставляя отчёт и практические рекомендации перед началом любой рассылки',
-    wadefender_about_title: 'Что такое WaDefender?',
-    wadefender_about_p1: 'WaDefender — настольное приложение для Windows, которое анализирует активность вашего аккаунта WhatsApp, не отправляя от вашего имени никаких сообщений.',
-    wadefender_about_p2: 'Оно даёт чёткую картину возраста аккаунта, объёма переписки и характера взаимодействия с контактами и группами, чтобы вы могли проверить показатели аккаунта перед расширением массовой рассылки.',
-    wadefender_about_p3: 'Подходит для агентств, а также команд продаж и поддержки, использующих WhatsApp как основной канал общения с клиентами.',
-    wadefender_feat_label: 'Возможности',
-    wadefender_feat_title: 'Что анализирует WaDefender?',
-    wadefender_feat_sub: 'Набор практичных инструментов анализа, помогающих принимать обоснованные решения об использовании WhatsApp',
-    wadefender_f1_title: 'Анализ возраста аккаунта', wadefender_f1_desc: 'Анализирует возраст аккаунта на основе истории переписки, давая представление о долгосрочных моделях использования.',
-    wadefender_f2_title: 'Обзор объёма переписки', wadefender_f2_desc: 'Оценивает общее количество чатов, чтобы понять общий уровень активности аккаунта.',
-    wadefender_f3_title: 'Взаимодействие с сохранёнными контактами', wadefender_f3_desc: 'Анализирует переписку с сохранёнными контактами, что часто указывает на устоявшиеся отношения общения.',
-    wadefender_f4_title: 'Обнаружение слабо вовлечённых чатов', wadefender_f4_desc: 'Выделяет переписки с низкой вовлечённостью получателей и анализирует паттерны с несохранёнными контактами.',
-    wadefender_f5_title: 'Анализ активности в группах', wadefender_f5_desc: 'Подсчитывает количество групп и сравнивает ваш вклад в сообщения с другими участниками.',
-    wadefender_f6_title: 'Подробный отчёт и рекомендации', wadefender_f6_desc: 'Предоставляет сводный отчёт по показателям аккаунта вместе с практическими рекомендациями по корректировке привычек рассылки.',
-    wadefender_how_label: 'Как это работает',
-    wadefender_how_title: 'Как работает WaDefender?',
-    wadefender_how_sub: '3 простых шага для проверки состояния вашего аккаунта',
-    wadefender_step1_title: 'Загрузите программу', wadefender_step1_desc: 'Бесплатно загрузите WaDefender и установите на устройство в несколько простых шагов.',
-    wadefender_step2_title: 'Подпишитесь и активируйте', wadefender_step2_desc: 'Годовая подписка всего за 5$ и получите код активации мгновенно.',
-    wadefender_step3_title: 'Проверьте свой аккаунт', wadefender_step3_desc: 'Подключите аккаунт и запустите проверку, чтобы увидеть отчёт и рекомендации.',
-    wadefender_price_label: 'Цены',
-    wadefender_price_title: 'Один комплексный план',
-    wadefender_price_sub: 'Единая годовая подписка, включающая все функции анализа',
-    wadefender_price_badge: '⭐ Единственный план',
-    wadefender_price_name: 'Годовая подписка',
-    wadefender_price_period: '/ год',
-    wadefender_pf1: 'Полный анализ для одного аккаунта WhatsApp',
-    wadefender_pf2: 'Неограниченные отчёты в течение всего срока подписки',
-    wadefender_pf3: 'Бесплатные постоянные обновления',
-    wadefender_pf4: 'Прямая поддержка через WhatsApp',
-    wadefender_qr_title: '📱 Сканируйте для быстрой оплаты',
-    wadefender_qr_desc: 'Оплатите 5$ напрямую через PayPal',
-    wadefender_cta_ready: 'Готовы проверить состояние аккаунта?',
-    wadefender_cta_desc: 'Загрузите WaDefender прямо сейчас и начните проверку своего аккаунта уже сегодня',
     privacy_title: 'Политика Конфиденциальности',
     purchase_title: 'Политика Покупки',
     refund_title: 'Политика Возврата',
@@ -2115,7 +2063,45 @@ const i18n = {
     tm57: '13. Применимое право',
     tm58: 'Данные условия регулируются и толкуются в соответствии с применимым законодательством. Любые споры, возникающие из данных условий, подлежат исключительной юрисдикции компетентных судов.',
     tm59: '14. Связаться с нами',
-    tm60: 'По вопросам, касающимся данных условий:'
+    tm60: 'По вопросам, касающимся данных условий:',
+
+    // WaDefender Page
+    wadefender_title: 'WaDefender - Анализатор Силы Аккаунта WhatsApp',
+    wadefender_desc: 'Профессиональный инструмент для анализа силы вашего аккаунта WhatsApp',
+    wadefender_badge: '🛡️ Продвинутый Инструмент Защиты',
+    wadefender_hero_title: 'WaDefender<br>Анализатор Аккаунта WhatsApp',
+    wadefender_hero_sub: 'Профессиональный инструмент для анализа и проверки силы вашего аккаунта WhatsApp, обнаружения слабых мест и защиты от блокировок.',
+    wadefender_download: 'Бесплатная Загрузка',
+    wadefender_buy: 'Подписаться - 5$/год',
+    wadefender_feature1_title: 'Анализ Силы Аккаунта',
+    wadefender_feature1_desc: 'Комплексная проверка состояния вашего аккаунта WhatsApp с подробным отчётом о сильных и слабых сторонах.',
+    wadefender_feature2_title: 'Проверка Валидности Номеров',
+    wadefender_feature2_desc: 'Проверить активность номеров WhatsApp и узнать, зарегистрированы они или заблокированы.',
+    wadefender_feature3_title: 'Защита от Блокировки',
+    wadefender_feature3_desc: 'Оценить риски блокировки вашего аккаунта и превентивные меры защиты.',
+    wadefender_feature4_title: 'Подробные Отчёты',
+    wadefender_feature4_desc: 'Комплексные и актуальные отчёты о состоянии вашего аккаунта.',
+    wadefender_how_title: 'Начните в 3 Простых Шага',
+    wadefender_step1_title: 'Загрузить Программу',
+    wadefender_step1_desc: 'Загрузите WaDefender бесплатно и установите на своё устройство.',
+    wadefender_step2_title: 'Подпишитесь и Активируйте',
+    wadefender_step2_desc: 'Подпишитесь всего за 5$ на полный год.',
+    wadefender_step3_title: 'Начните Анализ',
+    wadefender_step3_desc: 'Введите код активации и начните проверку аккаунта.',
+    wadefender_price_title: 'Годовой План',
+    wadefender_price_amount: '$5',
+    wadefender_price_period: '/год',
+
+    // Gulf Data Packages
+    kuwait_title: 'Пакет Кувейта',
+    kuwait_count: '2 Миллиона Номеров',
+    kuwait_price: '$25 USD',
+    uae_title: 'Пакет ОАЭ',
+    uae_count: '1 Миллион Номеров',
+    uae_price: '$15 USD',
+    gulf_title: 'Пакет Стран Персидского Залива',
+    gulf_count: '10М+ Номеров',
+    gulf_price: '$250 USD'
   },
   
   it: {
@@ -2128,6 +2114,7 @@ const i18n = {
     nav_policies: 'Politiche',
     nav_marketing: '📊 Dati di Marketing',
     nav_wacrm: '🟢 WA CRM',
+    nav_wadefender: '🛡️ WaDefender',
     bn_home: 'Home',
     bn_videos: 'Video',
     bn_pricing: 'Prezzi',
@@ -2328,48 +2315,6 @@ const i18n = {
     wacrm_price_feat4: 'Licenza per un singolo dispositivo',
     wacrm_cta_ready: 'Pronto a gestire i tuoi clienti professionalmente?',
     wacrm_cta_desc: 'Scarica WA CRM ora e inizia a organizzare le relazioni con i clienti oggi',
-
-    // WaDefender
-    nav_wadefender: '🛡️ WaDefender',
-    bn_wadefender: 'WaDefender',
-    wadefender_download: 'Download Gratuito',
-    wadefender_buy: 'Acquista Ora - 5$/anno',
-    wadefender_badge: 'Strumento di Analisi e Sicurezza dell\'Account',
-    wadefender_hero_title: 'WaDefender<br>Analizzatore di Solidità dell\'Account WhatsApp',
-    wadefender_hero_sub: 'Esamina l\'anzianità del tuo account, il volume delle conversazioni e i modelli di interazione con contatti e gruppi, fornendoti un report e consigli pratici prima di avviare qualsiasi campagna di invio',
-    wadefender_about_title: 'Cos\'è WaDefender?',
-    wadefender_about_p1: 'WaDefender è un\'applicazione desktop per Windows che analizza l\'attività del tuo account WhatsApp senza inviare alcun messaggio per tuo conto.',
-    wadefender_about_p2: 'Ti offre un quadro chiaro dell\'anzianità dell\'account, del volume delle conversazioni e del modo in cui interagisci con contatti e gruppi, così puoi esaminare gli indicatori del tuo account prima di ampliare l\'invio di massa.',
-    wadefender_about_p3: 'Adatto ad agenzie e team di vendita o assistenza che utilizzano WhatsApp come canale di comunicazione principale con i clienti.',
-    wadefender_feat_label: 'Funzionalità',
-    wadefender_feat_title: 'Cosa analizza WaDefender?',
-    wadefender_feat_sub: 'Un insieme di strumenti di analisi pratici per aiutarti a prendere decisioni informate sull\'uso di WhatsApp',
-    wadefender_f1_title: 'Analisi dell\'anzianità dell\'account', wadefender_f1_desc: 'Esamina l\'anzianità dell\'account in base alla cronologia delle conversazioni per darti un\'idea dei modelli di utilizzo a lungo termine.',
-    wadefender_f2_title: 'Revisione del volume delle conversazioni', wadefender_f2_desc: 'Valuta il numero totale di chat per comprendere il livello generale di attività dell\'account.',
-    wadefender_f3_title: 'Interazioni con contatti salvati', wadefender_f3_desc: 'Analizza le conversazioni con i contatti salvati, che spesso indicano relazioni di comunicazione consolidate.',
-    wadefender_f4_title: 'Rilevamento conversazioni a basso coinvolgimento', wadefender_f4_desc: 'Evidenzia le conversazioni con coinvolgimento limitato dei destinatari ed esamina i modelli con contatti non salvati.',
-    wadefender_f5_title: 'Analisi del coinvolgimento nei gruppi', wadefender_f5_desc: 'Conta il numero di gruppi a cui hai aderito e confronta il tuo contributo ai messaggi rispetto agli altri membri.',
-    wadefender_f6_title: 'Report dettagliato e raccomandazioni', wadefender_f6_desc: 'Fornisce un report consolidato degli indicatori dell\'account insieme a suggerimenti pratici per modificare le tue abitudini di messaggistica.',
-    wadefender_how_label: 'Come Funziona',
-    wadefender_how_title: 'Come funziona WaDefender?',
-    wadefender_how_sub: '3 semplici passaggi per esaminare lo stato del tuo account',
-    wadefender_step1_title: 'Scarica il Programma', wadefender_step1_desc: 'Scarica WaDefender gratuitamente e installalo sul tuo dispositivo in pochi passaggi.',
-    wadefender_step2_title: 'Abbonati e Attiva', wadefender_step2_desc: 'Abbonamento annuale a soli 5$ e ricevi il codice di attivazione istantaneamente.',
-    wadefender_step3_title: 'Scansiona il tuo account', wadefender_step3_desc: 'Collega il tuo account e avvia la scansione per vedere il report e i consigli.',
-    wadefender_price_label: 'Prezzi',
-    wadefender_price_title: 'Piano Completo Unico',
-    wadefender_price_sub: 'Un unico abbonamento annuale che include tutte le funzioni di analisi',
-    wadefender_price_badge: '⭐ L\'Unico Piano',
-    wadefender_price_name: 'Abbonamento Annuale',
-    wadefender_price_period: '/ anno',
-    wadefender_pf1: 'Analisi completa per un account WhatsApp',
-    wadefender_pf2: 'Report illimitati per tutta la durata dell\'abbonamento',
-    wadefender_pf3: 'Aggiornamenti gratuiti continui',
-    wadefender_pf4: 'Supporto diretto tramite WhatsApp',
-    wadefender_qr_title: '📱 Scansiona per un Pagamento Rapido',
-    wadefender_qr_desc: 'Paga 5$ direttamente tramite PayPal',
-    wadefender_cta_ready: 'Pronto a esaminare lo stato del tuo account?',
-    wadefender_cta_desc: 'Scarica WaDefender ora e inizia a scansionare il tuo account oggi stesso',
     privacy_title: 'Politica sulla Privacy',
     purchase_title: 'Politica di Acquisto',
     refund_title: 'Politica di Rimborso',
@@ -2405,7 +2350,45 @@ const i18n = {
     vid9_title: 'Estrai Numeri e Dati da Google Maps',
     vid9_desc: 'Impara come estrarre numeri di telefono e dati commerciali da Google Maps usando WA Sender Pro.',
     vid10_title: 'Come Eseguire Campagna Pubblicitaria WhatsApp - Ultimo Aggiornamento',
-    vid10_desc: 'Impara l\'ultimo metodo per creare campagna pubblicitaria via WhatsApp con migliori pratiche per ridurre tasso di blocco.'
+    vid10_desc: 'Impara l\'ultimo metodo per creare campagna pubblicitaria via WhatsApp con migliori pratiche per ridurre tasso di blocco.',
+
+    // WaDefender Page
+    wadefender_title: 'WaDefender - Analizzatore di Forza Account WhatsApp',
+    wadefender_desc: 'Strumento professionale per analizzare la forza del tuo account WhatsApp',
+    wadefender_badge: '🛡️ Strumento di Protezione Avanzato',
+    wadefender_hero_title: 'WaDefender<br>Analizzatore Account WhatsApp',
+    wadefender_hero_sub: 'Strumento professionale per analizzare e controllare la forza del tuo account WhatsApp, scoprire debolezze e proteggere dai blocchi.',
+    wadefender_download: 'Download Gratuito',
+    wadefender_buy: 'Abbonati Ora - 5$/anno',
+    wadefender_feature1_title: 'Analisi Forza Account',
+    wadefender_feature1_desc: 'Controllo completo dello stato del tuo account WhatsApp con rapporto dettagliato su punti di forza e debolezza.',
+    wadefender_feature2_title: 'Controllo Validità Numeri',
+    wadefender_feature2_desc: 'Verifica l\'attività dei numeri WhatsApp e sapere se sono registrati o bloccati.',
+    wadefender_feature3_title: 'Protezione dal Blocco',
+    wadefender_feature3_desc: 'Valutare i rischi di blocco sul tuo account e misure preventive di protezione.',
+    wadefender_feature4_title: 'Rapporti Dettagliati',
+    wadefender_feature4_desc: 'Rapporti completi e aggiornati sullo stato del tuo account.',
+    wadefender_how_title: 'Inizia in 3 Semplici Passaggi',
+    wadefender_step1_title: 'Scarica il Programma',
+    wadefender_step1_desc: 'Scarica WaDefender gratuitamente e installalo sul tuo dispositivo.',
+    wadefender_step2_title: 'Abbonati e Attiva',
+    wadefender_step2_desc: 'Abbonati per soli 5$ per l\'anno completo.',
+    wadefender_step3_title: 'Inizia l\'Analisi',
+    wadefender_step3_desc: 'Inserisci il codice di attivazione e inizia a controllare il tuo account.',
+    wadefender_price_title: 'Piano Annuale',
+    wadefender_price_amount: '$5',
+    wadefender_price_period: '/anno',
+
+    // Gulf Data Packages
+    kuwait_title: 'Pacco Kuwait',
+    kuwait_count: '2 Milioni di Numeri',
+    kuwait_price: '$25 USD',
+    uae_title: 'Pacco UAE',
+    uae_count: '1 Milione di Numeri',
+    uae_price: '$15 USD',
+    gulf_title: 'Bundle Paesi Golfo',
+    gulf_count: '10M+ Numeri',
+    gulf_price: '$250 USD'
   },
 
     // ── FAQ (contact page) ──
@@ -3295,3 +3278,326 @@ document.addEventListener('keydown', (e) => {
     document.querySelector('.nav-links')?.classList.remove('open');
   }
 });
+
+// ═══════════════════════════════════════════════════════════════
+// ADVANCED ANIMATIONS & DYNAMIC INTERACTIONS (FIXED VERSION)
+// ═══════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ── 1. SCROLL PROGRESS INDICATOR ──
+  initScrollProgress();
+  
+  // ── 2. SCROLL REVEAL ANIMATIONS ──
+  initScrollReveal();
+  
+  // ── 3. RIPPLE EFFECT FOR BUTTONS ──
+  initRippleEffect();
+  
+  // ── 4. COUNTER ANIMATION ──
+  initCounterAnimation();
+  
+  // ── 5. TILT EFFECT FOR CARDS ──
+  initTiltEffect();
+  
+  // ── 6. NAVBAR SCROLL EFFECTS ──
+  initNavbarScroll();
+  
+  // ── 7. PARALLAX EFFECTS ──
+  initParallaxEffect();
+  
+  // ── 8. FAQ ACCORDION ──
+  initFaqAccordion();
+  
+  // ── 9. MAGNETIC BUTTONS ──
+  initMagneticButtons();
+});
+
+// ── SCROLL PROGRESS INDICATOR ──
+function initScrollProgress() {
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  progressBar.style.cssText = 'position:fixed;top:0;left:0;height:4px;background:linear-gradient(135deg, #25D366, #128C7E);z-index:10001;transition:width 0.1s ease;box-shadow:0 0 10px rgba(37,211,102,0.5);';
+  document.body.appendChild(progressBar);
+  
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = Math.min(scrollPercent, 100) + '%';
+  }, { passive: true });
+}
+
+// ── SCROLL REVEAL ANIMATIONS ──
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll(
+    '.reveal, .reveal-on-scroll, .reveal-left, .reveal-right, .reveal-scale, ' +
+    '.feature-card, .step-card, .pricing-card, .product-card, .why-card, .faq-item'
+  );
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -80px 0px',
+    threshold: 0.1
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        
+        const parent = entry.target.parentElement;
+        if (parent) {
+          const siblings = Array.from(parent.children).filter(el => 
+            el.classList.contains('reveal') || 
+            el.classList.contains('reveal-on-scroll') ||
+            el.classList.contains('feature-card') ||
+            el.classList.contains('step-card')
+          );
+          const index = siblings.indexOf(entry.target);
+          if (index > 0) {
+            entry.target.style.transitionDelay = `${Math.min(index * 0.1, 0.5)}s`;
+          }
+        }
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  revealElements.forEach(el => observer.observe(el));
+}
+
+// ── RIPPLE EFFECT FOR BUTTONS ──
+function initRippleEffect() {
+  const buttons = document.querySelectorAll('.btn, .buy-btn, .cta-btn, .wacrm-buy-btn, .pricing-btn');
+  
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const existingRipple = this.querySelector('.ripple');
+      if (existingRipple) existingRipple.remove();
+      
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.cssText = `
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${x}px;
+        top: ${y}px;
+      `;
+      
+      this.style.position = 'relative';
+      this.style.overflow = 'hidden';
+      this.appendChild(ripple);
+      
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+}
+
+// ── COUNTER ANIMATION ──
+function initCounterAnimation() {
+  const counters = document.querySelectorAll('.stat-number, .counter');
+  
+  const animateCounter = (el) => {
+    const text = el.textContent.trim();
+    const match = text.match(/^([\d.]+)([M+K+]*)$/);
+    
+    if (!match) return;
+    
+    const target = parseFloat(match[1]);
+    const suffix = match[2] || '';
+    const duration = 2000;
+    const startTime = performance.now();
+    
+    const updateCounter = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const current = start + (target - start) * easeOutQuart;
+      
+      el.textContent = current.toFixed(current % 1 === 0 ? 0 : 1) + suffix;
+      
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      }
+    };
+    
+    const start = 0;
+    requestAnimationFrame(updateCounter);
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  counters.forEach(counter => observer.observe(counter));
+}
+
+// ── TILT EFFECT FOR CARDS ──
+function initTiltEffect() {
+  // Only enable on desktop
+  if (window.matchMedia('(max-width: 768px)').matches) return;
+  
+  const tiltCards = document.querySelectorAll('.card, .feature-card, .product-card, .why-card, .pricing-card');
+  
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+    
+    // Disable on touch devices
+    card.addEventListener('touchstart', () => {
+      card.style.transform = '';
+    }, { passive: true });
+  });
+}
+
+// ── NAVBAR SCROLL EFFECTS ──
+function initNavbarScroll() {
+  const navWrapper = document.querySelector('.nav-wrapper');
+  
+  if (!navWrapper) return;
+  
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    
+    if (currentScroll > 50) {
+      navWrapper.classList.add('scrolled');
+    } else {
+      navWrapper.classList.remove('scrolled');
+    }
+  }, { passive: true });
+}
+
+// ── PARALLAX EFFECTS ──
+function initParallaxEffect() {
+  // Only enable on desktop and if reduced motion is not preferred
+  if (window.matchMedia('(max-width: 768px)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  
+  const parallaxElements = document.querySelectorAll('.hero-shape, .particle');
+  
+  if (parallaxElements.length === 0) return;
+  
+  let rafId = null;
+  
+  window.addEventListener('mousemove', (e) => {
+    if (rafId) return;
+    
+    rafId = requestAnimationFrame(() => {
+      const mouseX = e.clientX / window.innerWidth - 0.5;
+      const mouseY = e.clientY / window.innerHeight - 0.5;
+      
+      parallaxElements.forEach((el, index) => {
+        const speed = (index + 1) * 20;
+        const x = mouseX * speed;
+        const y = mouseY * speed;
+        
+        el.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      
+      rafId = null;
+    });
+  }, { passive: true });
+}
+
+// ── FAQ ACCORDION ──
+function initFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    if (!question) return;
+    
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+        }
+      });
+      
+      item.classList.toggle('active', !isActive);
+    });
+  });
+}
+
+// ── MAGNETIC BUTTONS ──
+function initMagneticButtons() {
+  if (window.matchMedia('(max-width: 768px)').matches) return;
+  
+  const magneticBtns = document.querySelectorAll('.btn-primary, .btn-gold, .wa-float');
+  
+  magneticBtns.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+}
+
+// ── LAZY LOAD IMAGES ──
+function initLazyLoad() {
+  const images = document.querySelectorAll('img[data-src]');
+  
+  if (images.length === 0) return;
+  
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+        imageObserver.unobserve(img);
+      }
+    });
+  });
+  
+  images.forEach(img => imageObserver.observe(img));
+}
+
+// Initialize lazy loading safely
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLazyLoad);
+} else {
+  initLazyLoad();
+}
