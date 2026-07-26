@@ -735,7 +735,7 @@ function initSalesNotifications() {
 }
 
 // ── TOGGLE SALES NOTIFICATIONS ──
-function toggleSalesNotifications(disabled) {
+function toggleSalesNotifications(false) {
   localStorage.setItem('sales_notifications_disabled', disabled ? 'true' : 'false');
 
   if (disabled && salesNotificationInterval) {
