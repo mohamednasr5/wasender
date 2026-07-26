@@ -1346,132 +1346,356 @@ function hidePWAInstallBanner() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SALES NOTIFICATIONS SYSTEM
+   SALES NOTIFICATIONS SYSTEM - MULTI-LANGUAGE SUPPORT
    ═══════════════════════════════════════════════════════════════ */
 
-const arabicNames = {
-  egyptianMale: ['محمد', 'أحمد', 'محمود', 'حسين', 'عمر', 'يوسف', 'كريم', 'علي', 'خالد', 'أبو عبدالله'],
-  egyptianFemale: ['فاطمة', 'نور', 'مريم', 'سارة', 'زينب', 'عائشة', 'هند', 'دلال', 'ريم', 'منى'],
-  saudiMale: ['أبو عبدالله', 'عابد', 'سلطان', 'فيصل', 'بدر', 'نايف', 'خالد', 'عبدالعزيز'],
-  saudiFemale: ['نورة', 'لطيفة', 'جميلة', 'هيا', 'ريما', 'أريج', 'ملاك', 'أميرة'],
-  yemeniMale: ['عابد', 'معتصم', 'أيوب', 'صالح', 'أنس', 'بركات', 'مكرم', 'جمال'],
-  gulfNames: ['سالم', 'مبارك', 'غسان', 'راشد', 'عتيبة', 'حسن', 'نجيب', 'كاظم']
+// ── Multi-Language Names Database ──
+const notificationData = {
+  ar: {
+    names: {
+      male: ['محمد', 'أحمد', 'محمود', 'حسين', 'عمر', 'يوسف', 'كريم', 'علي', 'خالد', 'أبو عبدالله', 'طارق', 'سمير', 'فادي', 'إبراهيم', 'أسامة', 'رامي', 'شادي', 'مصطفى', 'حمزة', 'حسن', 'سعيد', 'أيمن', 'نبيل', 'عادل', 'مروان', 'ياسر', 'عمرو', 'باسم', 'هاني', 'تامر'],
+      female: ['فاطمة', 'نور', 'مريم', 'سارة', 'زينب', 'عائشة', 'هند', 'دلال', 'ريم', 'منى', 'سلمى', 'أمل', 'نانسي', 'مي', 'جنى', 'رنا', 'هدى', 'شيرين', 'ليلى']
+    },
+    locations: [
+      { city: 'القاهرة', country: 'مصر', flag: '🇪🇬' },
+      { city: 'الإسكندرية', country: 'مصر', flag: '🇪🇬' },
+      { city: 'الجيزة', country: 'مصر', flag: '🇪🇬' },
+      { city: 'الرياض', country: 'السعودية', flag: '🇸🇦' },
+      { city: 'جدة', country: 'السعودية', flag: '🇸🇦' },
+      { city: 'مكة', country: 'السعودية', flag: '🇸🇦' },
+      { city: 'الدمام', country: 'السعودية', flag: '🇸🇦' },
+      { city: 'دبي', country: 'الإمارات', flag: '🇦🇪' },
+      { city: 'أبوظبي', country: 'الإمارات', flag: '🇦🇪' },
+      { city: 'الكويت', country: 'الكويت', flag: '🇰🇼' },
+      { city: 'الدوحة', country: 'قطر', flag: '🇶🇦' },
+      { city: 'صنعاء', country: 'اليمن', flag: '🇾🇪' },
+      { city: 'عدن', country: 'اليمن', flag: '🇾🇪' },
+      { city: 'الجزائر', country: 'الجزائر', flag: '🇩🇿' },
+      { city: 'المغرب', country: 'المغرب', flag: '🇲🇦' },
+      { city: 'بغداد', country: 'العراق', flag: '🇮🇶' },
+      { city: 'عمان', country: 'الأردن', flag: '🇯🇴' },
+      { city: 'بيروت', country: 'لبنان', flag: '🇱🇧' }
+    ],
+    plans: [
+      { id: 'yearly', name: 'WA Sender - سنة واحدة', price: '$5', period: 'سنوي', periodShort: 'سنوي', lifetimeLabel: 'مدى الحياة', url: 'https://www.paypal.com/ncp/payment/S2MZ5XXCR65ZG' },
+      { id: '2yearly', name: 'WA Sender - سنتين', price: '$15', period: 'سنتين', periodShort: 'سنتين', lifetimeLabel: 'مدى الحياة', url: 'https://www.paypal.com/ncp/payment/FNR3E3UFRLSTC' },
+      { id: '3yearly', name: 'WA Sender - 3 أعوام', price: '$20', period: '3 أعوام', periodShort: '3 أعوام', lifetimeLabel: 'مدى الحياة', url: 'https://www.paypal.com/ncp/payment/QF2GAKDECFGNJ' },
+      { id: 'lifetime', name: 'WA Sender - مدى الحياة', price: '$50', period: 'مدى الحياة', periodShort: 'مدى الحياة', lifetimeLabel: 'مدى الحياة', url: 'https://www.paypal.com/ncp/payment/YR7KL36E3G6DW' },
+      { id: '2dev-yearly', name: 'WA Sender - جهازان/سنة', price: '$8', period: 'سنوي', periodShort: 'سنوي', lifetimeLabel: 'مدى الحياة', url: 'https://www.paypal.com/ncp/payment/UALYCA9GWSGYL' },
+      { id: '3dev-yearly', name: 'WA Sender - 3 أجهزة/سنة', price: '$12', period: 'سنوي', periodShort: 'سنوي', lifetimeLabel: 'مدى الحياة', url: 'https://www.paypal.com/ncp/payment/2GKPTJEBQF7KL' },
+      { id: '2dev-2yr', name: 'WA Sender - جهازان/سنتين', price: '$25', period: 'سنتين', periodShort: 'سنتين', lifetimeLabel: 'مدى الحياة', url: 'https://www.paypal.com/ncp/payment/PMNSNED5TBWU8' }
+    ],
+    templates: {
+      purchase: ['اشترك في باقة', 'اشترى باقة', 'فعّل باقة', 'احصل على رخصة'],
+      upgrade: ['طور خطته إلى', 'رقّى اشتراكه إلى', 'حدّث باقته إلى'],
+      subscribe: ['بدأ اشتراكه في', 'انضم إلينا عبر', 'اختار باقة'],
+      renewal: ['جدّد اشتراكه في', 'مدد عضويته لـ']
+    },
+    timeAgo: ['الآن', 'منذ دقيقة', 'منذ دقيقتين', 'منذ 3 دقائق', 'منذ 5 دقائق', 'منذ 8 دقائق'],
+    messages: {
+      purchase: '{name} من {city} {action} {plan}',
+      upgrade_lifetime: '{name} من {country} {action} {plan} 🎉',
+      upgrade_normal: '{name} {action} {period} بدلًا من شهري',
+      subscribe: '{name} من {country} {action} {plan} لمدة {period}',
+      renewal: '{name} {action} {plan} - شكرًا للولاء! 💚'
+    },
+    closeLabel: 'إغلاق'
+  },
+  en: {
+    names: {
+      male: ['Mohammed', 'Ahmed', 'Mahmoud', 'Hussein', 'Omar', 'Youssef', 'Karim', 'Ali', 'Khaled', 'Abdullah', 'Tarek', 'Samir', 'Fady', 'Ibrahim', 'Osama', 'Rami', 'Shady', 'Mostafa', 'Hamza', 'Hassan', 'Said', 'Ayman', 'Nabil', 'Adel', 'Moran', 'Yasser', 'Amro', 'Basem', 'Hany', 'Tamer', 'James', 'John', 'Michael', 'David', 'Robert', 'Daniel', 'Kevin', 'Brian', 'Steve', 'William', 'Thomas', 'Andrew'],
+      female: ['Fatima', 'Nour', 'Maryam', 'Sarah', 'Zainab', 'Aisha', 'Hind', 'Dalal', 'Reem', 'Mona', 'Salma', 'Amal', 'Nancy', 'Mei', 'Jenna', 'Rana', 'Hoda', 'Shereen', 'Layla', 'Emma', 'Sophia', 'Olivia', 'Isabella', 'Charlotte', 'Amelia', 'Harper', 'Evelyn', 'Abigail', 'Emily', 'Elizabeth']
+    },
+    locations: [
+      { city: 'Cairo', country: 'Egypt', flag: '🇪🇬' },
+      { city: 'Alexandria', country: 'Egypt', flag: '🇪🇬' },
+      { city: 'Giza', country: 'Egypt', flag: '🇪🇬' },
+      { city: 'Riyadh', country: 'Saudi Arabia', flag: '🇸🇦' },
+      { city: 'Jeddah', country: 'Saudi Arabia', flag: '🇸🇦' },
+      { city: 'Mecca', country: 'Saudi Arabia', flag: '🇸🇦' },
+      { city: 'Dammam', country: 'Saudi Arabia', flag: '🇸🇦' },
+      { city: 'Dubai', country: 'UAE', flag: '🇦🇪' },
+      { city: 'Abu Dhabi', country: 'UAE', flag: '🇦🇪' },
+      { city: 'Kuwait City', country: 'Kuwait', flag: '🇰🇼' },
+      { city: 'Doha', country: 'Qatar', flag: '🇶🇦' },
+      { city: 'Sanaa', country: 'Yemen', flag: '🇾🇪' },
+      { city: 'Aden', country: 'Yemen', flag: '🇾🇪' },
+      { city: 'Algiers', country: 'Algeria', flag: '🇩🇿' },
+      { city: 'Casablanca', country: 'Morocco', flag: '🇲🇦' },
+      { city: 'Baghdad', country: 'Iraq', flag: '🇮🇶' },
+      { city: 'Amman', country: 'Jordan', flag: '🇯🇴' },
+      { city: 'Beirut', country: 'Lebanon', flag: '🇱🇧' },
+      { city: 'London', country: 'UK', flag: '🇬🇧' },
+      { city: 'Paris', country: 'France', flag: '🇫🇷' },
+      { city: 'New York', country: 'USA', flag: '🇺🇸' },
+      { city: 'Berlin', country: 'Germany', flag: '🇩🇪' },
+      { city: 'Istanbul', country: 'Turkey', flag: '🇹🇷' }
+    ],
+    plans: [
+      { id: 'yearly', name: 'WA Sender - 1 Year', price: '$5', period: 'Yearly', periodShort: 'Yearly', lifetimeLabel: 'Lifetime', url: 'https://www.paypal.com/ncp/payment/S2MZ5XXCR65ZG' },
+      { id: '2yearly', name: 'WA Sender - 2 Years', price: '$15', period: '2 Years', periodShort: '2 Years', lifetimeLabel: 'Lifetime', url: 'https://www.paypal.com/ncp/payment/FNR3E3UFRLSTC' },
+      { id: '3yearly', name: 'WA Sender - 3 Years', price: '$20', period: '3 Years', periodShort: '3 Years', lifetimeLabel: 'Lifetime', url: 'https://www.paypal.com/ncp/payment/QF2GAKDECFGNJ' },
+      { id: 'lifetime', name: 'WA Sender - Lifetime', price: '$50', period: 'Lifetime', periodShort: 'Lifetime', lifetimeLabel: 'Lifetime', url: 'https://www.paypal.com/ncp/payment/YR7KL36E3G6DW' },
+      { id: '2dev-yearly', name: 'WA Sender - 2 Devices/Year', price: '$8', period: 'Yearly', periodShort: 'Yearly', lifetimeLabel: 'Lifetime', url: 'https://www.paypal.com/ncp/payment/UALYCA9GWSGYL' },
+      { id: '3dev-yearly', name: 'WA Sender - 3 Devices/Year', price: '$12', period: 'Yearly', periodShort: 'Yearly', lifetimeLabel: 'Lifetime', url: 'https://www.paypal.com/ncp/payment/2GKPTJEBQF7KL' },
+      { id: '2dev-2yr', name: 'WA Sender - 2 Devices/2 Years', price: '$25', period: '2 Years', periodShort: '2 Years', lifetimeLabel: 'Lifetime', url: 'https://www.paypal.com/ncp/payment/PMNSNED5TBWU8' }
+    ],
+    templates: {
+      purchase: ['subscribed to', 'purchased', 'activated', 'got license for'],
+      upgrade: ['upgraded to', 'moved to', 'switched to'],
+      subscribe: ['started', 'joined us with', 'chose'],
+      renewal: ['renewed', 'extended membership for']
+    },
+    timeAgo: ['Just now', '1 min ago', '2 mins ago', '3 mins ago', '5 mins ago', '8 mins ago'],
+    messages: {
+      purchase: '{name} from {city} {action} {plan}',
+      upgrade_lifetime: '{name} from {country} {action} {plan} 🎉',
+      upgrade_normal: '{name} {action} {period} instead of monthly',
+      subscribe: '{name} from {country} {action} {plan} - {period}',
+      renewal: '{name} {action} {plan} - Thanks for loyalty! 💚'
+    },
+    closeLabel: 'Close'
+  },
+  fr: {
+    names: {
+      male: ['Mohammed', 'Ahmed', 'Karim', 'Ali', 'Omar', 'Youssef', 'Hassan', 'Tarek', 'Samir', 'Ibrahim', 'Khalid', 'Saïd', 'Rachid', 'Jamal', 'Mehdi', 'Amine', 'Nabil', 'Hamza', 'Mounir', 'Fouad', 'Reda', 'Youssef', 'Adam', 'Louis', 'Gabriel', 'Romain', 'Nicolas', 'Thomas', 'Pierre', 'Paul', 'Jacques', 'Michel', 'David', 'Philippe', 'Christophe', 'Stéphane', 'Laurent', 'François'],
+      female: ['Fatima', 'Nour', 'Maryam', 'Sarah', 'Zineb', 'Aicha', 'Hind', 'Dalal', 'Reem', 'Mona', 'Salma', 'Amal', 'Lina', 'Maya', 'Inès', 'Rania', 'Houda', 'Chirine', 'Leila', 'Emma', 'Chloé', 'Léa', 'Camille', 'Manon', 'Jade', 'Alice', 'Rose', 'Louise', 'Juliette', 'Clara']
+    },
+    locations: [
+      { city: 'Le Caire', country: 'Égypte', flag: '🇪🇬' },
+      { city: 'Alexandrie', country: 'Égypte', flag: '🇪🇬' },
+      { city: 'Gizeh', country: 'Égypte', flag: '🇪🇬' },
+      { city: 'Riyad', country: 'Arabie Saoudite', flag: '🇸🇦' },
+      { city: 'Djeddah', country: 'Arabie Saoudite', flag: '🇸🇦' },
+      { city: 'La Mecque', country: 'Arabie Saoudite', flag: '🇸🇦' },
+      { city: 'Dammam', country: 'Arabie Saoudite', flag: '🇸🇦' },
+      { city: 'Dubaï', country: 'Émirats', flag: '🇦🇪' },
+      { city: 'Abu Dhabi', country: 'Émirats', flag: '🇦🇪' },
+      { city: 'Koweït', country: 'Koweït', flag: '🇰🇼' },
+      { city: 'Doha', country: 'Qatar', flag: '🇶🇦' },
+      { city: 'Sanaa', country: 'Yémen', flag: '🇾🇪' },
+      { city: 'Aden', country: 'Yémen', flag: '🇾🇪' },
+      { city: 'Alger', country: 'Algérie', flag: '🇩🇿' },
+      { city: 'Casablanca', country: 'Maroc', flag: '🇲🇦' },
+      { city: 'Bagdad', country: 'Irak', flag: '🇮🇶' },
+      { city: 'Amman', country: 'Jordanie', flag: '🇯🇴' },
+      { city: 'Beyrouth', country: 'Liban', flag: '🇱🇧' },
+      { city: 'Paris', country: 'France', flag: '🇫🇷' },
+      { city: 'Lyon', country: 'France', flag: '🇫🇷' },
+      { city: 'Marseille', country: 'France', flag: '🇫🇷' },
+      { city: 'Montréal', country: 'Canada', flag: '🇨🇦' },
+      { city: 'Bruxelles', country: 'Belgique', flag: '🇧🇪' }
+    ],
+    plans: [
+      { id: 'yearly', name: 'WA Sender - 1 An', price: '$5', period: 'Annuel', periodShort: 'An', lifetimeLabel: 'À Vie', url: 'https://www.paypal.com/ncp/payment/S2MZ5XXCR65ZG' },
+      { id: '2yearly', name: 'WA Sender - 2 Ans', price: '$15', period: '2 Ans', periodShort: '2 Ans', lifetimeLabel: 'À Vie', url: 'https://www.paypal.com/ncp/payment/FNR3E3UFRLSTC' },
+      { id: '3yearly', name: 'WA Sender - 3 Ans', price: '$20', period: '3 Ans', periodShort: '3 Ans', lifetimeLabel: 'À Vie', url: 'https://www.paypal.com/ncp/payment/QF2GAKDECFGNJ' },
+      { id: 'lifetime', name: 'WA Sender - À Vie', price: '$50', period: 'À Vie', periodShort: 'À Vie', lifetimeLabel: 'À Vie', url: 'https://www.paypal.com/ncp/payment/YR7KL36E3G6DW' },
+      { id: '2dev-yearly', name: 'WA Sender - 2 Appareils/An', price: '$8', period: 'Annuel', periodShort: 'An', lifetimeLabel: 'À Vie', url: 'https://www.paypal.com/ncp/payment/UALYCA9GWSGYL' },
+      { id: '3dev-yearly', name: 'WA Sender - 3 Appareils/An', price: '$12', period: 'Annuel', periodShort: 'An', lifetimeLabel: 'À Vie', url: 'https://www.paypal.com/ncp/payment/2GKPTJEBQF7KL' },
+      { id: '2dev-2yr', name: 'WA Sender - 2 Appareils/2 Ans', price: '$25', period: '2 Ans', periodShort: '2 Ans', lifetimeLabel: 'À Vie', url: 'https://www.paypal.com/ncp/payment/PMNSNED5TBWU8' }
+    ],
+    templates: {
+      purchase: ["s'est abonné à", "a acheté", "a activé", "a obtenu la licence"],
+      upgrade: ["a mis à niveau vers", "est passé à", "a changé pour"],
+      subscribe: ["a commencé avec", "nous a rejoint avec", "a choisi"],
+      renewal: ["a renouvelé", "a prolongé son abonnement"]
+    },
+    timeAgo: ["À l'instant", "Il y a 1 min", "Il y a 2 min", "Il y a 3 min", "Il y a 5 min", "Il y a 8 min"],
+    messages: {
+      purchase: "{name} de {city} {action} {plan}",
+      upgrade_lifetime: "{name} de {country} {action} {plan} 🎉",
+      upgrade_normal: "{name} {action} {period} au lieu du mensuel",
+      subscribe: "{name} de {country} {action} {plan} - {period}",
+      renewal: "{name} {action} {plan} - Merci pour votre fidélité! 💚"
+    },
+    closeLabel: 'Fermer'
+  },
+  ru: {
+    names: {
+      male: ['Мохаммед', 'Ахмед', 'Махмуд', 'Хусейн', 'Омар', 'Юсуф', 'Карим', 'Али', 'Халед', 'Абдулла', 'Тарек', 'Самир', 'Фади', 'Ибрахим', 'Осама', 'Рами', 'Шади', 'Мостафа', 'Хамза', 'Хассан', 'Саид', 'Айман', 'Набиль', 'Адель', 'Моран', 'Ясир', 'Амро', 'Басем', 'Хани', 'Тамер', 'Александр', 'Дмитрий', 'Максим', 'Артём', 'Иван', 'Андрей', 'Сергей', 'Николай', 'Павел', 'Евгений', 'Владимир'],
+      female: ['Фатима', 'Нур', 'Марьям', 'Сара', 'Зайнаб', 'Аиша', 'Хинд', 'Далаль', 'Рим', 'Мона', 'Сальма', 'Амаль', 'Нэнси', 'Май', 'Джена', 'Рана', 'Худа', 'Шерин', 'Лейла', 'Анна', 'Мария', 'Елизавета', 'Екатерина', 'Ольга', 'Наталья', 'София', 'Виктория', 'Полина', 'Алиса', 'Дарья']
+    },
+    locations: [
+      { city: 'Каир', country: 'Египет', flag: '🇪🇬' },
+      { city: 'Александрия', country: 'Египет', flag: '🇪🇬' },
+      { city: 'Гиза', country: 'Египет', flag: '🇪🇬' },
+      { city: 'Эр-Рияд', country: 'Саудовская Аравия', flag: '🇸🇦' },
+      { city: 'Джидда', country: 'Саудовская Аравия', flag: '🇸🇦' },
+      { city: 'Мекка', country: 'Саудовская Аравия', flag: '🇸🇦' },
+      { city: 'Даммам', country: 'Саудовская Аравия', flag: '🇸🇦' },
+      { city: 'Дубай', country: 'ОАЭ', flag: '🇦🇪' },
+      { city: 'Абу-Даби', country: 'ОАЭ', flag: '🇦🇪' },
+      { city: 'Эль-Кувейт', country: 'Кувейт', flag: '🇰🇼' },
+      { city: 'Доха', country: 'Катар', flag: '🇶🇦' },
+      { city: 'Сана', country: 'Йемен', flag: '🇾🇪' },
+      { city: 'Аден', country: 'Йемен', flag: '🇾🇪' },
+      { city: 'Алжир', country: 'Алжир', flag: '🇩🇿' },
+      { city: 'Касабланка', country: 'Марокко', flag: '🇲🇦' },
+      { city: 'Багдад', country: 'Ирак', flag: '🇮🇶' },
+      { city: 'Амман', country: 'Иордания', flag: '🇯🇴' },
+      { city: 'Бейрут', country: 'Ливан', flag: '🇱🇧' },
+      { city: 'Москва', country: 'Россия', flag: '🇷🇺' },
+      { city: 'Санкт-Петербург', country: 'Россия', flag: '🇷🇺' },
+      { city: 'Стамбул', country: 'Турция', flag: '🇹🇷' },
+      { city: 'Берлин', country: 'Германия', flag: '🇩🇪' },
+      { city: 'Лондон', country: 'UK', flag: '🇬🇧' }
+    ],
+    plans: [
+      { id: 'yearly', name: 'WA Sender - 1 Год', price: '$5', period: 'Годовой', periodShort: 'Год', lifetimeLabel: 'Навсегда', url: 'https://www.paypal.com/ncp/payment/S2MZ5XXCR65ZG' },
+      { id: '2yearly', name: 'WA Sender - 2 Года', price: '$15', period: '2 Года', periodShort: '2 года', lifetimeLabel: 'Навсегда', url: 'https://www.paypal.com/ncp/payment/FNR3E3UFRLSTC' },
+      { id: '3yearly', name: 'WA Sender - 3 Года', price: '$20', period: '3 Года', periodShort: '3 года', lifetimeLabel: 'Навсегда', url: 'https://www.paypal.com/ncp/payment/QF2GAKDECFGNJ' },
+      { id: 'lifetime', name: 'WA Sender - Навсегда', price: '$50', period: 'Навсегда', periodShort: 'Навсегда', lifetimeLabel: 'Навсегда', url: 'https://www.paypal.com/ncp/payment/YR7KL36E3G6DW' },
+      { id: '2dev-yearly', name: 'WA Sender - 2 устройства/Год', price: '$8', period: 'Годовой', periodShort: 'Год', lifetimeLabel: 'Навсегда', url: 'https://www.paypal.com/ncp/payment/UALYCA9GWSGYL' },
+      { id: '3dev-yearly', name: 'WA Sender - 3 устройства/Год', price: '$12', period: 'Годовой', periodShort: 'Год', lifetimeLabel: 'Навсегда', url: 'https://www.paypal.com/ncp/payment/2GKPTJEBQF7KL' },
+      { id: '2dev-2yr', name: 'WA Sender - 2 устройства/2 Года', price: '$25', period: '2 Года', periodShort: '2 года', lifetimeLabel: 'Навсегда', url: 'https://www.paypal.com/ncp/payment/PMNSNED5TBWU8' }
+    ],
+    templates: {
+      purchase: ['подписался на', 'купил', 'активировал', 'получил лицензию'],
+      upgrade: ['обновил до', 'перешёл на', 'переключился на'],
+      subscribe: ['начал с', 'присоединился к нам с', 'выбрал'],
+      renewal: ['продлил', 'продлил членство на']
+    },
+    timeAgo: ['Только что', '1 мин назад', '2 мин назад', '3 мин назад', '5 мин назад', '8 мин назад'],
+    messages: {
+      purchase: '{name} из {city} {action} {plan}',
+      upgrade_lifetime: '{name} из {country} {action} {plan} 🎉',
+      upgrade_normal: '{name} {action} {period} вместо месячного',
+      subscribe: '{name} из {country} {action} {plan} - {period}',
+      renewal: '{name} {action} {plan} - Спасибо за лояльность! 💚'
+    },
+    closeLabel: 'Закрыть'
+  },
+  it: {
+    names: {
+      male: ['Mohammed', 'Ahmed', 'Mahmoud', 'Hussein', 'Omar', 'Youssef', 'Karim', 'Ali', 'Khaled', 'Abdullah', 'Tarek', 'Samir', 'Fady', 'Ibrahim', 'Osama', 'Rami', 'Shady', 'Mostafa', 'Hamza', 'Hassan', 'Said', 'Ayman', 'Nabil', 'Adel', 'Moran', 'Yasser', 'Amro', 'Basem', 'Hany', 'Tamer', 'Marco', 'Luca', 'Giuseppe', 'Alessandro', 'Giovanni', 'Andrea', 'Matteo', 'Francesco', 'Lorenzo', 'Leonardo', 'Davide', 'Riccardo'],
+      female: ['Fatima', 'Nour', 'Maryam', 'Sarah', 'Zainab', 'Aisha', 'Hind', 'Dalal', 'Reem', 'Mona', 'Salma', 'Amal', 'Nancy', 'Mei', 'Jenna', 'Rana', 'Hoda', 'Shereen', 'Layla', 'Sofia', 'Giulia', 'Aurora', 'Ginevra', 'Alice', 'Beatrice', 'Chiara', 'Sara', 'Martina', 'Elisa', 'Federica']
+    },
+    locations: [
+      { city: 'Il Cairo', country: 'Egitto', flag: '🇪🇬' },
+      { city: 'Alessandria', country: 'Egitto', flag: '🇪🇬' },
+      { city: 'Giza', country: 'Egitto', flag: '🇪🇬' },
+      { city: 'Riad', country: 'Arabia Saudita', flag: '🇸🇦' },
+      { city: 'Jeddah', country: 'Arabia Saudita', flag: '🇸🇦' },
+      { city: 'La Mecca', country: 'Arabia Saudita', flag: '🇸🇦' },
+      { city: 'Dammam', country: 'Arabia Saudita', flag: '🇸🇦' },
+      { city: 'Dubai', country: 'Emirati Arabi Uniti', flag: '🇦🇪' },
+      { city: 'Abu Dhabi', country: 'Emirati Arabi Uniti', flag: '🇦🇪' },
+      { city: 'Kuwait', country: 'Kuwait', flag: '🇰🇼' },
+      { city: 'Doha', country: 'Qatar', flag: '🇶🇦' },
+      { city: "Sana'a", country: 'Yemen', flag: '🇾🇪' },
+      { city: 'Aden', country: 'Yemen', flag: '🇾🇪' },
+      { city: 'Algeri', country: 'Algeria', flag: '🇩🇿' },
+      { city: 'Casablanca', country: 'Marocco', flag: '🇲🇦' },
+      { city: 'Baghdad', country: 'Iraq', flag: '🇮🇶' },
+      { city: 'Amman', country: 'Giordania', flag: '🇯🇴' },
+      { city: 'Beirut', country: 'Libano', flag: '🇱🇧' },
+      { city: 'Roma', country: 'Italia', flag: '🇮🇹' },
+      { city: 'Milano', country: 'Italia', flag: '🇮🇹' },
+      { city: 'Napoli', country: 'Italia', flag: '🇮🇹' },
+      { city: 'Torino', country: 'Italia', flag: '🇮🇹' },
+      { city: 'Firenze', country: 'Italia', flag: '🇮🇹' }
+    ],
+    plans: [
+      { id: 'yearly', name: 'WA Sender - 1 Anno', price: '$5', period: 'Annuale', periodShort: 'Anno', lifetimeLabel: 'Vita', url: 'https://www.paypal.com/ncp/payment/S2MZ5XXCR65ZG' },
+      { id: '2yearly', name: 'WA Sender - 2 Anni', price: '$15', period: '2 Anni', periodShort: '2 Anni', lifetimeLabel: 'Vita', url: 'https://www.paypal.com/ncp/payment/FNR3E3UFRLSTC' },
+      { id: '3yearly', name: 'WA Sender - 3 Anni', price: '$20', period: '3 Anni', periodShort: '3 Anni', lifetimeLabel: 'Vita', url: 'https://www.paypal.com/ncp/payment/QF2GAKDECFGNJ' },
+      { id: 'lifetime', name: 'WA Sender - Vita', price: '$50', period: 'Vita', periodShort: 'Vita', lifetimeLabel: 'Vita', url: 'https://www.paypal.com/ncp/payment/YR7KL36E3G6DW' },
+      { id: '2dev-yearly', name: 'WA Sender - 2 Dispositivi/Anno', price: '$8', period: 'Annuale', periodShort: 'Anno', lifetimeLabel: 'Vita', url: 'https://www.paypal.com/ncp/payment/UALYCA9GWSGYL' },
+      { id: '3dev-yearly', name: 'WA Sender - 3 Dispositivi/Anno', price: '$12', period: 'Annuale', periodShort: 'Anno', lifetimeLabel: 'Vita', url: 'https://www.paypal.com/ncp/payment/2GKPTJEBQF7KL' },
+      { id: '2dev-2yr', name: 'WA Sender - 2 Dispositivi/2 Anni', price: '$25', period: '2 Anni', periodShort: '2 Anni', lifetimeLabel: 'Vita', url: 'https://www.paypal.com/ncp/payment/PMNSNED5TBWU8' }
+    ],
+    templates: {
+      purchase: ['si è abbonato a', 'ha acquistato', 'ha attivato', 'ha ottenuto la licenza'],
+      upgrade: ['è passato a', 'ha aggiornato a', 'ha cambiato con'],
+      subscribe: ['ha iniziato con', 'si è unito a noi con', 'ha scelto'],
+      renewal: ['ha rinnovato', 'ha prolungato l\'iscrizione per']
+    },
+    timeAgo: ['Adesso', '1 min fa', '2 min fa', '3 min fa', '5 min fa', '8 min fa'],
+    messages: {
+      purchase: '{name} da {city} {action} {plan}',
+      upgrade_lifetime: '{name} da {country} {action} {plan} 🎉',
+      upgrade_normal: '{name} {action} {period} invece che mensile',
+      subscribe: '{name} da {country} {action} {plan} - {period}',
+      renewal: '{name} {action} {plan} - Grazie per la fedeltà! 💚'
+    },
+    closeLabel: 'Chiudi'
+  }
 };
 
-const locations = [
-  { city: 'القاهرة', country: '🇪🇬 مصر', flag: '🇪🇬' },
-  { city: 'الإسكندرية', country: '🇪🇬 مصر', flag: '🇪🇬' },
-  { city: 'الجيزة', country: '🇪🇬 مصر', flag: '🇪🇬' },
-  { city: 'المنصورة', country: '🇪🇬 مصر', flag: '🇪🇬' },
-  { city: 'الرياض', country: '🇸🇦 السعودية', flag: '🇸🇦' },
-  { city: 'جدة', country: '🇸🇦 السعودية', flag: '🇸🇦' },
-  { city: 'مكة المكرمة', country: '🇸🇦 السعودية', flag: '🇸🇦' },
-  { city: 'المدينة المنورة', country: '🇸🇦 السعودية', flag: '🇸🇦' },
-  { city: 'الدمام', country: '🇸🇦 السعودية', flag: '🇸🇦' },
-  { city: 'صنعاء', country: '🇾🇪 اليمن', flag: '🇾🇪' },
-  { city: 'عدن', country: '🇾🇪 اليمن', flag: '🇾🇪' },
-  { city: 'دبي', country: '🦃 الإمارات', flag: '🦃' },
-  { city: 'أبوظبي', country: '🦃 الإمارات', flag: '🦃' },
-  { city: 'الكويت', country: '🰏 الكويت', flag: '🰏' },
-  { city: 'الدوحة', country: '🇶🇦 قطر', flag: '🇶🇦' },
-  { city: 'مسقط', country: '🇴🇲 عُمان', flag: '🇴🇲' },
-  { city: 'البحرين', country: '🇧🇭 البحرين', flag: '🇧🇭' },
-  { city: 'عمان', country: '🇯🇴 الأردن', flag: '🇯🇴' },
-  { city: 'بيروت', country: '🇱🇧 لبنان', flag: '🇱🇧' },
-  { city: 'الجزائر', country: '🇩🇿 الجزائر', flag: '🇩🇿' },
-  { city: 'المغرب', country: '🇲🇦 المغرب', flag: '🇲🇦' },
-  { city: 'بغداد', country: '🇮🇶 العراق', flag: '🇮🇶' }
-];
-
-const plans = [
-  { id: 'yearly', name: 'WA Sender - سنة واحدة', price: '$5', period: 'سنوي', url: 'https://www.paypal.com/ncp/payment/S2MZ5XXCR65ZG' },
-  { id: '2yearly', name: 'WA Sender - سنتين', price: '$15', period: 'سنتين', url: 'https://www.paypal.com/ncp/payment/FNR3E3UFRLSTC' },
-  { id: '3yearly', name: 'WA Sender - 3 أعوام', price: '$20', period: '3 أعوام', url: 'https://www.paypal.com/ncp/payment/QF2GAKDECFGNJ' },
-  { id: 'lifetime', name: 'WA Sender - مدى الحياة', price: '$50', period: 'مدى الحياة', url: 'https://www.paypal.com/ncp/payment/YR7KL36E3G6DW' },
-  { id: '2dev-yearly', name: 'WA Sender - جهازان/سنة', price: '$8', period: 'سنوي', url: 'https://www.paypal.com/ncp/payment/UALYCA9GWSGYL' },
-  { id: '3dev-yearly', name: 'WA Sender - 3 أجهزة/سنة', price: '$12', period: 'سنوي', url: 'https://www.paypal.com/ncp/payment/2GKPTJEBQF7KL' },
-  { id: '2dev-2yr', name: 'WA Sender - جهازان/سنتين', price: '$25', period: 'سنتين', url: 'https://www.paypal.com/ncp/payment/PMNSNED5TBWU8' }
-];
-
-const messageTemplates = [
-  { type: 'purchase', text: 'اشترك في باقة', icon: '💳' },
-  { type: 'purchase', text: 'اشترى باقة', icon: '🛒' },
-  { type: 'purchase', text: 'فعّل باقة', icon: '✅' },
-  { type: 'purchase', text: 'احصل على رخصة', icon: '🎫' },
-  { type: 'upgrade', text: 'طور خطته إلى', icon: '⬆️' },
-  { type: 'upgrade', text: 'رقّى اشتراكه إلى', icon: '🚀' },
-  { type: 'upgrade', text: 'حدّث باقته إلى', icon: '✨' },
-  { type: 'subscribe', text: 'بدأ اشتراكه في', icon: '📲' },
-  { type: 'subscribe', text: 'انضم إلينا عبر', icon: '🌟' },
-  { type: 'subscribe', text: 'اختار باقة', icon: '💎' },
-  { type: 'renewal', text: 'جدّد اشتراكه في', icon: '🔄' },
-  { type: 'renewal', text: 'مدد عضويته لـ', icon: '⏰' }
-];
-
-const timeAgoStrings = ['الآن', 'منذ دقيقة', 'منذ دقيقتين', 'منذ 3 دقائق', 'منذ 5 دقائق', 'منذ 8 دقائق'];
-
+// ── Helper Functions ──
 function getRandomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function getRandomName() {
-  const namePools = [
-    ...arabicNames.egyptianMale.map(n => ({ name: n, gender: 'male' })),
-    ...arabicNames.egyptianFemale.map(n => ({ name: n, gender: 'female' })),
-    ...arabicNames.saudiMale.map(n => ({ name: n, gender: 'male' })),
-    ...arabicNames.saudiFemale.map(n => ({ name: n, gender: 'female' })),
-    ...arabicNames.yemeniMale.map(n => ({ name: n, gender: 'male' })),
-    ...arabicNames.gulfNames.map(n => ({ name: n, gender: 'male' }))
-  ];
-  return getRandomItem(namePools);
+function getRandomName(lang) {
+  var data = notificationData[lang] || notificationData.en;
+  var allNames = [...data.names.male, ...data.names.female];
+  return getRandomItem(allNames);
 }
 
 function generateNotification() {
-  const person = getRandomName();
-  const location = getRandomItem(locations);
-  const plan = getRandomItem(plans);
-  const template = getRandomItem(messageTemplates);
-  const timeAgo = getRandomItem(timeAgoStrings);
+  var lang = currentLang || 'ar';
+  var data = notificationData[lang] || notificationData.en;
   
-  let message = '';
+  var name = getRandomName(lang);
+  var location = getRandomItem(data.locations);
+  var plan = getRandomItem(data.plans);
+  var actionType = getRandomItem(['purchase', 'upgrade', 'subscribe', 'renewal']);
+  var action = getRandomItem(data.templates[actionType]);
+  var timeAgo = getRandomItem(data.timeAgo);
   
-  switch(template.type) {
-    case 'purchase':
-      message = person.name + ' من ' + location.city + ' ' + template.text + ' ' + plan.name;
-      break;
-    case 'upgrade':
-      if (plan.id === 'lifetime') {
-        message = person.name + ' من ' + location.country + ' ' + template.text + ' ' + plan.name + ' 🎉';
-      } else {
-        message = person.name + ' ' + template.text + ' ' + plan.period + ' بدلًا من شهري';
-      }
-      break;
-    case 'subscribe':
-      message = person.name + ' من ' + location.country + ' ' + template.text + ' ' + plan.name + ' لمدة ' + plan.period;
-      break;
-    case 'renewal':
-      message = person.name + ' ' + template.text + ' ' + plan.name + ' - شكرًا للولاء! 💚';
-      break;
-    default:
-      message = person.name + ' ' + template.text + ' ' + plan.name;
+  var message = '';
+  
+  if (actionType === 'purchase') {
+    message = data.messages.purchase
+      .replace('{name}', name)
+      .replace('{city}', location.city)
+      .replace('{action}', action)
+      .replace('{plan}', plan.name);
+  } else if (actionType === 'upgrade') {
+    if (plan.id === 'lifetime') {
+      message = data.messages.upgrade_lifetime
+        .replace('{name}', name)
+        .replace('{country}', location.country)
+        .replace('{action}', action)
+        .replace('{plan}', plan.name);
+    } else {
+      message = data.messages.upgrade_normal
+        .replace('{name}', name)
+        .replace('{action}', action)
+        .replace('{period}', plan.period);
+    }
+  } else if (actionType === 'subscribe') {
+    message = data.messages.subscribe
+      .replace('{name}', name)
+      .replace('{country}', location.country)
+      .replace('{action}', action)
+      .replace('{plan}', plan.name)
+      .replace('{period}', plan.period);
+  } else if (actionType === 'renewal') {
+    message = data.messages.renewal
+      .replace('{name}', name)
+      .replace('{action}', action)
+      .replace('{plan}', plan.name);
   }
 
   return {
     id: Date.now() + Math.random(),
-    name: person.name,
+    name: name,
     message: message,
     location: location.flag + ' ' + location.city,
     timeAgo: timeAgo,
     plan: plan.name,
-    planShort: plan.id === 'lifetime' ? 'مدى الحياة' : plan.period,
+    planShort: plan.id === 'lifetime' ? plan.lifetimeLabel : plan.periodShort,
     url: plan.url,
-    icon: template.icon,
-    price: plan.price
+    price: plan.price,
+    closeLabel: data.closeLabel
   };
 }
 
 function createNotificationElement(data) {
-  const notification = document.createElement('a');
+  var notification = document.createElement('a');
   notification.className = 'sales-notification';
   notification.href = data.url;
   notification.target = '_blank';
@@ -1489,14 +1713,14 @@ function createNotificationElement(data) {
       '<div class="sn-text">' +
         '<strong>' + data.name + '</strong>' +
         '<span>' + data.message + '</span>' +
-        '<span class="sn-program">' + data.icon + ' ' + data.planShort + ' - ' + data.price + '</span>' +
+        '<span class="sn-program">💎 ' + data.planShort + ' - ' + data.price + '</span>' +
       '</div>' +
       '<div class="sn-meta">' +
         '<span class="sn-location">📍 ' + data.location + '</span>' +
         '<span class="sn-time">⏱ ' + data.timeAgo + '</span>' +
       '</div>' +
     '</div>' +
-    '<button class="sn-close" onclick="event.preventDefault(); event.stopPropagation(); closeNotification(' + data.id + ');" aria-label="إغلاق">✕</button>';
+    '<button class="sn-close" onclick="event.preventDefault(); event.stopPropagation(); closeNotification(' + data.id + ');" aria-label="' + (data.closeLabel || 'Close') + '">✕</button>';
   
   return notification;
 }
