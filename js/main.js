@@ -554,3 +554,310 @@ function hidePWAInstallBanner() {
   if (banner) banner.classList.remove('show');
   localStorage.setItem('wasender_pwa_dismissed', 'true');
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   SALES NOTIFICATIONS SYSTEM - Fake Purchase Notifications
+   ═══════════════════════════════════════════════════════════════ */
+
+// ── Arabic Names Database (Egyptian, Saudi, Yemeni, Emirati, etc.) ──
+const arabicNames = {
+  // Egyptian Names (male)
+  egyptianMale: [
+    'محمد', 'أحمد', 'محمود', 'حسين', 'عمر', 'يوسف', 'كريم', 'علي', 'خالد', 'أبو عبدالله',
+    'طارق', 'سمير', 'فادي', 'إبراهيم', 'عبدالله', 'أسامة', 'منذر', 'رامي', 'شادي', 'مصطفى',
+    'حمزة', 'حسن', 'سعيد', 'أيمن', 'نبيل', 'عادل', 'مروان', 'ياسر', 'عمرو', 'باسم',
+    'هاني', 'تامر', 'خيري', 'جمال', 'صلاح', 'عاطف', 'سامي', 'رضا', 'وائل', 'مجنون'
+  ],
+  // Egyptian Names (female)
+  egyptianFemale: [
+    'فاطمة', 'نور', 'مريم', 'سارة', 'زينب', 'عائشة', 'هند', 'دلال', 'ريم', 'منى',
+    'سلمى', 'أمل', 'نانسي', 'مي', 'جنى', 'رنا', 'هدى', 'شيرين', 'سارة', 'ليلى'
+  ],
+  // Saudi Names (male)
+  saudiMale: [
+    'أبو عبدالله', 'أبو محمد', 'عابد', 'سلطان', 'فيصل', 'بدر', 'نايف', 'خالد', 'عبدالعزيز',
+    'ماجد', 'تركي', 'سعود', 'فهد', 'بندر', 'مشعل', 'حمد', 'مشاري', 'عيسى', 'طلال', 'يعقوب'
+  ],
+  // Saudi Names (female)
+  saudiFemale: [
+    'نورة', 'لطيفة', 'جميلة', 'هيا', 'ريما', 'أريج', 'ملاك', 'أميرة', 'فوزية', 'ثمرة'
+  ],
+  // Yemeni Names (male)
+  yemeniMale: [
+    'عابد', 'معتصم', 'أيوب', 'صالح', 'أنس', 'بركات', 'مكرم', 'جمال', 'ضمرة', 'موسى'
+  ],
+  // Emirati & Gulf Names
+  gulfNames: [
+    'سالم', 'مبارك', 'غسان', 'راشد', 'عتيبة', 'حسن', 'نجيب', 'كاظم', 'جاسم', 'عليان'
+  ]
+};
+
+// ── Countries/Cities ──
+const locations = [
+  { city: 'القاهرة', country: '🇪🇬 مصر', flag: '🇪🇬' },
+  { city: 'الإسكندرية', country: '🇪🇬 مصر', flag: '🇪🇬' },
+  { city: 'الجيزة', country: '🇪🇬 مصر', flag: '🇪🇬' },
+  { city: 'المنصورة', country: '🇪🇬 مصر', flag: '🇪🇬' },
+  { city: 'القليوبية', country: '🇪🇬 مصر', flag: '🇪🇬' },
+  { city: 'الرياض', country: '🇸🇦 السعودية', flag: '🇸🇦' },
+  { city: 'جدة', country: '🇸🇦 السعودية', flag: '🇸🇦' },
+  { city: 'مكة المكرمة', country: '🇸🇦 السعودية', flag: '🇸🇦' },
+  { city: 'المدينة المنورة', country: '🇸🇦 السعودية', flag: '🇸🇦' },
+  { city: 'الدمام', country: '🇸🇦 السعودية', flag: '🇸🇦' },
+  { city: 'صنعاء', country: '🇾🇪 اليمن', flag: '🇾🇪' },
+  { city: 'عدن', country: '🇾🇪 اليمن', flag: '🇾🇪' },
+  { city: 'تعز', country: '🇾🇪 اليمن', flag: '🇾🇪' },
+  { city: 'دبي', country: '🇦🇪 الإمارات', flag: '🇦🇪' },
+  { city: 'أبوظبي', country: '🇦🇪 الإمارات', flag: '🇦🇪' },
+  { city: 'الكويت', country: '🇰🇼 الكويت', flag: '🇰🇼' },
+  { city: 'الدوحة', country: '🇶🇦 قطر', flag: '🇶🇦' },
+  { city: 'مسقط', country: '🇴🇲 عُمان', flag: '🇴🇲' },
+  { city: 'البحرين', country: '🇧🇭 البحرين', flag: '🇧🇭' },
+  { city: 'عمان', country: '🇯🇴 الأردن', flag: '🇯🇴' },
+  { city: 'بيروت', country: '🇱🇧 لبنان', flag: '🇱🇧' },
+  { city: 'الجزائر', country: '🇩🇿 الجزائر', flag: '🇩🇿' },
+  { city: 'المغرب', country: '🇲🇦 المغرب', flag: '🇲🇦' },
+  { city: 'بغداد', country: '🇮🇶 العراق', flag: '🇮🇶' }
+];
+
+// ── Plans/Products with Real Links ──
+const plans = [
+  { id: 'yearly', name: 'WA Sender - سنة واحدة', price: '$5', period: 'سنوي', url: 'https://www.paypal.com/ncp/payment/S2MZ5XXCR65ZG' },
+  { id: '2yearly', name: 'WA Sender - سنتين', price: '$15', period: 'سنتين', url: 'https://www.paypal.com/ncp/payment/FNR3E3UFRLSTC' },
+  { id: '3yearly', name: 'WA Sender - 3 أعوام', price: '$20', period: '3 أعوام', url: 'https://www.paypal.com/ncp/payment/QF2GAKDECFGNJ' },
+  { id: 'lifetime', name: 'WA Sender - مدى الحياة', price: '$50', period: 'مدى الحياة', url: 'https://www.paypal.com/ncp/payment/YR7KL36E3G6DW' },
+  { id: '2dev-yearly', name: 'WA Sender - جهازان/سنة', price: '$8', period: 'سنوي', url: 'https://www.paypal.com/ncp/payment/UALYCA9GWSGYL' },
+  { id: '3dev-yearly', name: 'WA Sender - 3 أجهزة/سنة', price: '$12', period: 'سنوي', url: 'https://www.paypal.com/ncp/payment/2GKPTJEBQF7KL' },
+  { id: '2dev-2yr', name: 'WA Sender - جهازان/سنتين', price: '$25', period: 'سنتين', url: 'https://www.paypal.com/ncp/payment/PMNSNED5TBWU8' }
+];
+
+// ── Notification Message Templates ──
+const messageTemplates = [
+  // Purchase messages
+  { type: 'purchase', text: 'اشترك في باقة', icon: '💳' },
+  { type: 'purchase', text: 'اشترى باقة', icon: '🛒' },
+  { type: 'purchase', text: 'فعّل باقة', icon: '✅' },
+  { type: 'purchase', text: 'احصل على رخصة', icon: '🎫' },
+  
+  // Upgrade messages
+  { type: 'upgrade', text: 'طور خطته إلى', icon: '⬆️' },
+  { type: 'upgrade', text: 'رقّى اشتراكه إلى', icon: '🚀' },
+  { type: 'upgrade', text: 'حدّث باقته إلى', icon: '✨' },
+  
+  // Subscription messages
+  { type: 'subscribe', text: 'بدأ اشتراكه في', icon: '📲' },
+  { type: 'subscribe', text: 'انضم إلينا عبر', icon: '🌟' },
+  { type: 'subscribe', text: 'اختار باقة', icon: '💎' },
+  
+  // Renewal messages
+  { type: 'renewal', text: 'جدّد اشتراكه في', icon: '🔄' },
+  { type: 'renewal', text: 'مدد عضويته لـ', icon: '⏰' }
+];
+
+// ── Time ago strings ──
+const timeAgoStrings = ['الآن', 'منذ دقيقة', 'منذ دقيقتين', 'منذ 3 دقائق', 'منذ 5 دقائق', 'منذ 8 دقائق'];
+
+// ── Helper Functions ──
+function getRandomItem(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function getRandomName() {
+  const namePools = [
+    ...arabicNames.egyptianMale.map(n => ({ name: n, gender: 'male' })),
+    ...arabicNames.egyptianFemale.map(n => ({ name: n, gender: 'female' })),
+    ...arabicNames.saudiMale.map(n => ({ name: n, gender: 'male' })),
+    ...arabicNames.saudiFemale.map(n => ({ name: n, gender: 'female' })),
+    ...arabicNames.yemeniMale.map(n => ({ name: n, gender: 'male' })),
+    ...arabicNames.gulfNames.map(n => ({ name: n, gender: 'male' }))
+  ];
+  return getRandomItem(namePools);
+}
+
+// ── Generate Notification Data ──
+function generateNotification() {
+  const person = getRandomName();
+  const location = getRandomItem(locations);
+  const plan = getRandomItem(plans);
+  const template = getRandomItem(messageTemplates);
+  const timeAgo = getRandomItem(timeAgoStrings);
+  
+  let message = '';
+  
+  switch(template.type) {
+    case 'purchase':
+      message = person.name + ' من ' + location.city + ' ' + template.text + ' ' + plan.name;
+      break;
+    case 'upgrade':
+      if (plan.id === 'lifetime') {
+        message = person.name + ' من ' + location.country + ' ' + template.text + ' ' + plan.name + ' 🎉';
+      } else {
+        message = person.name + ' ' + template.text + ' ' + plan.period + ' بدلًا من شهري';
+      }
+      break;
+    case 'subscribe':
+      message = person.name + ' من ' + location.country + ' ' + template.text + ' ' + plan.name + ' لمدة ' + plan.period;
+      break;
+    case 'renewal':
+      message = person.name + ' ' + template.text + ' ' + plan.name + ' - شكرًا للولاء! 💚';
+      break;
+    default:
+      message = person.name + ' ' + template.text + ' ' + plan.name;
+  }
+
+  return {
+    id: Date.now() + Math.random(),
+    name: person.name,
+    message: message,
+    location: location.flag + ' ' + location.city,
+    timeAgo: timeAgo,
+    plan: plan.name,
+    planShort: plan.id === 'lifetime' ? 'مدى الحياة' : plan.period,
+    url: plan.url,
+    icon: template.icon,
+    price: plan.price
+  };
+}
+
+// ── Create Notification Element ──
+function createNotificationElement(data) {
+  const notification = document.createElement('a');
+  notification.className = 'sales-notification';
+  notification.href = data.url;
+  notification.target = '_blank';
+  notification.rel = 'nofollow noopener';
+  notification.setAttribute('data-notification-id', data.id);
+  notification.style.animation = 'slideInRight 0.5s ease forwards';
+  
+  notification.innerHTML = 
+    '<div class="sn-icon">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+        '<polyline points="20 6 9 17 4 12"></polyline>' +
+      '</svg>' +
+    '</div>' +
+    '<div class="sn-content">' +
+      '<div class="sn-text">' +
+        '<strong>' + data.name + '</strong>' +
+        '<span>' + data.message + '</span>' +
+        '<span class="sn-program">' + data.icon + ' ' + data.planShort + ' - ' + data.price + '</span>' +
+      '</div>' +
+      '<div class="sn-meta">' +
+        '<span class="sn-location">📍 ' + data.location + '</span>' +
+        '<span class="sn-time">⏱ ' + data.timeAgo + '</span>' +
+      '</div>' +
+    '</div>' +
+    '<button class="sn-close" onclick="event.preventDefault(); event.stopPropagation(); closeNotification(' + data.id + ');" aria-label="إغلاق">✕</button>';
+  
+  return notification;
+}
+
+// ── Notification Manager ──
+const SalesNotifications = {
+  container: null,
+  activeNotifications: [],
+  isActive: true,
+  intervalId: null,
+  maxVisible: 3,
+  displayDuration: 8000, // 8 seconds
+  minInterval: 4000,     // Minimum 4 seconds between notifications
+  maxInterval: 12000,    // Maximum 12 seconds between notifications
+  
+  init() {
+    this.container = document.getElementById('sales-notifications-container');
+    if (!this.container) return;
+    
+    // Start showing notifications after a short delay
+    setTimeout(() => this.start(), 3000);
+    
+    // Pause when page is not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this.pause();
+      } else {
+        this.resume();
+      }
+    });
+  },
+  
+  start() {
+    if (!this.isActive) return;
+    
+    // Show first notification immediately
+    this.showNotification();
+    
+    // Schedule next notifications
+    this.scheduleNext();
+  },
+  
+  scheduleNext() {
+    if (this.intervalId) clearTimeout(this.intervalId);
+    
+    const delay = this.minInterval + Math.random() * (this.maxInterval - this.minInterval);
+    
+    this.intervalId = setTimeout(() => {
+      if (this.isActive && document.visibilityState === 'visible') {
+        this.showNotification();
+      }
+      this.scheduleNext();
+    }, delay);
+  },
+  
+  showNotification() {
+    if (!this.container) return;
+    
+    // Limit visible notifications
+    if (this.activeNotifications.length >= this.maxVisible) {
+      const oldest = this.activeNotifications.shift();
+      this.removeNotification(oldest, false);
+    }
+    
+    const data = generateNotification();
+    const element = createNotificationElement(data);
+    
+    this.container.appendChild(element);
+    this.activeNotifications.push(data.id);
+    
+    // Auto-remove after duration
+    setTimeout(() => {
+      this.removeNotification(data.id, true);
+    }, this.displayDuration);
+  },
+  
+  removeNotification(id, animate) {
+    animate = animate !== undefined ? animate : true;
+    var element = this.container ? this.container.querySelector('[data-notification-id="' + id + '"]') : null;
+    if (!element) return;
+    
+    if (animate) {
+      element.style.animation = 'slideOutRight 0.4s ease forwards';
+      setTimeout(() => element.remove(), 400);
+    } else {
+      element.remove();
+    }
+    
+    this.activeNotifications = this.activeNotifications.filter(function(nId) { return nId !== id; });
+  },
+  
+  pause() {
+    this.isActive = false;
+    if (this.intervalId) {
+      clearTimeout(this.intervalId);
+      this.intervalId = null;
+    }
+  },
+  
+  resume() {
+    this.isActive = true;
+    this.scheduleNext();
+  }
+};
+
+// Global function to close notification
+function closeNotification(id) {
+  SalesNotifications.removeNotification(id, true);
+}
+
+// Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+  SalesNotifications.init();
+});
