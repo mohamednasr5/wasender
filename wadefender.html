@@ -10,7 +10,7 @@
   <meta name="author" content="WA Sender">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://wasendernew.com/wadefender.html">
-<link rel="stylesheet" href="css/style.css">
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wasendernew.com/wadefender.html">
@@ -44,6 +44,516 @@
   <link rel="stylesheet" href="/css/style.css">
 
   <!-- WaDefender Page Specific Styling -->
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       WaDefender Page - Fixed & Enhanced Styles
+       ═══════════════════════════════════════════════════════ */
+    
+    /* Force Font Loading */
+    body {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif !important;
+    }
+    
+    /* Hero Section - Fixed Dark Background */
+    .wadefender-hero,
+    section.wadefender-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f3460 100%) !important;
+      min-height: 550px !important;
+      display: flex !important;
+      align-items: center !important;
+      position: relative !important;
+      overflow: hidden !important;
+      padding: 80px 0 !important;
+    }
+    
+    .wadefender-hero::before {
+      content: '' !important;
+      position: absolute !important;
+      top: -50% !important;
+      right: -20% !important;
+      width: 600px !important;
+      height: 600px !important;
+      background: radial-gradient(circle, rgba(37,211,102,0.12) 0%, transparent 70%) !important;
+      border-radius: 50% !important;
+      animation: pulse-glow 4s ease-in-out infinite !important;
+      pointer-events: none !important;
+    }
+    
+    .wadefender-hero::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: -30% !important;
+      left: -10% !important;
+      width: 400px !important;
+      height: 400px !important;
+      background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%) !important;
+      border-radius: 50% !important;
+      animation: pulse-glow 5s ease-in-out infinite reverse !important;
+      pointer-events: none !important;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    /* Badge */
+    .wd-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      background: rgba(37,211,102,0.18) !important;
+      color: #4ade80 !important;
+      padding: 10px 22px !important;
+      border-radius: 50px !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      margin-bottom: 24px !important;
+      border: 1px solid rgba(74,222,128,0.35) !important;
+      letter-spacing: 0.3px !important;
+    }
+    
+    /* Title - Clear White Text */
+    .wd-title {
+      font-size: clamp(2.2rem, 5.5vw, 4rem) !important;
+      font-weight: 900 !important;
+      color: #ffffff !important;
+      margin-bottom: 24px !important;
+      line-height: 1.25 !important;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3) !important;
+    }
+    
+    .wd-title span {
+      background: linear-gradient(135deg, #4ade80 0%, #3b82f6 50%, #60a5fa 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      filter: drop-shadow(0 2px 10px rgba(74,222,128,0.3)) !important;
+    }
+    
+    /* Subtitle - Light Gray on Dark */
+    .wd-subtitle {
+      font-size: clamp(1.05rem, 2.2vw, 1.3rem) !important;
+      color: rgba(255,255,255,0.88) !important;
+      margin-bottom: 36px !important;
+      max-width: 650px !important;
+      line-height: 1.9 !important;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.2) !important;
+    }
+    .wd-btns {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 16px !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
+    
+    /* Primary Button - Enhanced */
+    .wd-btn-primary {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+      color: #ffffff !important;
+      padding: 18px 36px !important;
+      border-radius: 14px !important;
+      font-weight: 800 !important;
+      font-size: 16px !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 8px 30px rgba(34,197,94,0.4), 0 0 0 1px rgba(255,255,255,0.1) inset !important;
+      border: none !important;
+      cursor: pointer !important;
+      font-family: 'Cairo', sans-serif !important;
+    }
+    .wd-btn-primary:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 15px 40px rgba(34,197,94,0.5) !important;
+      background: linear-gradient(135deg, #16a34a, #15803d) !important;
+    }
+    
+    /* Secondary Button - Glass Effect */
+    .wd-btn-secondary {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      background: rgba(255,255,255,0.12) !important;
+      color: #ffffff !important;
+      padding: 18px 36px !important;
+      border-radius: 14px !important;
+      font-weight: 700 !important;
+      font-size: 16px !important;
+      text-decoration: none !important;
+      border: 2px solid rgba(255,255,255,0.25) !important;
+      transition: all 0.3s ease !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      cursor: pointer !important;
+      font-family: 'Cairo', sans-serif !important;
+    }
+    .wd-btn-secondary:hover {
+      background: rgba(255,255,255,0.22) !important;
+      border-color: rgba(255,255,255,0.45) !important;
+      transform: translateY(-3px) !important;
+    }
+
+    /* Features Section - Enhanced */
+    .wd-features {
+      padding: 90px 0 !important;
+      background: #f8fafc !important;
+    }
+    .wd-feature-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+      gap: 28px !important;
+      margin-top: 52px !important;
+    }
+    .wd-feature-card {
+      background: #ffffff !important;
+      border-radius: 22px !important;
+      padding: 36px !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04) !important;
+      transition: all 0.35s ease !important;
+      border: 1px solid rgba(0,0,0,0.05) !important;
+    }
+    .wd-feature-card:hover {
+      transform: translateY(-10px) !important;
+      box-shadow: 0 20px 50px rgba(37,211,102,0.12), 0 4px 12px rgba(0,0,0,0.08) !important;
+      border-color: rgba(37,211,102,0.2) !important;
+    }
+    .wd-feature-icon {
+      width: 68px !important;
+      height: 68px !important;
+      background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(59,130,246,0.12)) !important;
+      border-radius: 18px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 30px !important;
+      margin-bottom: 22px !important;
+    }
+    .wd-feature-card h3 {
+      font-size: 1.3rem !important;
+      font-weight: 800 !important;
+      margin-bottom: 14px !important;
+      color: #0f172a !important;
+      font-family: 'Cairo', sans-serif !important;
+    }
+    .wd-feature-card p {
+      color: #475569 !important;
+      line-height: 1.8 !important;
+      font-size: 0.98rem !important;
+      font-family: 'Cairo', sans-serif !important;
+    }
+
+    /* How It Works - Enhanced */
+    .wd-how {
+      padding: 90px 0 !important;
+      background: linear-gradient(180deg, #f1f5f9 0%, #f8fafc 100%) !important;
+    }
+    .wd-steps {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+      gap: 36px !important;
+      margin-top: 52px !important;
+    }
+    .wd-step {
+      text-align: center !important;
+      padding: 38px 28px !important;
+      background: #ffffff !important;
+      border-radius: 22px !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05) !important;
+      position: relative !important;
+      transition: all 0.3s ease !important;
+      border: 1px solid rgba(0,0,0,0.04) !important;
+    }
+    .wd-step:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 12px 32px rgba(37,211,102,0.1) !important;
+    }
+    .wd-step-num {
+      width: 60px !important;
+      height: 60px !important;
+      background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+      color: white !important;
+      border-radius: 50% !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 auto 20px;
+    }
+    .wd-step h4 {
+      font-size: 1.2rem !important;
+      font-weight: 800 !important;
+      margin-bottom: 14px !important;
+      color: #0f172a !important;
+      font-family: 'Cairo', sans-serif !important;
+    }
+    .wd-step p {
+      color: #64748b !important;
+      font-size: 0.95rem !important;
+      line-height: 1.8 !important;
+      font-family: 'Cairo', sans-serif !important;
+    }
+
+    /* Pricing Section - Enhanced */
+    .wd-pricing {
+      padding: 90px 0 !important;
+      background: #f8fafc !important;
+    }
+    .wd-price-card {
+      max-width: 480px !important;
+      margin: 52px auto 0 !important;
+      background: #ffffff !important;
+      border-radius: 28px !important;
+      padding: 48px !important;
+      box-shadow: 0 20px 60px rgba(37,211,102,0.1), 0 4px 16px rgba(0,0,0,0.06) !important;
+      border: 2px solid #22c55e !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .wd-price-card::before {
+      content: '⭐ الأكثر طلباً' !important;
+      position: absolute !important;
+      top: 22px !important;
+      left: -32px !important;
+      background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+      color: white !important;
+      padding: 7px 44px !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      transform: rotate(-45deg) !important;
+      letter-spacing: 0.5px !important;
+    }
+    .wd-price-header {
+      text-align: center !important;
+      margin-bottom: 32px !important;
+    }
+    .wd-price-header h3 {
+      font-size: 1.6rem !important;
+      font-weight: 900 !important;
+      margin-bottom: 10px !important;
+      color: #0f172a !important;
+      font-family: 'Cairo', sans-serif !important;
+    }
+    .wd-price-amount {
+      font-size: 4rem !important;
+      font-weight: 900 !important;
+      color: #22c55e !important;
+      line-height: 1 !important;
+      text-shadow: 0 2px 10px rgba(34,197,94,0.2) !important;
+    }
+    .wd-price-amount span {
+      font-size: 1.3rem !important;
+      color: #64748b !important;
+      font-weight: 700 !important;
+    }
+    .wd-price-features {
+      list-style: none !important;
+      margin-bottom: 32px !important;
+      padding: 0 !important;
+    }
+    .wd-price-features li {
+      padding: 14px 0 !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      font-size: 1rem !important;
+      color: #334155 !important;
+      font-family: 'Cairo', sans-serif !important;
+      font-weight: 500 !important;
+    }
+    .wd-price-features li:last-child {
+      border-bottom: none !important;
+    }
+    .wd-buy-btn {
+      display: block !important;
+      width: 100% !important;
+      background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+      color: white !important;
+      text-align: center !important;
+      padding: 20px !important;
+      border-radius: 14px !important;
+      font-size: 1.15rem !important;
+      font-weight: 800 !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+      margin-bottom: 18px !important;
+      border: none !important;
+      cursor: pointer !important;
+      font-family: 'Cairo', sans-serif !important;
+      box-shadow: 0 8px 25px rgba(34,197,94,0.35) !important;
+    }
+    .wd-buy-btn:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 12px 35px rgba(34,197,94,0.45) !important;
+    }
+
+    /* QR Code Section */
+    .price-qr-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin:14px 0;
+      padding:10px;
+      background:rgba(37,211,102,0.06);
+      border:1.5px dashed #25D366;
+      border-radius:12px;
+    }
+    .price-qr-wrap img{
+      width:84px;
+      height:84px;
+      border-radius:8px;
+      background:#fff;
+      padding:4px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.12);
+      flex-shrink:0;
+    }
+    .price-qr-text{
+      text-align:right;
+      font-size:12.5px;
+      line-height:1.5;
+      color:inherit;
+    }
+    .price-qr-text strong{
+      display:block;
+      font-size:13.5px;
+      margin-bottom:2px;
+      color:#25D366;
+    }
+
+    /* Stats Section */
+    .wd-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .wd-stat-card {
+      text-align: center;
+      padding: 32px 20px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .wd-stat-num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #25D366;
+      margin-bottom: 8px;
+    }
+    .wd-stat-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* CTA Section - Enhanced Dark */
+    .wd-cta {
+      padding: 90px 0 !important;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f3460 100%) !important;
+      text-align: center !important;
+    }
+    .wd-cta h2 {
+      color: #ffffff !important;
+      font-size: clamp(1.9rem, 4.5vw, 2.8rem) !important;
+      margin-bottom: 18px !important;
+      font-weight: 900 !important;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3) !important;
+      font-family: 'Cairo', sans-serif !important;
+    }
+    .wd-cta p {
+      color: rgba(255,255,255,0.8) !important;
+      font-size: 1.15rem !important;
+      margin-bottom: 36px !important;
+      max-width: 650px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      line-height: 1.8 !important;
+      font-family: 'Cairo', sans-serif !important;
+    }
+
+    /* Responsive - Mobile Optimized */
+    @media (max-width: 768px) {
+      .wadefender-hero,
+      section.wadefender-hero {
+        min-height: 480px !important;
+        padding: 60px 0 !important;
+      }
+      
+      .wd-title {
+        font-size: clamp(1.8rem, 6vw, 2.8rem) !important;
+      }
+      
+      .wd-subtitle {
+        font-size: clamp(0.95rem, 2.5vw, 1.15rem) !important;
+        margin-bottom: 28px !important;
+      }
+      
+      .wd-btns {
+        flex-direction: column !important;
+        gap: 12px !important;
+      }
+      
+      .wd-btn-primary,
+      .wd-btn-secondary {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 16px 28px !important;
+        font-size: 15px !important;
+      }
+      
+      .wd-feature-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+      
+      .wd-steps {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+      
+      .wd-price-card {
+        margin: 32px 16px 0 !important;
+        padding: 32px 24px !important;
+        border-radius: 22px !important;
+      }
+      
+      .wd-price-amount {
+        font-size: 3rem !important;
+      }
+      
+      .wd-cta h2 {
+        font-size: clamp(1.6rem, 5vw, 2.2rem) !important;
+      }
+      
+      .wd-cta p {
+        font-size: 1rem !important;
+        padding: 0 16px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wadefender-hero,
+      section.wadefender-hero {
+        min-height: 420px !important;
+        padding: 50px 0 !important;
+      }
+      
+      .wd-feature-card,
+      .wd-step {
+        padding: 28px 20px !important;
+      }
+      
+      .wd-badge {
+        font-size: 13px !important;
+        padding: 8px 16px !important;
+      }
+    }
+  </style>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -246,7 +756,7 @@
     <section class="section reveal" id="wd-stats">
       <div class="container">
         <span class="section-label">إحصائيات</span>
-        <h2 class="section-title">أرقام وثقت في WaDefender</h2>
+        <h2 class="section-title">أرقام تثقت في WaDefender</h2>
         
         <div class="wd-stats">
           <div class="wd-stat-card">
@@ -333,6 +843,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="/js/main.js" defer></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>
