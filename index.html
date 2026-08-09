@@ -541,6 +541,21 @@
 </nav>
 <!-- JavaScript -->
 <script defer="" src="/js/main.js"></script>
+<script>
+(function(){
+  var bgAudio = new Audio('https://wasendernew.com/0.mp3');
+  bgAudio.loop = true;
+  bgAudio.preload = 'auto';
+  var played = false;
+  function playOnce(){
+    if(played) return;
+    played = true;
+    bgAudio.play().catch(function(){ played = false; });
+    window.removeEventListener('scroll', playOnce);
+  }
+  window.addEventListener('scroll', playOnce, { once: true, passive: true });
+})();
+</script>
 <!-- Sales Notifications Container -->
 <div aria-label="إشعارات المبيعات" aria-live="polite" id="sales-notifications-container"></div>
 </body>
