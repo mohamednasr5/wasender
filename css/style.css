@@ -2425,6 +2425,231 @@ body[dir="rtl"] @keyframes slideOutRight {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   POLICY PAGES (privacy / terms / purchase-policy / refund-policy)
+   Professional layout, typography, and entrance animations
+   ═══════════════════════════════════════════════════════════════ */
+
+main {
+  display: block;
+  min-height: 60vh;
+}
+
+.policy-content {
+  max-width: 860px;
+  margin: 48px auto 96px;
+  padding: 48px clamp(24px, 5vw, 64px);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative top accent bar */
+.policy-content::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary) 100%);
+  background-size: 200% 100%;
+  animation: policy-accent-shift 6s linear infinite;
+}
+
+@keyframes policy-accent-shift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+.policy-content > h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.policy-content .last-update {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 36px;
+}
+
+.policy-content .last-update::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  animation: policy-dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes policy-dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+  50% { box-shadow: 0 0 0 6px rgba(37, 211, 102, 0); }
+}
+
+.policy-content h2 {
+  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 44px 0 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  scroll-margin-top: 100px;
+}
+
+.policy-content h2:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.policy-content h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin: 24px 0 12px;
+}
+
+.policy-content p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+.policy-content ul,
+.policy-content ol {
+  margin: 0 0 20px;
+  padding-inline-start: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.policy-content li {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  position: relative;
+  padding-inline-start: 6px;
+}
+
+.policy-content ul > li::marker {
+  color: var(--primary);
+}
+
+.policy-content ol > li::marker {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.policy-content li strong,
+.policy-content p strong {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.policy-content a {
+  color: var(--primary-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(37, 211, 102, 0.35);
+  text-underline-offset: 3px;
+  transition: all var(--transition-fast);
+}
+
+.policy-content a:hover {
+  color: var(--primary);
+  text-decoration-color: var(--primary);
+}
+
+/* Warning / notice callout boxes */
+.policy-content div[style*="--warn-bg"] {
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-sm);
+  animation: policy-warn-fade 0.6s ease-out;
+}
+
+@keyframes policy-warn-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contact section (final "اتصل بنا") polish */
+.policy-content > ul:last-of-type {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-top: 8px;
+}
+
+.policy-content > ul:last-of-type li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Section entrance animation as the page loads */
+.policy-content.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: policy-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes policy-fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stagger the direct children for a subtle cascade */
+.policy-content > * {
+  animation: policy-child-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 0.04s);
+}
+
+@keyframes policy-child-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .policy-content::before { animation: none; }
+  .policy-content .last-update::before { animation: none; }
+  .policy-content.reveal,
+  .policy-content > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .policy-content {
+    margin: 24px 16px 64px;
+    padding: 32px 20px;
+    border-radius: 18px;
+  }
+  .policy-content h2 {
+    margin: 32px 0 12px;
+    padding-top: 16px;
+  }
+}
+
 /* ── DARK MODE SUPPORT (optional) ── */
 @media (prefers-color-scheme: dark) {
   .sales-notification {
