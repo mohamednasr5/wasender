@@ -88,7 +88,7 @@
 </div>
 </div>
 <!-- WhatsApp Float Button -->
-<a aria-label="Contact via WhatsApp" class="wa-float" href="https://wa.me/201279934735" rel="noopener" target="_blank" title="تواصل واتساب">💬</a>
+<a aria-label="Contact via WhatsApp" class="wa-float" href="https://wa.me/wasendernew" rel="noopener" target="_blank" title="تواصل واتساب">💬</a>
 <!-- Sound Toggle (Desktop only) -->
 <button aria-label="Toggle Sound Effects" class="sound-toggle" onclick="toggleSound(this)" title="تشغيل / إيقاف المؤثرات الصوتية">🔊</button>
 <!-- Download FAB (Floating Action Button) - Center Circular for Mobile -->
@@ -502,7 +502,7 @@
 <h4 data-i18n="footer_support">الدعم</h4>
 <ul>
 <li><a data-i18n="idx_37" href="/contact.html">اتصل بنا</a></li>
-<li><a data-i18n="idx_38" href="https://wa.me/201279934735" target="_blank">واتساب</a></li>
+<li><a data-i18n="idx_38" href="https://wa.me/wasendernew" target="_blank">واتساب</a></li>
 </ul>
 </div>
 </div>
@@ -543,14 +543,24 @@
 <script defer="" src="/js/main.js"></script>
 <script>
 (function(){
+  var STORAGE_KEY = 'waSenderBgAudioLastPlay';
+  var today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+
+  // إذا كان الصوت قد شُغّل بالفعل اليوم لهذا الزائر، لا تفعل شيئاً
+  try {
+    if (localStorage.getItem(STORAGE_KEY) === today) return;
+  } catch (e) {}
+
   var bgAudio = new Audio('https://wasendernew.com/0.mp3');
-  bgAudio.loop = true;
+  bgAudio.loop = false; // لا يتكرر
   bgAudio.preload = 'auto';
   var played = false;
   function playOnce(){
     if(played) return;
     played = true;
-    bgAudio.play().catch(function(){ played = false; });
+    bgAudio.play().then(function(){
+      try { localStorage.setItem(STORAGE_KEY, today); } catch (e) {}
+    }).catch(function(){ played = false; });
     window.removeEventListener('scroll', playOnce);
   }
   window.addEventListener('scroll', playOnce, { once: true, passive: true });
